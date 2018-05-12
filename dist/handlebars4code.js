@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 (function (process,__filename){
 /** vim: et:ts=4:sw=4:sts=4
  * @license amdefine 1.0.1 Copyright (c) 2011-2016, The Dojo Foundation All Rights Reserved.
@@ -303,7 +303,9 @@ function amdefine(module, requireFn) {
 module.exports = amdefine;
 
 }).call(this,require('_process'),"/node_modules/amdefine/amdefine.js")
-},{"_process":46,"path":45}],2:[function(require,module,exports){
+},{"_process":34,"path":33}],2:[function(require,module,exports){
+
+},{}],3:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -370,7 +372,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars.runtime":3,"./handlebars/compiler/ast":5,"./handlebars/compiler/base":6,"./handlebars/compiler/compiler":8,"./handlebars/compiler/javascript-compiler":10,"./handlebars/compiler/visitor":13,"./handlebars/no-conflict":27}],3:[function(require,module,exports){
+},{"./handlebars.runtime":4,"./handlebars/compiler/ast":6,"./handlebars/compiler/base":7,"./handlebars/compiler/compiler":9,"./handlebars/compiler/javascript-compiler":11,"./handlebars/compiler/visitor":14,"./handlebars/no-conflict":28}],4:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -438,7 +440,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars/base":4,"./handlebars/exception":17,"./handlebars/no-conflict":27,"./handlebars/runtime":28,"./handlebars/safe-string":29,"./handlebars/utils":30}],4:[function(require,module,exports){
+},{"./handlebars/base":5,"./handlebars/exception":18,"./handlebars/no-conflict":28,"./handlebars/runtime":29,"./handlebars/safe-string":30,"./handlebars/utils":31}],5:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -544,7 +546,7 @@ exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
 
 
-},{"./decorators":15,"./exception":17,"./helpers":18,"./logger":26,"./utils":30}],5:[function(require,module,exports){
+},{"./decorators":16,"./exception":18,"./helpers":19,"./logger":27,"./utils":31}],6:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -577,7 +579,7 @@ exports['default'] = AST;
 module.exports = exports['default'];
 
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -627,7 +629,7 @@ function parse(input, options) {
 }
 
 
-},{"../utils":30,"./helpers":9,"./parser":11,"./whitespace-control":14}],7:[function(require,module,exports){
+},{"../utils":31,"./helpers":10,"./parser":12,"./whitespace-control":15}],8:[function(require,module,exports){
 /* global define */
 'use strict';
 
@@ -795,7 +797,7 @@ exports['default'] = CodeGen;
 module.exports = exports['default'];
 
 
-},{"../utils":30,"source-map":32}],8:[function(require,module,exports){
+},{"../utils":31,"source-map":35}],9:[function(require,module,exports){
 /* eslint-disable new-cap */
 
 'use strict';
@@ -1370,7 +1372,7 @@ function transformLiteralToPath(sexpr) {
 }
 
 
-},{"../exception":17,"../utils":30,"./ast":5}],9:[function(require,module,exports){
+},{"../exception":18,"../utils":31,"./ast":6}],10:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1602,7 +1604,7 @@ function preparePartialBlock(open, program, close, locInfo) {
 }
 
 
-},{"../exception":17}],10:[function(require,module,exports){
+},{"../exception":18}],11:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2732,7 +2734,7 @@ exports['default'] = JavaScriptCompiler;
 module.exports = exports['default'];
 
 
-},{"../base":4,"../exception":17,"../utils":30,"./code-gen":7}],11:[function(require,module,exports){
+},{"../base":5,"../exception":18,"../utils":31,"./code-gen":8}],12:[function(require,module,exports){
 // File ignored in coverage tests via setting in .istanbul.yml
 /* Jison generated parser */
 "use strict";
@@ -3473,7 +3475,7 @@ var handlebars = (function () {
 module.exports = exports["default"];
 
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /* eslint-disable new-cap */
 'use strict';
 
@@ -3661,7 +3663,7 @@ PrintVisitor.prototype.HashPair = function (pair) {
 /* eslint-enable new-cap */
 
 
-},{"./visitor":13}],13:[function(require,module,exports){
+},{"./visitor":14}],14:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3803,7 +3805,7 @@ exports['default'] = Visitor;
 module.exports = exports['default'];
 
 
-},{"../exception":17}],14:[function(require,module,exports){
+},{"../exception":18}],15:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4026,7 +4028,7 @@ exports['default'] = WhitespaceControl;
 module.exports = exports['default'];
 
 
-},{"./visitor":13}],15:[function(require,module,exports){
+},{"./visitor":14}],16:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4044,7 +4046,7 @@ function registerDefaultDecorators(instance) {
 }
 
 
-},{"./decorators/inline":16}],16:[function(require,module,exports){
+},{"./decorators/inline":17}],17:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4075,7 +4077,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":30}],17:[function(require,module,exports){
+},{"../utils":31}],18:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4131,7 +4133,7 @@ exports['default'] = Exception;
 module.exports = exports['default'];
 
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4179,7 +4181,7 @@ function registerDefaultHelpers(instance) {
 }
 
 
-},{"./helpers/block-helper-missing":19,"./helpers/each":20,"./helpers/helper-missing":21,"./helpers/if":22,"./helpers/log":23,"./helpers/lookup":24,"./helpers/with":25}],19:[function(require,module,exports){
+},{"./helpers/block-helper-missing":20,"./helpers/each":21,"./helpers/helper-missing":22,"./helpers/if":23,"./helpers/log":24,"./helpers/lookup":25,"./helpers/with":26}],20:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4220,7 +4222,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":30}],20:[function(require,module,exports){
+},{"../utils":31}],21:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4316,7 +4318,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":17,"../utils":30}],21:[function(require,module,exports){
+},{"../exception":18,"../utils":31}],22:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4343,7 +4345,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":17}],22:[function(require,module,exports){
+},{"../exception":18}],23:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4374,7 +4376,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":30}],23:[function(require,module,exports){
+},{"../utils":31}],24:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4402,7 +4404,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4416,7 +4418,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4451,7 +4453,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":30}],26:[function(require,module,exports){
+},{"../utils":31}],27:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4500,7 +4502,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 
-},{"./utils":30}],27:[function(require,module,exports){
+},{"./utils":31}],28:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -4524,7 +4526,7 @@ module.exports = exports['default'];
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4833,7 +4835,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 
-},{"./base":4,"./exception":17,"./utils":30}],29:[function(require,module,exports){
+},{"./base":5,"./exception":18,"./utils":31}],30:[function(require,module,exports){
 // Build out our basic SafeString type
 'use strict';
 
@@ -4850,7 +4852,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4976,7 +4978,7 @@ function appendContextPath(contextPath, id) {
 }
 
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 // USAGE:
 // var handlebars = require('handlebars');
 /* eslint-disable no-var */
@@ -5003,7 +5005,421 @@ if (typeof require !== 'undefined' && require.extensions) {
   require.extensions['.hbs'] = extension;
 }
 
-},{"../dist/cjs/handlebars":2,"../dist/cjs/handlebars/compiler/printer":12,"fs":44}],32:[function(require,module,exports){
+},{"../dist/cjs/handlebars":3,"../dist/cjs/handlebars/compiler/printer":13,"fs":2}],33:[function(require,module,exports){
+(function (process){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// resolves . and .. elements in a path array with directory names there
+// must be no slashes, empty elements, or device names (c:\) in the array
+// (so also no leading and trailing slashes - it does not distinguish
+// relative and absolute paths)
+function normalizeArray(parts, allowAboveRoot) {
+  // if the path tries to go above the root, `up` ends up > 0
+  var up = 0;
+  for (var i = parts.length - 1; i >= 0; i--) {
+    var last = parts[i];
+    if (last === '.') {
+      parts.splice(i, 1);
+    } else if (last === '..') {
+      parts.splice(i, 1);
+      up++;
+    } else if (up) {
+      parts.splice(i, 1);
+      up--;
+    }
+  }
+
+  // if the path is allowed to go above the root, restore leading ..s
+  if (allowAboveRoot) {
+    for (; up--; up) {
+      parts.unshift('..');
+    }
+  }
+
+  return parts;
+}
+
+// Split a filename into [root, dir, basename, ext], unix version
+// 'root' is just a slash, or nothing.
+var splitPathRe =
+    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+var splitPath = function(filename) {
+  return splitPathRe.exec(filename).slice(1);
+};
+
+// path.resolve([from ...], to)
+// posix version
+exports.resolve = function() {
+  var resolvedPath = '',
+      resolvedAbsolute = false;
+
+  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+    var path = (i >= 0) ? arguments[i] : process.cwd();
+
+    // Skip empty and invalid entries
+    if (typeof path !== 'string') {
+      throw new TypeError('Arguments to path.resolve must be strings');
+    } else if (!path) {
+      continue;
+    }
+
+    resolvedPath = path + '/' + resolvedPath;
+    resolvedAbsolute = path.charAt(0) === '/';
+  }
+
+  // At this point the path should be resolved to a full absolute path, but
+  // handle relative paths to be safe (might happen when process.cwd() fails)
+
+  // Normalize the path
+  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
+    return !!p;
+  }), !resolvedAbsolute).join('/');
+
+  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
+};
+
+// path.normalize(path)
+// posix version
+exports.normalize = function(path) {
+  var isAbsolute = exports.isAbsolute(path),
+      trailingSlash = substr(path, -1) === '/';
+
+  // Normalize the path
+  path = normalizeArray(filter(path.split('/'), function(p) {
+    return !!p;
+  }), !isAbsolute).join('/');
+
+  if (!path && !isAbsolute) {
+    path = '.';
+  }
+  if (path && trailingSlash) {
+    path += '/';
+  }
+
+  return (isAbsolute ? '/' : '') + path;
+};
+
+// posix version
+exports.isAbsolute = function(path) {
+  return path.charAt(0) === '/';
+};
+
+// posix version
+exports.join = function() {
+  var paths = Array.prototype.slice.call(arguments, 0);
+  return exports.normalize(filter(paths, function(p, index) {
+    if (typeof p !== 'string') {
+      throw new TypeError('Arguments to path.join must be strings');
+    }
+    return p;
+  }).join('/'));
+};
+
+
+// path.relative(from, to)
+// posix version
+exports.relative = function(from, to) {
+  from = exports.resolve(from).substr(1);
+  to = exports.resolve(to).substr(1);
+
+  function trim(arr) {
+    var start = 0;
+    for (; start < arr.length; start++) {
+      if (arr[start] !== '') break;
+    }
+
+    var end = arr.length - 1;
+    for (; end >= 0; end--) {
+      if (arr[end] !== '') break;
+    }
+
+    if (start > end) return [];
+    return arr.slice(start, end - start + 1);
+  }
+
+  var fromParts = trim(from.split('/'));
+  var toParts = trim(to.split('/'));
+
+  var length = Math.min(fromParts.length, toParts.length);
+  var samePartsLength = length;
+  for (var i = 0; i < length; i++) {
+    if (fromParts[i] !== toParts[i]) {
+      samePartsLength = i;
+      break;
+    }
+  }
+
+  var outputParts = [];
+  for (var i = samePartsLength; i < fromParts.length; i++) {
+    outputParts.push('..');
+  }
+
+  outputParts = outputParts.concat(toParts.slice(samePartsLength));
+
+  return outputParts.join('/');
+};
+
+exports.sep = '/';
+exports.delimiter = ':';
+
+exports.dirname = function(path) {
+  var result = splitPath(path),
+      root = result[0],
+      dir = result[1];
+
+  if (!root && !dir) {
+    // No dirname whatsoever
+    return '.';
+  }
+
+  if (dir) {
+    // It has a dirname, strip trailing slash
+    dir = dir.substr(0, dir.length - 1);
+  }
+
+  return root + dir;
+};
+
+
+exports.basename = function(path, ext) {
+  var f = splitPath(path)[2];
+  // TODO: make this comparison case-insensitive on windows?
+  if (ext && f.substr(-1 * ext.length) === ext) {
+    f = f.substr(0, f.length - ext.length);
+  }
+  return f;
+};
+
+
+exports.extname = function(path) {
+  return splitPath(path)[3];
+};
+
+function filter (xs, f) {
+    if (xs.filter) return xs.filter(f);
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+        if (f(xs[i], i, xs)) res.push(xs[i]);
+    }
+    return res;
+}
+
+// String.prototype.substr - negative index don't work in IE8
+var substr = 'ab'.substr(-1) === 'b'
+    ? function (str, start, len) { return str.substr(start, len) }
+    : function (str, start, len) {
+        if (start < 0) start = str.length + start;
+        return str.substr(start, len);
+    }
+;
+
+}).call(this,require('_process'))
+},{"_process":34}],34:[function(require,module,exports){
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],35:[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
@@ -5013,7 +5429,7 @@ exports.SourceMapGenerator = require('./source-map/source-map-generator').Source
 exports.SourceMapConsumer = require('./source-map/source-map-consumer').SourceMapConsumer;
 exports.SourceNode = require('./source-map/source-node').SourceNode;
 
-},{"./source-map/source-map-consumer":39,"./source-map/source-map-generator":40,"./source-map/source-node":41}],33:[function(require,module,exports){
+},{"./source-map/source-map-consumer":42,"./source-map/source-map-generator":43,"./source-map/source-node":44}],36:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5122,7 +5538,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./util":42,"amdefine":1}],34:[function(require,module,exports){
+},{"./util":45,"amdefine":1}],37:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5270,7 +5686,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./base64":35,"amdefine":1}],35:[function(require,module,exports){
+},{"./base64":38,"amdefine":1}],38:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5345,7 +5761,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":1}],36:[function(require,module,exports){
+},{"amdefine":1}],39:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5464,7 +5880,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":1}],37:[function(require,module,exports){
+},{"amdefine":1}],40:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2014 Mozilla Foundation and contributors
@@ -5552,7 +5968,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./util":42,"amdefine":1}],38:[function(require,module,exports){
+},{"./util":45,"amdefine":1}],41:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5674,7 +6090,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":1}],39:[function(require,module,exports){
+},{"amdefine":1}],42:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -6753,7 +7169,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./array-set":33,"./base64-vlq":34,"./binary-search":36,"./quick-sort":38,"./util":42,"amdefine":1}],40:[function(require,module,exports){
+},{"./array-set":36,"./base64-vlq":37,"./binary-search":39,"./quick-sort":41,"./util":45,"amdefine":1}],43:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7154,7 +7570,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./array-set":33,"./base64-vlq":34,"./mapping-list":37,"./util":42,"amdefine":1}],41:[function(require,module,exports){
+},{"./array-set":36,"./base64-vlq":37,"./mapping-list":40,"./util":45,"amdefine":1}],44:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7570,7 +7986,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./source-map-generator":40,"./util":42,"amdefine":1}],42:[function(require,module,exports){
+},{"./source-map-generator":43,"./util":45,"amdefine":1}],45:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7942,428 +8358,520 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":1}],43:[function(require,module,exports){
-var Handlebars = require("handlebars");
+},{"amdefine":1}],46:[function(require,module,exports){
+/* ---------------------------------------
+ Exported Module Variable: Handlebars4Code
+ Package:  handlebars4code
+ Version:  1.0.0
+ Homepage: https://github.com/niebert/Handlebars4Code#readme
+ Author:   niebert GitHub
+ License:  MIT
+Inheritance: 'Handlebars4Code' inherits from 'Handlebars'
+ Require Module with:
+    const Handlebars4Code = require('handlebars4code');
+    var  compileCode = Handlebars4Code.compile(vTemplate);
+ JSHint: installation with 'npm install jshint -g'
+ ------------------------------------------ */
+
+/*jshint  laxcomma: true, asi: true, maxerr: 150 */
+/*global alert, confirm, console, prompt */
+// require the Handlebars module from NPM
+var Handlebars = require('handlebars');
+
+/* vDataJSON is the main JSON data storage defined in index.html
+  vDataJSON is provided as parameter to createHandleBarsCompiler(pDataJSON)
+   * createHandleBarsCompiler() expects a hash key "tpl" containing the templates.
+   * createHandleBarsCompiler() generates HandleBars compiler functions
+     in pDataJSON["out"] for all keys pDataJSON["tpl"]
+  create for all templates in the hash vDataJSON["tpl"] a Handlebars compiler
+  e.g. vDataJSON["tpl"]["javascript"] is a Handlebars template for Javascript
+
+Create all Handlebars4Code compiler with:
+
+Handlebars4Code.get_compiler(vDataJSON[]);
+
+vDataJSON["out"] = Handlebars4Code.get_compiler();
+
+  Code generation. Following iteration will create a compliler
+  in vDataJSON["out"]["javascript"]
+
+*/
+
+var vCodeCompiler = {};
+
+function clone_json(pJSON) {
+  var vJSON = {};
+  if (pJSON) {
+    vJSON = JSON.parse(JSON.stringify(pJSON));
+  } else {
+    console.log("ERROR: cloneJSON(pJSON) - pJSON undefined!");
+  };
+  return vJSON;
+}
+
+Handlebars.create_compiler = function (pTplJSON) {
+  var vTemplate = "";
+  for (var tplID in pTplJSON) {
+    if (pTplJSON.hasOwnProperty(tplID)) {
+      vTemplate = pTplJSON[tplID];
+      vCodeCompiler[tplID] = this.compile(vTemplate);
+    };
+  };
+};
+
+Handlebars.get_compiler = function () {
+  return vCodeCompiler;
+};
+
+
+function compileCode(pTplID,pJSON) {
+  // pJSON is JSON data of the UML Class
+  var vCode = vCodeCompiler[pTplID](pJSON);
+  vCode = postProcessHandlebars(vCode,pJSON);
+  return vCode;
+};
+
+Handlebars.compile_code = compileCode;
+
+function replaceString(pString,pSearch,pReplace)
+//###### replaces in the string "pString" multiple substrings "pSearch" by "pReplace"
+{
+	//alert("cstring.js - replaceString() "+pString);
+	if (pString != '') {
+		var vHelpString = '';
+        var vN = pString.indexOf(pSearch);
+		var vReturnString = '';
+		while (vN >= 0)
+		{
+			if (vN > 0)
+				vReturnString += pString.substring(0, vN);
+			vReturnString += pReplace;
+            if (vN + pSearch.length < pString.length) {
+				pString = pString.substring(vN+pSearch.length, pString.length);
+			} else {
+				pString = ''
+			}
+			vN = pString.indexOf(pSearch);
+		};
+	};
+	return vReturnString + pString;
+}
+
+
+// Use helper in Template with:
+// {{#ifcond var1 '==' var2}}
+//   ...
+// {{/ifcond}}
+
+Handlebars.registerHelper('ifcond', function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
+
+// Block helpers can be called in template
+// {{#bold}}{{body}}{{/bold}}
+
+Handlebars.registerHelper('bold', function(options) {
+  return new Handlebars.SafeString(
+      '<div class="mybold">'
+      + options.fn(this)
+      + '</div>');
+});
+
+// Simple Iterators helper functions
+/*
+{{#listhtml attributes}}
+   <div class="comment">
+     <h2>{{subject}}</h2>
+     {{{body}}}
+   </div>
+ {{/listhtml}}
+*/
+
+Handlebars.registerHelper('listhtml', function(context, options) {
+  var ret = "<ul>";
+
+  for(var i=0, j=context.length; i<j; i++) {
+    ret = ret + "<li>" + options.fn(context[i]) + "</li>";
+  }
+
+  return ret + "</ul>";
+});
+
+/* Hash Arguments of Helper Calls
+Like regular helpers, block helpers can accept an optional
+ Hash as its final argument.
+ Let's revisit the list helper and make it possible for us
+ to add any number of optional attributes to the <ul> element we will create.
+
+{{#listhtmlattr nav id="nav-bar" class="top"}}
+ <a href="{{url}}">{{title}}</a>
+{{/listhtmlattr}}
+
+Handlebars provides the final hash as options.hash.
+This makes it easier to accept a variable number of parameters,
+while also accepting an optional Hash. If the template provides
+no hash arguments, Handlebars will automatically pass an empty object ({}),
+so you don't need to check for the existence of hash arguments.
+*/
+
+Handlebars.registerHelper('eachparam', function(context, pClassname,options) {
+
+  var vText =  context.map(function(item) {
+    return "" + options.fn(item) + "";
+  }).join("\n");
+
+  for (var varID in options.hash) {
+    if (options.hash.hasOwnProperty(varID)) {
+      console.log("eachparam options.hash['"+varID+"']='"+options.hash[varID]+"'");
+      vText = vText.replace(new RegExp('{{' + varID + '}}', 'g'), options.hash[varID])
+    }
+  };
+  return vText
+});
+
+Handlebars.registerHelper('foreach', function(pArray, pData, options) {
+  var ret = "";
+  // vRequire is a Hash that collects all classes
+  // that are needed to create attributes or
+  // create a return class of the type.
+  var vRequire = {};
+  var vLib = "";
+  var item;
+  for (var i=0; i<pArray.length; i++) {
+    item = clone_json(pArray[i]);
+    item.data = pData;
+    ret += options.fn(item);
+  };
+  return ret
+});
+
+
+Handlebars.registerHelper('listhtmlattr', function(context, options) {
+  var attrs = Object.keys(options.hash).map(function(key) {
+    return key + '="' + options.hash[key] + '"';
+  }).join(" ");
+
+  return "<ul " + attrs + ">" + context.map(function(item) {
+    return "<li>" + options.fn(item) + "</li>";
+  }).join("\n") + "</ul>";
+});
+
+Handlebars.registerHelper('codeindent', function(pContext, options) {
+  var vIndent = "";
+  var vText = "";
+  var vCR = "";
+  if (options && options.hasOwnProperty("hash")) {
+    if (options.hash.hasOwnProperty("indent")) {
+      vIndent = options.hash["indent"];
+      console.log("[codeindent] Indent for Code in HandleBars: '"+vIndent+"'");
+    };
+    vText = options.fn(pContext);
+    console.log("[codeindent] vText="+vText.substr(0,120)+"...");
+  } else {
+    console.log("[codeindent] options in helper undefined");
+  };
+  //vIndent = "\n" + vIndent;
+  if (vText && (vText != "")) {
+    vText = vText.replace(/\n/g,"\n"+vIndent+"  ");
+  };
+  return new Handlebars.SafeString(vIndent+"  "+vText+"\n");
+});
+
+Handlebars.registerHelper('indent', function(pContext, options) {
+  var vIndent = "";
+  var vText = "";
+  var vCR = "";
+  if (options && options.hasOwnProperty("hash")) {
+    if (options.hash.hasOwnProperty("text")) {
+      console.log("text='"+options.hash["text"]+"'");
+      vText = options.hash["text"];
+    };
+    if (options.hash.hasOwnProperty("indent")) {
+      vIndent = options.hash["indent"];
+      console.log("[indent] Indent for Code in HandleBars: '"+vIndent+"'");
+    };
+    //vText = options.fn(pContext);
+    console.log("codeindent: vText="+vText.substr(0,120)+"...");
+  } else {
+    console.log("[indent] options in helper undefined");
+  };
+  //vIndent = "\n" + vIndent;
+  if (vText && (vText != "")) {
+    vText = vText.replace(/\n/g,"\n"+vIndent);
+  };
+  return new Handlebars.SafeString(vIndent+vText);
+});
+
+/*
+{{lowercase myfilename}}
+{{lowercase "My Filename"}}
+*/
+
+Handlebars.registerHelper('lowercase', function(pString) {
+  var vString = pString.toLowerCase();
+  return new Handlebars.SafeString(vString);
+});
+
+Handlebars.registerHelper('require_class_list', function(pSuperClass,pAttribs,pMethods,pBaseClasses,pExtendedClasses,pRequirePath) {
+  var ret = "";
+  // vRequire is a Hash that collects all classes
+  // that are needed to create attributes or
+  // create a return class of the type.
+  var vRequire = {};
+  var vLib = "";
+  for (var i=0; i<pAttribs.length; i++) {
+    // populate vRequire with classes that a needed as
+    // constructors for attributes
+    vLib = pAttribs[i].class;
+    if (vLib != "") {
+      // constructors are required if the class is NOT a base class
+      // so class/library is added if an only if it is not a base class
+      if (value_in_array(vLib,pBaseClasses) >= 0) {
+        console.log("Library '"+vLib+"' is a Base Class - no required");
+      } else {
+        if (vLib != pSuperClass) {
+          if (value_in_array(vLib,pExtendedClasses) >= 0) {
+            console.log("Library '"+vLib+"' is an Exte Class - no required");
+            // vLib is a local library
+            vRequire[vLib] = pRequirePath + name2filename(vLib);
+          } else {
+            vRequire[vLib] = name2filename(vLib);
+          };
+        }
+      };
+    };
+  };
+  for (var i=0; i<pMethods.length; i++) {
+    // populate vRequire with classes that a needed as
+    // constructors for returned instances of those classes
+    vLib = pMethods[i].return;
+    if (vLib != "") {
+      // constructors are required if the class is NOT a base class
+      // so class/library is added if an only if it is not a base class
+      if (value_in_array(vLib,pBaseClasses) == true) {
+        if (value_in_array(vLib,pExtendedClasses) == true) {
+          // vLib is a local library
+          vRequire[vLib] = pRequirePath + name2filename(vLib);
+        } else {
+          vRequire[vLib] = name2filename(vLib);
+        };
+      };
+    };
+  };
+  // vRequire is a Hash therefore double usage of classes
+  // in attributes and returns of methods lead just to one
+  // require call in the list
+  var vSep = "";
+  for (var iLib in vRequire) {
+    if (vRequire.hasOwnProperty(iLib)) {
+      ret += vSep + "const " + iLib + " = require('" + vRequire[iLib]+"');";
+      vSep = "\n";
+    }
+  };
+  return new Handlebars.SafeString(ret);
+});
+
+Handlebars.registerHelper('removereturn', function(pString) {
+  var vString = pString.replace(/\n/g," - ");
+  return new Handlebars.SafeString(vString);
+});
+
+
+function name2filename(pFilename) {
+  var vFilename = pFilename || "undefined file";
+  vFilename = vFilename.toLowerCase(vFilename);
+  vFilename = vFilename.replace(/[^a-z0-9]/g,"_");
+  vFilename = vFilename.replace(/_[_]+/g,"_");
+  return vFilename;
+}
+
+
+Handlebars.registerHelper('filename', function(pString) {
+   var vText = pString || "no_filename";
+   return new Handlebars.SafeString(name2filename(vText));
+});
+
+// -----------
+
+function paramCallString(pParamArray) {
+  var ret = "";
+  var vComma = "";
+
+  for(var i=0, j=pParamArray.length; i<j; i++) {
+    ret += vComma +  pParamArray[i].name;
+    vComma = ",";
+  };
+
+  return new Handlebars.SafeString(ret);
+}
+
+Handlebars.registerHelper('paramcall', paramCallString);
+
+// -----------
+
+function paramTypeString(pParamArray) {
+  // creates from JSON parameters of a method the variable list with types
+  var ret = "";
+  var vComma = "";
+  if (pParamArray) {
+    for(var i=0, j=pParamArray.length; i<j; i++) {
+      ret += vComma +  pParamArray[i].name+":"+pParamArray[i].class;
+      vComma = ",";
+    };
+  } else {
+    console.log("No pParamArray in 'paramcall' helper.");
+  }
+
+  return ret;
+}
+
+Handlebars.registerHelper('paramtype', paramTypeString);
+// -----------
+
+function attribs4UMLString(pArray) {
+  // pArray contains the array of Attributes
+  var ret = "";
+  var vSep = "";
+  var vVis = "-";
+  for(var i=0, j=pArray.length; i<j; i++) {
+    switch (pArray[i].visibility) {
+      case "public":
+        vVis = "+";
+      break;
+      case "public":
+        vVis = "-";
+      break;
+      default:
+        vVis = "-";
+    };
+    ret += vSep + " " + vVis + " " + pArray[i].name+":"+pArray[i].class;
+    vSep = "<br>";
+  };
+  return new Handlebars.SafeString(ret);
+}
+
+Handlebars.registerHelper('require_attribs', attribs4UMLString);
+
+// -----------
+
+function attribs4UMLString(pArray) {
+  // pArray contains the array of Attributes
+  var ret = "";
+  var vSep = "";
+  var vVis = "-";
+  for(var i=0, j=pArray.length; i<j; i++) {
+    switch (pArray[i].visibility) {
+      case "public":
+        vVis = "+";
+      break;
+      case "public":
+        vVis = "-";
+      break;
+      default:
+        vVis = "-";
+    };
+    ret += vSep + " " + vVis + " " + pArray[i].name+":"+pArray[i].class;
+    vSep = "<br>";
+  };
+  return new Handlebars.SafeString(ret);
+}
+
+Handlebars.registerHelper('attribs_uml', attribs4UMLString);
+
+// -----------
+
+function methods4UMLString(pArray) {
+  // pArray contains the array of Attributes
+  var ret = "";
+  var vSep = "";
+  var vVis = "-";
+  for(var i=0, j=pArray.length; i<j; i++) {
+    switch (pArray[i].visibility) {
+      case "public":
+        vVis = "+";
+      break;
+      case "public":
+        vVis = "-";
+      break;
+      default:
+        vVis = "-";
+    };
+    ret += vSep + " " + vVis + " " + pArray[i].name+"(";
+    ret += paramTypeString(pArray[i].parameter);
+    ret += ")";
+    if (pArray[i].return != "") {
+      ret += ":"+pArray[i].return
+    };
+    vSep = "<br>";
+  };
+  return new Handlebars.SafeString(ret);
+}
+
+Handlebars.registerHelper('methods_uml', methods4UMLString);
+
+// -----------
+
+function parameterListString(pParamArray,pIndent) {
+  var ret = "";
+  var vNewLine = "";
+  var vComment = "";
+  var vExtraIndent = "  "
+  for(var i=0, j=pParamArray.length; i<j; i++) {
+    ret += vNewLine +  pParamArray[i].name + ":"+pParamArray[i].class;
+    vNewLine = "\n"+pIndent;
+    vComment = pParamArray[i].comment;
+    if (vComment != "") {
+      vComment = vComment.replace(/\n/g,vNewLine+vExtraIndent);
+      // Split comment at "\n" and inject the vNewLine indent with additional spaces for the comment
+      ret += vNewLine + vExtraIndent + vComment;
+    };
+  };
+  return new Handlebars.SafeString(ret);
+}
+
+Handlebars.registerHelper('parameterlist', parameterListString);
+
+// -----------
+
+
+
+//--------------------------------------
+//---Extend Module----------------------
+// The module 'Handlebars4Code' extends 'Handlebars' and
+// inherits all attributes and methods form 'Handlebars'
+Handlebars4Code = Handlebars;
+//--------------------------------------
 //---- Define the static class Handlebars4Code
 // The class was extended by src/libs/handlebars_helpers.js
 // build.js creates main.js
 
 var Handlebars4Code = Handlebars;
 
-},{"handlebars":31}],44:[function(require,module,exports){
 
-},{}],45:[function(require,module,exports){
-(function (process){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// resolves . and .. elements in a path array with directory names there
-// must be no slashes, empty elements, or device names (c:\) in the array
-// (so also no leading and trailing slashes - it does not distinguish
-// relative and absolute paths)
-function normalizeArray(parts, allowAboveRoot) {
-  // if the path tries to go above the root, `up` ends up > 0
-  var up = 0;
-  for (var i = parts.length - 1; i >= 0; i--) {
-    var last = parts[i];
-    if (last === '.') {
-      parts.splice(i, 1);
-    } else if (last === '..') {
-      parts.splice(i, 1);
-      up++;
-    } else if (up) {
-      parts.splice(i, 1);
-      up--;
-    }
-  }
-
-  // if the path is allowed to go above the root, restore leading ..s
-  if (allowAboveRoot) {
-    for (; up--; up) {
-      parts.unshift('..');
-    }
-  }
-
-  return parts;
-}
-
-// Split a filename into [root, dir, basename, ext], unix version
-// 'root' is just a slash, or nothing.
-var splitPathRe =
-    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
-var splitPath = function(filename) {
-  return splitPathRe.exec(filename).slice(1);
-};
-
-// path.resolve([from ...], to)
-// posix version
-exports.resolve = function() {
-  var resolvedPath = '',
-      resolvedAbsolute = false;
-
-  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-    var path = (i >= 0) ? arguments[i] : process.cwd();
-
-    // Skip empty and invalid entries
-    if (typeof path !== 'string') {
-      throw new TypeError('Arguments to path.resolve must be strings');
-    } else if (!path) {
-      continue;
-    }
-
-    resolvedPath = path + '/' + resolvedPath;
-    resolvedAbsolute = path.charAt(0) === '/';
-  }
-
-  // At this point the path should be resolved to a full absolute path, but
-  // handle relative paths to be safe (might happen when process.cwd() fails)
-
-  // Normalize the path
-  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
-    return !!p;
-  }), !resolvedAbsolute).join('/');
-
-  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
-};
-
-// path.normalize(path)
-// posix version
-exports.normalize = function(path) {
-  var isAbsolute = exports.isAbsolute(path),
-      trailingSlash = substr(path, -1) === '/';
-
-  // Normalize the path
-  path = normalizeArray(filter(path.split('/'), function(p) {
-    return !!p;
-  }), !isAbsolute).join('/');
-
-  if (!path && !isAbsolute) {
-    path = '.';
-  }
-  if (path && trailingSlash) {
-    path += '/';
-  }
-
-  return (isAbsolute ? '/' : '') + path;
-};
-
-// posix version
-exports.isAbsolute = function(path) {
-  return path.charAt(0) === '/';
-};
-
-// posix version
-exports.join = function() {
-  var paths = Array.prototype.slice.call(arguments, 0);
-  return exports.normalize(filter(paths, function(p, index) {
-    if (typeof p !== 'string') {
-      throw new TypeError('Arguments to path.join must be strings');
-    }
-    return p;
-  }).join('/'));
-};
-
-
-// path.relative(from, to)
-// posix version
-exports.relative = function(from, to) {
-  from = exports.resolve(from).substr(1);
-  to = exports.resolve(to).substr(1);
-
-  function trim(arr) {
-    var start = 0;
-    for (; start < arr.length; start++) {
-      if (arr[start] !== '') break;
-    }
-
-    var end = arr.length - 1;
-    for (; end >= 0; end--) {
-      if (arr[end] !== '') break;
-    }
-
-    if (start > end) return [];
-    return arr.slice(start, end - start + 1);
-  }
-
-  var fromParts = trim(from.split('/'));
-  var toParts = trim(to.split('/'));
-
-  var length = Math.min(fromParts.length, toParts.length);
-  var samePartsLength = length;
-  for (var i = 0; i < length; i++) {
-    if (fromParts[i] !== toParts[i]) {
-      samePartsLength = i;
-      break;
-    }
-  }
-
-  var outputParts = [];
-  for (var i = samePartsLength; i < fromParts.length; i++) {
-    outputParts.push('..');
-  }
-
-  outputParts = outputParts.concat(toParts.slice(samePartsLength));
-
-  return outputParts.join('/');
-};
-
-exports.sep = '/';
-exports.delimiter = ':';
-
-exports.dirname = function(path) {
-  var result = splitPath(path),
-      root = result[0],
-      dir = result[1];
-
-  if (!root && !dir) {
-    // No dirname whatsoever
-    return '.';
-  }
-
-  if (dir) {
-    // It has a dirname, strip trailing slash
-    dir = dir.substr(0, dir.length - 1);
-  }
-
-  return root + dir;
-};
-
-
-exports.basename = function(path, ext) {
-  var f = splitPath(path)[2];
-  // TODO: make this comparison case-insensitive on windows?
-  if (ext && f.substr(-1 * ext.length) === ext) {
-    f = f.substr(0, f.length - ext.length);
-  }
-  return f;
-};
-
-
-exports.extname = function(path) {
-  return splitPath(path)[3];
-};
-
-function filter (xs, f) {
-    if (xs.filter) return xs.filter(f);
-    var res = [];
-    for (var i = 0; i < xs.length; i++) {
-        if (f(xs[i], i, xs)) res.push(xs[i]);
-    }
-    return res;
-}
-
-// String.prototype.substr - negative index don't work in IE8
-var substr = 'ab'.substr(-1) === 'b'
-    ? function (str, start, len) { return str.substr(start, len) }
-    : function (str, start, len) {
-        if (start < 0) start = str.length + start;
-        return str.substr(start, len);
-    }
-;
-
-}).call(this,require('_process'))
-},{"_process":46}],46:[function(require,module,exports){
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-},{}]},{},[43]);
+// -------NPM Export Variable: Handlebars4Code---------------
+module.exports = Handlebars4Code;
+},{"handlebars":32}]},{},[46]);

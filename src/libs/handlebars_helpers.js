@@ -1,3 +1,4 @@
+
 /* vDataJSON is the main JSON data storage defined in index.html
   vDataJSON is provided as parameter to createHandleBarsCompiler(pDataJSON)
    * createHandleBarsCompiler() expects a hash key "tpl" containing the templates.
@@ -5,8 +6,16 @@
      in pDataJSON["out"] for all keys pDataJSON["tpl"]
   create for all templates in the hash vDataJSON["tpl"] a Handlebars compiler
   e.g. vDataJSON["tpl"]["javascript"] is a Handlebars template for Javascript
+
+Create all Handlebars4Code compiler with:
+
+Handlebars4Code.get_compiler(vDataJSON[]);
+
+vDataJSON["out"] = Handlebars4Code.get_compiler();
+
   Code generation. Following iteration will create a compliler
   in vDataJSON["out"]["javascript"]
+
 */
 
 var vCodeCompiler = {};
@@ -20,47 +29,6 @@ function clone_json(pJSON) {
   };
   return vJSON;
 }
-
-function preProcessHandlebars(pText,pDataJSON) {
-  console.log("pretProcessHandlebars(pText,pDataJSON) Call");
-  var vText = pText ||"undefined postprocessing text";
-  /*
-  vText = replaceString(vText,"{{../classname}}","___classname___");
-  vText = replaceString(vText,"{{filename ../classname}}","___filename___");
-  */
-  return vText;
-};
-
-function postProcessHandlebars(pText,pDataJSON) {
-  console.log("postProcessHandlebars(pText,pDataJSON) Call");
-  var vText = pText ||"undefined postprocessing text";
-  /*
-  var vClassname = pDataJSON.data.classname || "Undefined Class";
-  var vFilename = name2filename(vClassname);
-  vText = replaceString(vText,"___classname___",vClassname);
-  vText = replaceString(vText,"___filename___",vFilename);
-  */
-  return vText;
-};
-
-function createHandleBarsCompiler(pDataJSON) {
-  var vTemplate = "";
-  for (var tplID in pDataJSON.tpl) {
-    if (pDataJSON["tpl"].hasOwnProperty(tplID)) {
-      vTemplate = pDataJSON["tpl"][tplID];
-      vTemplate = preProcessHandlebars(vTemplate,pDataJSON)
-      vCodeCompiler[tplID] = Handlebars.compile(vTemplate);
-    }
-  };
-  pDataJSON["out"] = vCodeCompiler;
-};
-
-function compileCode(pTplID,pJSON) {
-  // pJSON is JSON data of the UML Class
-  var vCode = vCodeCompiler[pTplID](pJSON);
-  vCode = postProcessHandlebars(vCode,pJSON);
-  return vCode;
-};
 
 function replaceString(pString,pSearch,pReplace)
 //###### replaces in the string "pString" multiple substrings "pSearch" by "pReplace"

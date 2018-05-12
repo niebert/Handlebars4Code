@@ -12,9 +12,16 @@ function save_file(pFilename,pContent, pMessage) {
 
 };
 
-function concat_libraries(pFilename,pLibArray) {
-  concat_libs(vLibOut,vLibArray);
-  var vLibTailArray = clone_json(vLibArray);
+function concat_main(pLibArray,pkg) {
+  var vLibTailArray = clone_json(pLibArray);
+  vLibTailArray.push('./src/npm_tail.js');
+  var vMainJS = "./"+pkg.main;
+  concat_libs(vMainJS,vLibTailArray);
+}
+
+function concat_libraries(pFilename,pLibArray,pkg) {
+  concat_libs(pFilename,pLibArray);
+  var vLibTailArray = clone_json(pLibArray);
   vLibTailArray.push('./src/npm_tail.js');
   var vMainJS = "./"+pkg.main;
   concat_libs(vMainJS,vLibTailArray);
@@ -35,18 +42,18 @@ function concat_libs(pFilename,pLibArray) {
 function create_header(pkg) {
 
   var vHeader = "/* ---------------------------------------";
-  vHeader += "\n Exported Module Variable: "+vExportVar;
+  vHeader += "\n Exported Module Variable: "+pkg.exportvar;
   vHeader += "\n Package:  "+pkg.name;
   vHeader += "\n Version:  "+pkg.version;
   vHeader += "\n Homepage: "+pkg.homepage;
   vHeader += "\n Author:   "+pkg.author;
   vHeader += "\n License:  "+pkg.license;
   if (pkg.hasOwnProperty("inherit")) {
-    vHeader += "\nInheritance: '"+vExportVar+"' inherits from '"+pkg.inherit+"'";
+    vHeader += "\nInheritance: '"+pkg.exportvar+"' inherits from '"+pkg.inherit+"'";
   };
   vHeader += "\n Require Module with:";
-  vHeader += "\n    const "+vExportVar+" = require('" + pkg.name+ "');";
-  vHeader += "\n    var  compileCode = "+vExportVar+".compile(vTemplate);";
+  vHeader += "\n    const "+pkg.exportvar+" = require('" + pkg.name+ "');";
+  vHeader += "\n    var  compileCode = "+pkg.exportvar+".compile(vTemplate);";
   vHeader += "\n JSHint: installation with 'npm install jshint -g'";
   vHeader += "\n ------------------------------------------ */";
   vHeader += "\n";
@@ -58,10 +65,10 @@ function create_header(pkg) {
 
 function create_tail(pkg) {
   var vTail = "\n";
-  vTail += "\n// -------NPM Export Variable: " +vExportVar+ "---------------";
-  //vTail += "\nmodule.exports = "+vExportVar+";";
-  vTail += "\nmodule.exports = "+vExportVar+";";
-  codegen.save_file("./src/npm_tail.js", vTail,"Module Header file 'src/npm_tail.js' was saved!");
+  vTail += "\n// -------NPM Export Variable: " +pkg.exportvar+ "---------------";
+  //vTail += "\nmodule.exports = "+pkg.exportvar+";";
+  vTail += "\nmodule.exports = "+pkg.exportvar+";";
+  save_file("./src/npm_tail.js", vTail,"Module Header file 'src/npm_tail.js' was saved!");
 }
 
 function create_inherit(pkg) {
@@ -70,12 +77,32 @@ function create_inherit(pkg) {
     vInherit += "\n";
     vInherit += "\n//--------------------------------------";
     vInherit += "\n//---Super Class------------------------";
-    vInherit += "\n// Inheritance: '"+vExportVar+"' inherits attributes and methods from '"+pkg.inherit+"'";
-    vInherit += "\n"+vExportVar+" = "+pkg.inherit+";";
+    vInherit += "\n// Inheritance: '"+pkg.exportvar+"' inherits from '"+pkg.inherit+"'";
+    vInherit += "\n"+pkg.exportvar+".prototype = new "+pkg.inherit+"();";
+    vInherit += "\n// Constructor for instances of '"+pkg.exportvar+"' has to updated.";
+    vInherit += "\n// Otherwise constructor of '"+pkg.inherit+"' is called";
+    vInherit += "\n"+pkg.exportvar+".prototype.constructor="+pkg.exportvar+";";
+    vInherit += "\n// see http://phrogz.net/js/classes/OOPinJS2.html for explanation";
     vInherit += "\n//--------------------------------------";
     vInherit += "\n";
   };
-  codegen.save_file("./src/npm_inherit.js", vInherit,"Inheritage code file 'src/npm_inherit.js' was saved!");
+  save_file("./src/npm_inherit.js", vInherit,"Inheritage code file 'src/npm_inherit.js' was saved!");
+}
+
+
+function create_inherit_static(pkg) {
+  var vInherit = "\n";
+  if (pkg.hasOwnProperty("inherit")) {
+    vInherit += "\n";
+    vInherit += "\n//--------------------------------------";
+    vInherit += "\n//---Extend Module----------------------";
+    vInherit += "\n// The module '"+pkg.exportvar+"' extends '"+pkg.inherit+"' and";
+    vInherit += "\n// inherits all attributes and methods form '"+pkg.inherit+"'";
+    vInherit += "\n"+pkg.exportvar+" = "+pkg.inherit+";";
+    vInherit += "\n//--------------------------------------";
+    vInherit += "\n";
+  };
+  save_file("./src/npm_inherit.js", vInherit,"Inheritage code file 'src/npm_inherit.js' was saved!");
 }
 
 function clone_json(pJSON) {
@@ -91,6 +118,10 @@ function clone_json(pJSON) {
 module.exports = {
   "save_file":save_file,
   "concat_libs":concat_libs,
+  "concat_main":concat_main,
+  "concat_libraries":concat_libraries,
   "create_header": create_header,
+  "create_inherit": create_inherit,
+  "create_inherit_static": create_inherit_static,
   "create_tail": create_tail
 };

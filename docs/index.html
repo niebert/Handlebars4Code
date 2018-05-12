@@ -5,63 +5,74 @@
    <meta http-equiv="last-modification" content="23.4.2004 (9:35)">
    <meta http-equiv="content-language" content="de">
    <meta http-equiv="desktop-type" content="tasks">
+   <script language="javascript">
+   // vDataJSON is the main JSON storage for the privacy friendly WebApp
+   // File Loaded into vDataJSON by script tag
+   var vDataJSON = {};
+   vDataJSON.tpl = {};
+   /* TEMPLATES
+   vDataJSON.tpl contains the following templates:
+     * vDataJSON.tpl["javascript"] File: tpl/javascript_tpl.js
+       for creating the the Source Code for the UML class in javascript
+     * vDataJSON.tpl["docu4github"] File: tpl/docu4github_tpl.js
+       for creating the GitHub documentation from the UML source of the class
+   */
+
+   vDataJSON.out = {};
+   /* HANDLEBARS COMPILERS
+   vDataJSON.tpl contains the Handlebars compilers:
+     * vDataJSON.out["javascript"] Compiler for template: tpl/javascript_tpl.js
+       This compiler is used in the compileCode() method
+       var mySource = vJSONEditor.compileCode.javascript(pJSON)
+       creates the source code for the UML class in javascript
+     * vDataJSON.out["docu4github"] Compiler for template: tpl/docu4github_tpl.js
+       This compiler is used in the compileCode() method
+       var mySource = vJSONEditor.compileCode.docu4github(pJSON)
+   */
+  </script>
+ <!-- ### UML Loaded File  ##################### -->
+   <script src="db/umljs.js"></script>
+   <!-- ### HANDLEBARS TEMPLATE  #####################
+   Template ID: "javascript"
+   Template: vDataJSON["tpl"]["javascript"]
+   -->
+   <script src="tpl/javascript_tpl.js"></script>
+   <!-- ### COMPILE HANDLEBARS TEMPLATES  ############
+   Template ID: "docu4github"
+   Template: vDataJSON["tpl"]["docu4github"]
+   -->
+   <script src="tpl/docu4github_tpl.js"></script>
+   <script src="js/handlebars4code.js"></script>
+
 <script language="javascript">
 
-function replaceStringReverse(pString,pReplace,pSearch)
-//###### replaces in the string "pString" multiple substrings "pSearch" by "pReplace"
-{
-	return replaceString(pString,pSearch,pReplace);
-}
+  function el(pID) {
+    return document.getElementById(pID)
+  }
 
-function replaceString(pString,pSearch,pReplace)
-//###### replaces in the string "pString" multiple substrings "pSearch" by "pReplace"
-{
-	//alert("cstring.js - replaceString() "+pString);
-	if (pString != '') {
-		var vHelpString = '';
-        var vN = pString.indexOf(pSearch);
-		var vReturnString = '';
-		while (vN >= 0)
-		{
-			if (vN > 0)
-				vReturnString += pString.substring(0, vN);
-			vReturnString += pReplace;
-            if (vN + pSearch.length < pString.length) {
-				pString = pString.substring(vN+pSearch.length, pString.length);
-			} else {
-				pString = ''
-			}
-			vN = pString.indexOf(pSearch);
-		};
-	};
-	return vReturnString + pString;
-}
+  function convert(pTplID)
+  {
+    var vTplID = pTplID || "javascript";
+    var vJSON;
+  	var vString = document.fconvert.jsonstring.value;
+    if(vString) {
+      try {
+          vJSON = JSON.parse(vString);
+      } catch(e) {
+          alert("JSON Parsing Error: "+e); // error in the above string (in this case, yes)!
+      };
+      if (vJSON)  {
+        document.fconvert.output.value = Handlebars4Code.compile_code(vTplID,vJSON);
 
+      } else {
+        alert("ERROR: Could not parse JSON")
+      }
+    }
+  }
 
-function el(pID) {
-  return document.getElementById(pID)
-}
-
-function convertLinks(pString)
-{
-	pString = pString.replace(/\[\[([^\|\]:]+)\|([^\|\]:]+)\]\]/g,"[["+el("prefix_wiki").value+":$1|$2]]");
-	pString = pString.replace(/\[\[([^\|\]:]+)\]\]/g,"[["+el("prefix_wiki").value+":$1|$1]]");
-	//pString = pString.replace(/\[\[([^\|]+)|([^\|\]]+)\]\]/g,"[[Wikipedia:$1|$2]]");
-	//pString = pString.replace(/\[\[([A-Za-z0-9 \-\/]+)|([A-Za-z0-9 \-\/]+)\]\]/g,"[[Wikipedia:$1|$2]]");
-
-	return pString
-}
-
-
-function convert()
-{
-	var vString = document.fconvert.latextext.value;
-	document.fconvert.latextext.value = convertLinks(vString);
-}
-
-function setTemplate(pLang) {
-  el("prefix_wiki").value = "w:"+pLang;
-}
+  function setTemplate(pTpl) {
+    //convert(pTpl);
+  }
 
 </script>
 
@@ -74,62 +85,31 @@ function setTemplate(pLang) {
 </head>
 
 <body style="font-family:Arial,Verdana; font-size:12pt; color:black" bgcolor="#CACACA">
-<h1>Source from Wikipedia</h1>
+<h1>Handelbars4Code Demo</h1>
+<h3>JSON Source was generated with <a href="https://niebert/github.io/ClassEditorUML" target="_blank">ClassEditorUML</a></h3>
 <form name="fconvert">
-<textarea name="latextext" cols="125" rows="20">This is a
-Text1 [[linkname]] with links of different types. Text2 [[linkname|linktext]] with image [[File:myimage.png]]
+  <b>JSON Input:</b><br>
+<textarea id="jsonstring" name="jsonstring" cols="125" rows="10">This is a
 </textarea><br>
-Prefix: <input type="text" id="prefix_wiki" size="15" value="Wikipedia">
+<b>Output of Handlebars4Code</b>
 <select id="sTemplate" onchange="setTemplate(this.value)">
-         <option value="en" selected="selected">English</option>
-         <option value="es">Spanish</option>
-         <option value="de">Deutsch</option>
-         <option value="fr">French</option>
-         <option value="it">Italian</option>
-         <option value="nl">Dutch</option>
-         <option value="ja">Japanese</option>
-         <option value="pl">Polish</option>
-         <option value="ru">Russian</option>
-         <option value="sv">Swedish</option>
-         <option value="vi">Vietnamese</option>
-         <option value="ar">Arabic</option>
-         <option value="id">Indonesian</option>
-         <option value="ms">Malay</option>
-         <option value="ca">Catalan</option>
-         <option value="cs">Czech</option>
-         <option value="eu">Basque</option>
-         <option value="fa">Persian</option>
-         <option value="ko">Korean</option>
-         <option value="hu">Hungarian</option>
-         <option value="no">Norwegian</option>
-         <option value="pt">Portuguese</option>
-         <option value="ro">Romanian</option>
-         <option value="sr">Serbian</option>
-         <option value="sh">Serbo-Croatian</option>
-         <option value="fi">Finnish</option>
-         <option value="tr">Turkish</option>
-         <option value="uk">Ukrainian</option>
-         <option value="zh">Chinese</option>
-         <option value="bs">Bosnian</option>
-         <option value="bg">Bulgarian</option>
-         <option value="da">Danish</option>
-         <option value="et">Estonian</option>
-         <option value="el">Greek</option>
-         <option value="eo">Esperanto</option>
-         <option value="gl">Galician</option>
-         <option value="he">Hebrew</option>
-         <option value="hr">Croatian</option>
-         <option value="lv">Latvian</option>
-         <option value="lt">Lithuanian</option>
-         <option value="nn">Norwegian Nynorsk</option>
-         <option value="sk">Slovak</option>
-         <option value="sl">Slovenian</option>
-         <option value="th">Thai</option>
-       </select>
+         <option value="javascript" selected="selected">Javascript Code</option>
+         <option value="docu4github">Documentation for GitHub</option>
+</select>
+<input name="bConvert" value=" Create Output " onclick="convert(el('sTemplate').value)" type="button">
+<br>
 
-<input name="bConvert" value=" Convert Links " onclick="Handlebars2Code()" type="button">
+<textarea id="output" name="output" cols="125" rows="10"></textarea><br>
 </form>
 <center style="font-size: 10px;">
   <a href="https://www.github.com/niebert/Handlebars2Code" target="_blank"> GitHub Sources</a> - <a href="https://github.com/niebert/Handlebars2Code/archive/master.zip"  target="_blank">Download ZIP</a>
 </center>
+<script language="javascript">
+    el("jsonstring").value = JSON.stringify(vDataJSON["umljs"],null,2);
+
+    Handlebars4Code.create_compiler(vDataJSON.tpl);
+    vDataJSON.out = Handlebars4Code.get_compiler();
+
+
+</script>
 </body></html>

@@ -17,8 +17,10 @@
   },
   "scripts": {
     "watch": "watchify src/main.js -o dist/handlebars4code.js -v",
-    "build": "browserify src/main.js  > dist/handlebars4code.js",
-    "compress": "browserify src/main.js  | uglifyjs -mc warnings=false > dist/handlebars4codel.min.js",
+    "browserify": "browserify src/main.js  > dist/handlebars4code.js",
+    "build": "node ./build.js;browserify src/main.js  > docs/js/handlebars4code.js",
+    "build2dist": "node ./build.js;browserify src/main.js  > dist/handlebars4code.js",
+    "compress": "node ./build.js;browserify src/main.js  | uglifyjs -mc warnings=false > dist/handlebars4codel.min.js",
     "test": "jshint dist/handlebars4code.js"
   },
   "repository": {
