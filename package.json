@@ -1,0 +1,42 @@
+{
+  "name": "handlebars4code",
+  "version": "1.0.0",
+  "description": "Handlebars4Code is a library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript)",
+  "main": "src/main.js",
+  "inherit": "Handlebars",
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "concat-files": "^0.1.1",
+    "doctoc": "^1.3.0",
+    "lint": "^1.1.2",
+    "uglify-js": "^2.6.2",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.11"
+  },
+  "scripts": {
+    "watch": "watchify src/main.js -o dist/handlebars4code.js -v",
+    "build": "browserify src/main.js  > dist/handlebars4code.js",
+    "compress": "browserify src/main.js  | uglifyjs -mc warnings=false > dist/handlebars4codel.min.js",
+    "test": "jshint dist/handlebars4code.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niebert/Handlebars4Code.git"
+  },
+  "keywords": [
+    "Template",
+    "Engine",
+    "Code",
+    "Generation",
+    "Javascript",
+    "JSON"
+  ],
+  "author": "niebert GitHub",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/niebert/Handlebars4Code/issues"
+  },
+  "homepage": "https://github.com/niebert/Handlebars4Code#readme"
+}
