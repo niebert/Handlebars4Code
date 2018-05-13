@@ -2,7 +2,7 @@
 Handlebars4Code is a library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript)
 
 * **[Webbased Demo Handlebars4Code](https://niebert.github.io/Handlebars4Code)**
-
+<hr>
 <h2>Table of Contents</h2>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
