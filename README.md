@@ -137,7 +137,7 @@ If the input string contains blanks then these blanks are replaced by an undersc
 
 ### Helper: `ifcond`
 
-`If` condition and application of JSON path to specific attribute to JSON. The following template generates a header as comment for the javascript output. Dependent on the value of `data.superclassname` (string not empty) an additional name for the superclass is inserted in the header of generated output of code.
+`If` condition and application of JSON path to specific attribute to JSON. The following template generates a header as comment for the javascript output. Dependent on the value of `data.superclassname` (string not empty) an additional name for the superclass is inserted in the header of generated output of code (see [Blog in StackOverflow](https://stackoverflow.com/questions/8853396/logical-operator-in-a-handlebars-js-if-conditional))
 
 #### Template: `ifcond`
 Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with
