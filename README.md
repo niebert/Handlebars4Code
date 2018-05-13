@@ -3,6 +3,8 @@ Handlebars4Code is a library and NPM module that extends Handlebars with Helpers
 
 * **[Webbased Demo Handlebars4Code](https://niebert.github.io)**
 
+<h2>Table of Contents</h2>
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -30,31 +32,6 @@ Handlebars4Code is a library and NPM module that extends Handlebars with Helpers
     - [Template: `require_class_list`](#template-require_class_list)
     - [JSON Data: `require_class_list`](#json-data-require_class_list)
     - [Compiler Output: `require_class_list`](#compiler-output-require_class_list)
-  - [Helper: ``](#helper-)
-    - [Template: ``](#template-)
-    - [JSON Data: ``](#json-data-)
-    - [Compiler Output: ``](#compiler-output-)
-  - [Helper: ``](#helper--1)
-    - [Template: ``](#template--1)
-    - [JSON Data: ``](#json-data--1)
-    - [Compiler Output: ``](#compiler-output--1)
-  - [Helper: ``](#helper--2)
-    - [Template: ``](#template--2)
-    - [JSON Data: ``](#json-data--2)
-    - [Compiler Output: ``](#compiler-output--2)
-  - [Helper: ``](#helper--3)
-    - [Template: ``](#template--3)
-    - [JSON Data: ``](#json-data--3)
-    - [Compiler Output: ``](#compiler-output--3)
-  - [Helper: ``](#helper--4)
-    - [Template: ``](#template--4)
-    - [JSON Data: ``](#json-data--4)
-    - [Compiler Output: ``](#compiler-output--4)
-  - [Helper: ``](#helper--5)
-    - [Template: ``](#template--5)
-    - [JSON Data: ``](#json-data--5)
-    - [Compiler Output: ``](#compiler-output--5)
-
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
