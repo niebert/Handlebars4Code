@@ -6,6 +6,7 @@ vDataJSON["umljs"]= {
     "reposinfo": {
       "repository": "https://www.github.com/author/NewClass",
       "require_classes": "yes",
+      "static": "yes",
       "author": "My Name",
       "email": "name@example.com",
       "created": "23.04.2018",
@@ -39,7 +40,7 @@ vDataJSON["umljs"]= {
         "comment": "This attribute contains the JSON Schema for the JSON Editor"
       },
       {
-        "visibility": "public",
+        "visibility": "private",
         "name": "aOptions",
         "init": "{}",
         "class": "Hash",

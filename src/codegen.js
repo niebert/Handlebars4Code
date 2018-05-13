@@ -12,10 +12,10 @@ function save_file(pFilename,pContent, pMessage) {
 
 };
 
-function concat_main(pLibArray,pkg) {
+function concat_main(pFilename,pLibArray,pkg) {
   var vLibTailArray = clone_json(pLibArray);
   vLibTailArray.push('./src/npm_tail.js');
-  var vMainJS = "./"+pkg.main;
+  var vMainJS = pFilename || "./"+pkg.main;
   concat_libs(vMainJS,vLibTailArray);
 }
 

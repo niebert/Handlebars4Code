@@ -62,6 +62,7 @@
           alert("JSON Parsing Error: "+e); // error in the above string (in this case, yes)!
       };
       if (vJSON)  {
+        setTemplate(pTplID);
         document.fconvert.output.value = Handlebars4Code.compile_code(vTplID,vJSON);
 
       } else {
@@ -70,8 +71,9 @@
     }
   }
 
-  function setTemplate(pTpl) {
+  function setTemplate(pTplID) {
     //convert(pTpl);
+    el("tTemplate").value = vDataJSON.tpl[pTplID];
   }
 
 </script>
@@ -96,13 +98,17 @@
          <option value="javascript" selected="selected">Javascript Code</option>
          <option value="docu4github">Documentation for GitHub</option>
 </select>
-<input name="bConvert" value=" Create Output " onclick="convert(el('sTemplate').value)" type="button">
+<input name="bConvert" value=" Create Output " onclick="convert(el('sTemplate').value);return false" type="button">
 <br>
 
 <textarea id="output" name="output" cols="125" rows="10"></textarea><br>
 </form>
+<hr>
+<b>Used Template of Handlebars4Code (readonly)</b><br>
+<textarea id="tTemplate" name="tTemplate" cols="125" rows="10" readonly></textarea><br>
+</form>
 <center style="font-size: 10px;">
-  <a href="https://www.github.com/niebert/Handlebars4Code" target="_blank"> GitHub Sources</a> - <a href="https://github.com/niebert/Handlebars4Code/archive/master.zip"  target="_blank">Download ZIP</a>
+  <a href="https://www.github.com/niebert/Handlebars4Code" target="_blank"> GitHub Sources</a> - <a href="https://github.com/niebert/Handlebars4ssCode/archive/master.zip"  target="_blank">Download ZIP</a>
 </center>
 <script language="javascript">
     el("jsonstring").value = JSON.stringify(vDataJSON["umljs"],null,2);

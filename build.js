@@ -5,12 +5,11 @@ var vSrcPath = "./src/"; // Path to Source Libraries
 var vDistPath = "./src/"; // Path to distribution
 var vLibPath = vSrcPath + 'libs/';
 var vLibDist = './dist/'+pkg.name+'.js';
-//var vLibOut = './src/'+pkg.name+'.js';
 var vLibOut = './docs/js/'+pkg.name+'.js';
 var vLibArray = [
   './src/npm_header.js',
   //vLibPath+'require_mods.js',
-  vLibPath+'arrayhash.js',
+  //vLibPath+'arrayhash.js',
   vLibPath+'handlebars.js',
   vLibPath+'handlebars_helpers.js',
   //'./src/npm_inherit.js',
@@ -29,5 +28,5 @@ pkg.exportvar = vExportVar;
 codegen.create_header(pkg);
 //codegen.create_inherit_static(pkg);
 codegen.create_tail(pkg);
-//codegen.concat_main(vLibArray,pkg);
+codegen.concat_main(pkg.main,vLibArray,pkg);
 codegen.concat_libs(vLibOut,vLibArray,pkg);
