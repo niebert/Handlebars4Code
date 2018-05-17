@@ -12,9 +12,18 @@ vDataJSON["umljs"]= {
       "created": "23.04.2018",
       "modified": "01.05.2018",
       "requirelist": [
-        "handlebars",
-        "filesaver",
-        "jquery"
+        {
+          "module":"handlebars",
+          "variable":"Handlebars"
+        },
+        {
+          "module":"filesaver",
+          "variable":"FileSaver"
+        },
+        {
+          "module":"jquery",
+          "variable":"$"
+        }
       ]
     },
     "attributes": [

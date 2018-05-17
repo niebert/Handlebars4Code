@@ -16,7 +16,7 @@ Handlebars4Code is a library and NPM module that extends Handlebars with Helpers
   - [Load Templates with Script Tag](#load-templates-with-script-tag)
 - [Script Tag for handlebars4code.js](#script-tag-for-handlebars4codejs)
 - [Additional Handlebars Helpers for Code generation](#additional-handlebars-helpers-for-code-generation)
-  - [Short Summary of Helpers](#short-summary-of-helpers)
+  - [List of Helpers in Handlebars4Code](#list-of-helpers-in-handlebars4code)
   - [Helper: `filename`](#helper-filename)
     - [Template 1: `filename`](#template-1-filename)
     - [JSON Data 1: `filename`](#json-data-1-filename)
@@ -32,6 +32,28 @@ Handlebars4Code is a library and NPM module that extends Handlebars with Helpers
     - [Template: `require_class_list`](#template-require_class_list)
     - [JSON Data: `require_class_list`](#json-data-require_class_list)
     - [Compiler Output: `require_class_list`](#compiler-output-require_class_list)
+  - [Helper: `requirelibs`](#helper-requirelibs)
+    - [Template: `requirelibs`](#template-requirelibs)
+    - [JSON Data: `requirelibs`](#json-data-requirelibs)
+    - [Compiler Output: `requirelibs`](#compiler-output-requirelibs)
+  - [Helper: `foreach`](#helper-foreach)
+    - [Template: `foreach`](#template-foreach)
+    - [Parameter of Helper:  `foreach`](#parameter-of-helper--foreach)
+    - [JSON Data: `foreach`](#json-data-foreach)
+    - [Compiler Output: `foreach`](#compiler-output-foreach)
+  - [Helper: `paramcall`](#helper-paramcall)
+    - [Template: `paramcall`](#template-paramcall)
+    - [JSON Data: `paramcall`](#json-data-paramcall)
+    - [Compiler Output: `paramcall`](#compiler-output-paramcall)
+  - [Helper: `parameterlist`](#helper-parameterlist)
+    - [Template: `parameterlist`](#template-parameterlist)
+    - [JSON Data: `parameterlist`](#json-data-parameterlist)
+    - [Compiler Output: `parameterlist`](#compiler-output-parameterlist)
+  - [Helper: `indent`](#helper-indent)
+    - [Template: `indent`](#template-indent)
+    - [JSON Data: `indent`](#json-data-indent)
+    - [Compiler Output: `indent`](#compiler-output-indent)
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
@@ -262,7 +284,7 @@ Assume we have the following templates is stored `vDataJSON.tpl["requiretpl"]` w
 ```javascript
 // NodeJS: Require additional Modules
 {{#requirelibs data.reposinfo.requirelist}}
-const {{variable}} = require('{{module}}'); // Module: {{variable}}
+const {{variable}} = require('{{module}}');
 {{/requirelibs}}
 ```
 
@@ -274,9 +296,18 @@ var my_json = {
       "classname": "NewClass",
       "reposinfo": {
         "requirelist": [
-          "handlebars",
-          "filesaver",
-          "jquery"
+          {
+            "module":"handlebars",
+            "variable":"Handlebars"
+          },
+          {
+            "module":"filesaver",
+            "variable":"FileSaver"
+          },
+          {
+            "module":"jquery",
+            "variable":"$"
+          }
         ]
       },
     }
@@ -287,9 +318,9 @@ var my_json = {
 The compiler call `Handlebars4Code.compile.requiretpl(my_json)` for the JSON data `my_json` and the template generates the following code. The variable for the repository uses the module name in the `requirelist` and creates a variable name with an uppercase first character of the module name.
 
 ```javascript
-const Handlebars = require('handlebars'); // Module: Handlebars
-const Filesaver  = require('filesaver');  // Module: Filesaver
-const Jquery     = require('jquery');     // Module: Jquery
+const Handlebars = require('handlebars');
+const Filesaver  = require('filesaver');  
+const $          = require('jquery');     
 ```
 
 
@@ -350,7 +381,6 @@ var my_json = {
           "visibility": "public",
           "name": "display",
         }
-
     }
   };
 ```
@@ -505,20 +535,36 @@ The compiler call `Handlebars4Code.compile.mytpl2(my_json)` for the JSON data `m
 
 ```
 
-### Helper: ``
+### Helper: `indent`
+The helper function `indent` takes two parameters.
+* the text (e.g. comment or code)
+* the indent which is injected for all newlines in the text parameter.
+The `indent` helper shifts the text or code to the right.
 
-#### Template: ``
+#### Template: `indent`
 Assume we have the following templates is stored `vDataJSON.tpl["mytpl"]` with:
 ```javascript
+   //#################################################################
+   //# Comment:
+{{indent comment "    //#     "}}
+   //# Line after Comment
+   //#################################################################
+
 ```
 
-#### JSON Data: ``
+#### JSON Data: `indent`
 The following JSON is used the helper call:
 ```javascript
 var my_json = {
     "data": {
       "classname": "NewClass",
       "superclassname": "MySuperClass",
+      "methods": [
+        {
+          "visibility": "private",
+          "name": "create",
+          "comment":"one line \nsecond line\nthird  line"
+        }
     },
     "settings": {
 
@@ -526,93 +572,17 @@ var my_json = {
   };
 ```
 
-#### Compiler Output: ``
-The compiler call `Handlebars4Code.compile.mytpl2(my_json)` for the JSON data `my_json` and the template generates the following code:
+#### Compiler Output: `indent`
+The compiler call `Handlebars4Code.compile.mytpl(my_json)` for the JSON data `my_json` and the template generates the following code:
 
 
 ```javascript
-```
+    //#################################################################
+    //# Comment:
+    //#     one line
+    //#     second line
+    //#     third line
+    //# Line after Comment
+    //#################################################################
 
-### Helper: ``
-
-#### Template: ``
-Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with:
-```javascript
-```
-
-#### JSON Data: ``
-The following JSON is used the helper call:
-```javascript
-var my_json = {
-    "data": {
-      "classname": "NewClass",
-      "superclassname": "MySuperClass",
-    },
-    "settings": {
-
-    }
-  };
-```
-
-#### Compiler Output: ``
-The compiler call `Handlebars4Code.compile.mytpl2(my_json)` for the JSON data `my_json` and the template generates the following code:
-
-
-```javascript
-```
-
-### Helper: ``
-
-#### Template: ``
-Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with:
-```javascript
-```
-
-#### JSON Data: ``
-The following JSON is used the helper call:
-```javascript
-var my_json = {
-    "data": {
-      "classname": "NewClass",
-      "superclassname": "MySuperClass",
-    },
-    "settings": {
-
-    }
-  };
-```
-
-#### Compiler Output: ``
-The compiler call `Handlebars4Code.compile.mytpl2(my_json)` for the JSON data `my_json` and the template generates the following code:
-
-
-```javascript
-```
-
-### Helper: ``
-
-#### Template: ``
-Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with:
-```javascript
-```
-
-#### JSON Data: ``
-The following JSON is used the helper call:
-```javascript
-var my_json = {
-    "data": {
-      "classname": "NewClass",
-      "superclassname": "MySuperClass",
-    },
-    "settings": {
-
-    }
-  };
-```
-
-#### Compiler Output: ``
-The compiler call `Handlebars4Code.compile.mytpl2(my_json)` for the JSON data `my_json` and the template generates the following code:
-
-
-```javascript
 ```

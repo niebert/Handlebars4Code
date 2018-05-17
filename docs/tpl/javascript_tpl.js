@@ -38,13 +38,13 @@ const {{data.superclassname}} = require('{{filename data.superclassname}}');
 {{/ifcond}}
 
 // NodeJS: Require used classes
-{{#requireclass data.superclassname data.attributes data.methods settings.baseclasslist settings.localclasslist data.reposinfo.require_path}}
+{{#requireclass data settings}}
 const {{variable}} = require('{{module}}'); // Class: {{variable}}
 {{/requireclass}}
 
 // NodeJS: Require additional Modules
 {{#requirelibs data.reposinfo.requirelist}}
-const {{variable}} = require('{{module}}'); // Module: {{variable}}
+const {{variable}} = require('{{module}}'); // Module: {{module}}
 {{/requirelibs}}
 
 {{/ifcond}}
@@ -116,7 +116,7 @@ function {{data.classname}} () {
     //# Parameter:
     //#    {{parameterlist parameter "    //#    "}}
     //# Comment:
-{{#indent comment indent="    //#    " text=comment}}{{/indent}}
+{{indent comment "    //#    "}}
     //# {{{returncomment}}}
     //#################################################################
 
@@ -133,7 +133,7 @@ function {{data.classname}} () {
       //    var v{{data.classname}} = new {{data.classname}}();
       //    v{{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}});
       //-------------------------------------------------------
-{{#indent code indent="      " text=code}}{{/indent}}
+      {{indent code "      "}}
     }
     // ---- Method: {{name}}() Class: {{data.classname}} ------
 {{/foreach}}
@@ -188,7 +188,7 @@ var {{data.classname}} = {{data.superclassname}};
     //# Parameter:
     //#    {{parameterlist parameter "    //#    "}}
     //# Comment:
-{{#indent comment indent="    //#    " text=comment}}{{/indent}}
+{{indent comment "    //#    "}}
     //# {{{returncomment}}}
     //#################################################################
 
@@ -203,7 +203,7 @@ var {{data.classname}} = {{data.superclassname}};
       //----Call Function {{name}}()----
       //    {{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}});
       //-------------------------------------------------------
-{{#indent code indent="      " text=code}}{{/indent}}
+      {{indent code indent="      "}}
     }
     // ---- Method: {{name}}() Class: {{data.classname}} ------
 {{/foreach}}
