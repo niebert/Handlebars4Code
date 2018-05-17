@@ -235,6 +235,8 @@ Handlebars.registerHelper('requirelibs', function(pArray, options) {
 
 
   function filename2var(pFile) {
+    // converts first character to uppercase.
+    // e.g. "myclass" to "Myclase"
     var vFile = pFile || "undef_require_lib";
     if (vFile.indexOf("/")>=0) {
       vFile = vFile.slice(vFile.lastIndexOf("/")+1);
@@ -407,7 +409,7 @@ function attribs4UMLString(pArray) {
       case "public":
         vVis = "+";
       break;
-      case "public":
+      case "private":
         vVis = "-";
       break;
       default:
@@ -433,7 +435,7 @@ function methods4UMLString(pArray) {
       case "public":
         vVis = "+";
       break;
-      case "public":
+      case "private":
         vVis = "-";
       break;
       default:

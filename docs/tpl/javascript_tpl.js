@@ -145,16 +145,19 @@ function {{data.classname}} () {
 {{#ifcond data.reposinfo.static "==" "yes"}}
 {{#ifcond data.superclassname "==" ""}}
 //--------------------------------------
-//---Define Module - Export Variable ---
-// Inheritance: '{{data.classname}}' inherits from '{{data.superclassname}}'
+//---Define Static Class - Export Variable ---
+// A static class '{{data.classname}}' does not need a constructor 'new {{data.classname}}()'
 //--------------------------------------
 var {{data.classname}} = {};
 {{/ifcond}}
 {{#ifcond data.superclassname "!=" ""}}
 //--------------------------------------
-//---Extend Module----------------------
-// Inheritance: '{{data.classname}}' inherits from '{{data.superclassname}}'
+//---Extend Static Class----------------
+// A static class '{{data.classname}}' does not need a constructor 'new {{data.classname}}()'
+// to create an instance of the class.
+// Extend static class: '{{data.classname}}' inherits from static class '{{data.superclassname}}' by:
 var {{data.classname}} = {{data.superclassname}};
+// The following definitions extend/overwrite the existing attributes and methods of '{{data.superclassname}}'
 //--------------------------------------
 {{/ifcond}}
 //---------------------------------------------------------------------

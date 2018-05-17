@@ -76,10 +76,12 @@ Use the script tag to embed the Handlebars4Code library in your HTML file::
 ## Additional Handlebars Helpers for Code generation
 The following Handlebars helpers are added to the basic Handlebars features, to support better code generation. Generated code can be in any programming language (of course including markup or markdown languages):
 
-### Short Summary of Helpers
+### List of Helpers in Handlebars4Code
 * `filename` create lower case filenames from camel-case class names (e.g. `MyClass` into `myclass`).
 * `ifcond` creates id-conditions in the Handlebars template to create JSON context dependent compiler output.
-
+* `require_class_list` inserts `require` commands according the used classes in the attributes and return values of the methods. It requires only modules that are not base classes that are provided by the programming language itself.
+* `requirelibs` The helper is designed to generate local and remote require commands in a class/module.
+* `foreach` is slighty different from the standard `each` helper in Handlebars. It allows to assign parent `data` hash to `foreach` context of the template
 
 ### Helper: `filename`
 The helper function `filename` generates from any input string a usable filename in lowercase that contains no blanks an no special characters.
@@ -140,7 +142,7 @@ If the input string contains blanks then these blanks are replaced by an undersc
 `If` condition and application of JSON path to specific attribute to JSON. The following template generates a header as comment for the javascript output. Dependent on the value of `data.superclassname` (string not empty) an additional name for the superclass is inserted in the header of generated output of code (see [Blog in StackOverflow](https://stackoverflow.com/questions/8853396/logical-operator-in-a-handlebars-js-if-conditional))
 
 #### Template: `ifcond`
-Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with
+Assume we have the following templates is stored `vDataJSON.tpl["mytpl"]` with
 ```javascript
 //#################################################################
 //# Javascript Class: {{data.classname}}()
@@ -152,6 +154,7 @@ Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with
 //# email:                {{data.reposinfo.email}}
 //#################################################################
 ```
+The `ifcond` is an if-condition, that inserts a line with name of the super class if the `superclassname` is not empty.
 
 #### JSON Data: `ifcond`
 The following JSON is used the helper call:
@@ -169,9 +172,10 @@ var my_json = {
     }
   };
 ```
+The `superclassname` is not empty and has the value `"MySuperClass"`. The `ifcond` used in the template will insert a line by the use of an  if-condition.
 
 #### Compiler Output: `ifcond`
-The compiler call for the JSON data and the template generates the following code
+The compiler call for the JSON data and the template generates the following code:
 
 ```javascript
 //#################################################################
@@ -182,6 +186,7 @@ The compiler call for the JSON data and the template generates the following cod
 //# email:                name@example.com
 //#################################################################
 ```
+The compiled result contains a comment about the super class, due to the fact that the attribute `superclassname` is not empty and contains the value `"MySuperClass"`.
 
 ### Helper: `require_class_list`
 The helper function creates a list of liberaries that must be required/imported (e.g. Javascript) so that the defined libary for the new class can used the required resources in other modules. Some classes/instances are already defined by the programming language (e.g. `Math`, `JSON` in Javascript). Those libraries do not need a require command. The code generator should know about
@@ -193,8 +198,16 @@ The helper function creates a list of liberaries that must be required/imported 
 #### Template: `require_class_list`
 Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with
 ```javascript
-{{{require_class_list data.superclassname data.attributes data.methods settings.baseclasslist settings.extendedclasslist data.reposinfo.require_path}}}
+{{{require_class_list data settings}}}
 ```
+The helper needs the `data` and the `settings` attribute of the JSON input as parameter:
+* `data` contains all the defined elements of the class.
+* `settings` contain basic definitions for the classes that are available in the software development project.
+* `data.superclassname` because a superclass will be handled with a separate `require` command.
+* `settings.baseclasses` because those classes are provided by the programming language by default and they do not need a require command.
+* `settings.localclasses` because those classes are created within the software developement of the repository and these modules need a special require command with a local pathname, where to to find the libraries, e.g. `require('./libs/mylocallib')`.
+* `data.reposinfor.require_path` contain the local path to the libraries/modules of `localclasses`  `./libs/`.
+* `settings.remoteclasses` remote classes are download with a package manager and these modules are required just by the module name, e.g. `require('mylocallib')`.
 
 #### JSON Data: `require_class_list`
 The following JSON
@@ -231,73 +244,271 @@ var my_json = {
 ```
 
 #### Compiler Output: `require_class_list`
-The compiler call for the JSON data and the template generates the following code
+Assume that `App`, `LinkParam` and `JSONEditor` are used in the class as attributes or returned instances of method. `App` is a locally defined class while `LinkParam` and `JSONEditor` are remote classes downloaded from the package manager (e.g. NPM).
+The compiler call for the JSON data and the template generates the following code.
 
 ```javascript
-
-
+require('./libs/app');
+require('linkparam');
+require('jsoneditor');
 ```
 
 
-### Helper: ``
+### Helper: `requirelibs`
+The helper is designed to generate local and remote require commands in a class/module.
 
-#### Template: ``
-Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with:
+#### Template: `requirelibs`
+Assume we have the following templates is stored `vDataJSON.tpl["requiretpl"]` with:
 ```javascript
+// NodeJS: Require additional Modules
+{{#requirelibs data.reposinfo.requirelist}}
+const {{variable}} = require('{{module}}'); // Module: {{variable}}
+{{/requirelibs}}
 ```
 
-#### JSON Data: ``
+#### JSON Data: `requirelibs`
 The following JSON is used the helper call:
 ```javascript
 var my_json = {
     "data": {
       "classname": "NewClass",
-      "superclassname": "MySuperClass",
-    },
-    "settings": {
-
+      "reposinfo": {
+        "requirelist": [
+          "handlebars",
+          "filesaver",
+          "jquery"
+        ]
+      },
     }
   };
 ```
 
-#### Compiler Output: ``
-The compiler call `Handlebars4Code.compile.mytpl2(my_json)` for the JSON data `my_json` and the template generates the following code:
-
+#### Compiler Output: `requirelibs`
+The compiler call `Handlebars4Code.compile.requiretpl(my_json)` for the JSON data `my_json` and the template generates the following code. The variable for the repository uses the module name in the `requirelist` and creates a variable name with an uppercase first character of the module name.
 
 ```javascript
-```
-### Helper: ``
-
-#### Template: ``
-Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with:
-```javascript
+const Handlebars = require('handlebars'); // Module: Handlebars
+const Filesaver  = require('filesaver');  // Module: Filesaver
+const Jquery     = require('jquery');     // Module: Jquery
 ```
 
-#### JSON Data: ``
+
+### Helper: `foreach`
+The example for the `foreach` helper will generate HTML code e.g. for the document explaining the available methods in the class. The example for the `paramcall` helper provides an application of `foreach` for code generation.
+
+#### Template: `foreach`
+Assume we have the following templates stored in `vDataJSON.tpl["htmltpl"]` with:
+```html
+<ul>
+{{#foreach data.methods data}}
+  <li>
+  The {{visibility}} method {{name}} is defined in class {{data.classname}}
+  </li>
+{{/foreach}}
+</ul>
+```
+
+#### Parameter of Helper:  `foreach`
+The output format is HTML and the template uses
+* the array `data.methods` to iterate over all methods and
+* the hash `data` as second parameter of the helper, so that parent attribute of the JSON like `data.classname` are available in the content of the `foreach` definition as well.
+* The second parameter `data` is added as `data` attribute to method items the array `data.methods`. You can assign a different hash e.g. `mydata` to the second parameter. For the template above the hash `mydata` needs the attribute `mydata.classname`. The second parameter is still mapped to `{{data}}` in the helper context. So if `mydata.classname="MyNewClass2"` the Handlebars `{{data.classname}}` will be set to `MyNewClass2`. With the new second parameter the template context will look this:
+
+```html
+<ul>
+{{#foreach data.methods mydata}}
+  <li>
+  The {{visibility}} method {{name}}(params) is defined in class {{data.classname}}
+  </li>
+{{/foreach}}
+</ul>
+```
+For a Handlebars4Code helper `foreach` helper is called for arrays `myarray` with:
+```html
+{{#foreach myarray data}}
+    context for each array element
+{{/foreach}}
+```
+
+
+#### JSON Data: `foreach`
 The following JSON is used the helper call:
 ```javascript
 var my_json = {
     "data": {
       "classname": "NewClass",
-      "superclassname": "MySuperClass",
-    },
-    "settings": {
+      "methods": [
+        {
+          "visibility": "public",
+          "name": "init",
+        },
+        {
+          "visibility": "private",
+          "name": "create",
+        },
+        {
+          "visibility": "public",
+          "name": "display",
+        }
 
     }
   };
 ```
 
-#### Compiler Output: ``
+#### Compiler Output: `foreach`
+The template was stored in `vDataJSON.tpl["htmltpl"]`, so the compiler call will be `Handlebars4Code.compile.htmltpl(my_json)` for the JSON data `my_json`. The defined template generates the following code:
+
+
+```html
+<ul>
+  <li>
+  The public method init(params) is defined in class NewClass
+  </li>
+  <li>
+  The private method create(params) is defined in class NewClass
+  </li>
+  <li>
+  The public method display(params) is defined in class NewClass
+  </li>
+</ul>
+```
+
+
+### Helper: `paramcall`
+The helper `paramcall` creates a list of parameter names of the method, that is comma separated.
+
+#### Template: `paramcall`
+Assume we have the following templates stored in `vDataJSON.tpl["methodtpl"]` with:
+```
+{{#foreach data.methods data}}
+{{#ifcond visibility "==" "public"}}
+    {{data.classname}}.{{name}} = function ({{#paramcall parameter}}{{/paramcall}})
+{{/ifcond}}
+{{#ifcond visibility "==" "private"}}
+    // private function of class {{data.classname}}
+    function {{name}}({{#paramcall parameter}}{{/paramcall}})
+{{/ifcond}}
+{{/foreach}}
+```
+The `foreach` helper iterates of all method (here only one method is defined in the class). The `ifcond` helper distinguishes between different outputs for `public` and `private` methods in the class.
+
+#### JSON Data: `paramcall`
+The following JSON is used for the helper call. The JSON contains one method with
+```javascript
+var my_json = {
+    "data": {
+      "classname": "NewClass",
+      "superclassname": "MySuperClass",
+      "methods": [
+        {
+          "visibility": "public",
+          "name": "init",
+          "parameter": [
+            {
+              "name": "pJSON",
+              "class": "Hash",
+              "comment": "the parameter stores JSON definition for the class"
+            },
+            {
+              "name": "pOptions",
+              "class": "Hash",
+              "comment": "the parameter stores the options for the JSON editor (developed by Jeremy Dorn)"
+            },
+            {
+              "name": "pSchema",
+              "class": "Hash",
+              "comment": "the parameter contains the JSON Schema for JSON Editor"
+            }
+          ]
+        }
+    }
+  };
+```
+
+#### Compiler Output: `paramcall`
+The compiler call `Handlebars4Code.compile.methodtpl(my_json)` for the JSON data `my_json` and the template generates the following code:
+
+```
+NewClass.init = function (pJSON,pOptions,pSchmea)
+```
+The `ifcond` condition creates a different output if the `visibility` attribute is set to `private`. The generated code will be:
+
+```
+// private function of class NewClass
+function init(pJSON,pOptions,pSchmea);
+```
+
+
+### Helper: `parameterlist`
+The helper function `parameterlist` is mainly used to insert a comments for all parameter of a function in the header of a function.
+
+#### Template: `parameterlist`
+Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with:
+```javascript
+//#################################################################
+//# {{visibility}} Method: {{name}}()  Class: {{data.classname}}
+//# Parameter:
+//#    {{parameterlist parameter "    //#    "}}
+//#################################################################
+```
+
+#### JSON Data: `parameterlist`
+The following JSON is used the helper call:
+```
+var my_json = {
+  var my_json = {
+      "data": {
+        "classname": "NewClass",
+        "superclassname": "MySuperClass",
+        "methods": [
+          {
+            "visibility": "public",
+            "name": "init",
+            "parameter": [
+              {
+                "name": "pJSON",
+                "class": "Hash",
+                "comment": "the parameter stores JSON definition for the class"
+              },
+              {
+                "name": "pOptions",
+                "class": "Hash",
+                "comment": "the parameter stores the options for the JSON editor (developed by Jeremy Dorn)"
+              },
+              {
+                "name": "pEditorID",
+                "class": "String",
+                "comment": "the parameter provide DOM ID in which the JSON editor will be injected."
+              }
+            ]
+          }
+      }
+    };
+```
+
+#### Compiler Output: `parameterlist`
 The compiler call `Handlebars4Code.compile.mytpl2(my_json)` for the JSON data `my_json` and the template generates the following code:
 
 
 ```javascript
+//#################################################################
+//# public Method: init()  Class: NewClass
+//# Parameter:
+//#    pJSON:Hash
+//#      the parameter stores JSON definition for the class
+//#    pOptions:Hash
+//#      the parameter stores the options for the JSON editor (developed by Jeremy Dorn)
+//#    pEditorID:String
+//#      the parameter provide DOM ID in which the JSON editor will be injected.
+//#
+//#################################################################
+
 ```
 
 ### Helper: ``
 
 #### Template: ``
-Assume we have the following templates stored `vDataJSON.tpl["mytpl"]` with:
+Assume we have the following templates is stored `vDataJSON.tpl["mytpl"]` with:
 ```javascript
 ```
 
