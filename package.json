@@ -21,7 +21,7 @@
     "browserify2doc": "browserify src/main.js  > docs/js/handlebars4code.js",
     "build": "node ./build.js;browserify src/main.js  > docs/js/handlebars4code.js",
     "build2dist": "node ./build.js;browserify src/main.js  > dist/handlebars4code.js",
-    "compress": "node ./build.js;browserify docs/js/handlebars4code.js  | uglifyjs -mc warnings=false > dist/handlebars4codel.min.js",
+    "compress": "node ./build.js;browserify docs/js/handlebars4code.js  | uglifyjs -mc warnings=false > dist/handlebars4code.min.js",
     "test": "jshint dist/handlebars4code.js"
   },
   "repository": {

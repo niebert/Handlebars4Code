@@ -96,7 +96,7 @@ function {{data.classname}} () {
     // ------------------------------------------
     // {{visibility}}: {{name}}   Class: {{class}}
 {{#ifcond comment "!=" ""}}
-{{#indent comment indent="    // " text=comment}}{{/indent}}
+{{indent comment "    // "}}
 {{/ifcond}}
 {{#ifcond visibility "==" "public"}}
     this.{{name}} = {{init}};   // Class: {{class}}
@@ -168,7 +168,7 @@ var {{data.classname}} = {{data.superclassname}};
     // ------------------------------------------
     // {{visibility}}: {{name}}   Class: {{class}}
 {{#ifcond comment "!=" ""}}
-{{#indent comment indent="    // " text=comment}}{{/indent}}
+{{indent comment "    // "}}
 {{/ifcond}}
 {{#ifcond visibility "==" "public"}}
     {{data.classname}}.{{name}} = {{init}};   // Class: {{class}}
