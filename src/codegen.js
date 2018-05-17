@@ -71,7 +71,7 @@ function create_header(pkg) {
   vHeader += "\n Author:   "+pkg.author;
   vHeader += "\n License:  "+pkg.license;
   if (pkg.hasOwnProperty("inherit")) {
-    vHeader += "\nInheritance: '"+pkg.exportvar+"' inherits from '"+pkg.inherit+"'";
+    vHeader += "\n Inheritance: '"+pkg.exportvar+"' inherits from '"+pkg.inherit+"'";
   };
   vHeader += "\n Require Module with:";
   vHeader += "\n    const "+pkg.exportvar+" = require('" + pkg.name+ "');";
