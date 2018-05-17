@@ -30,3 +30,4 @@ codegen.create_header(pkg);
 codegen.create_tail(pkg);
 codegen.concat_main(pkg.main,vLibArray,pkg);
 codegen.concat_libs(vLibOut,vLibArray,pkg);
+codegen.concat_libs(vLibDist,vLibArray,pkg);

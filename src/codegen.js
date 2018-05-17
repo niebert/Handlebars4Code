@@ -39,12 +39,34 @@ function concat_libs(pFilename,pLibArray) {
 
 };
 
+
+function outTime(pNr) {
+	var vOut = pNr;
+	if (pNr == 0) {
+		vOut = "00"
+	} if (pNr<10) {
+		vOut = "0"+pNr;
+	};
+	return vOut
+};
+
+
+function getDateTime() {
+	var vNow = new Date();
+	var vSep = "/"; // set separator for date
+	var vOut = vNow.getFullYear() + vSep +outTime(vNow.getMonth()+1) + vSep + outTime(vNow.getDate());
+  vOut += " "; // Separator between Date and Time
+	vSep = ":"; // set separator for time
+	vOut += vNow.getHours() + vSep + outTime(vNow.getMinutes()) + vSep + outTime(vNow.getSeconds());
+	return vOut;
+};
+
 function create_header(pkg) {
 
   var vHeader = "/* ---------------------------------------";
   vHeader += "\n Exported Module Variable: "+pkg.exportvar;
   vHeader += "\n Package:  "+pkg.name;
-  vHeader += "\n Version:  "+pkg.version;
+  vHeader += "\n Version:  "+pkg.version + "  Date: "+getDateTime();
   vHeader += "\n Homepage: "+pkg.homepage;
   vHeader += "\n Author:   "+pkg.author;
   vHeader += "\n License:  "+pkg.license;
