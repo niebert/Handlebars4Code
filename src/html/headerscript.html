@@ -1,0 +1,33 @@
+<script language="javascript">
+
+  function el(pID) {
+    return document.getElementById(pID)
+  }
+
+  function convert(pTplID)
+  {
+    var vTplID = pTplID || "javascript";
+    var vJSON;
+  	var vString = document.fconvert.jsonstring.value;
+    if(vString) {
+      try {
+          vJSON = JSON.parse(vString);
+      } catch(e) {
+          alert("JSON Parsing Error: "+e); // error in the above string (in this case, yes)!
+      };
+      if (vJSON)  {
+        setTemplate(pTplID);
+        document.fconvert.output.value = Handlebars4Code.compile_code(vTplID,vJSON);
+
+      } else {
+        alert("ERROR: Could not parse JSON")
+      }
+    }
+  }
+
+  function setTemplate(pTplID) {
+    //convert(pTpl);
+    el("tTemplate").value = vDataJSON.tpl[pTplID];
+  }
+
+</script>

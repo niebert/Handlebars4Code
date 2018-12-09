@@ -2,18 +2,16 @@ const pkg = require('./package');
 // ------ Build Settings -----------------
 var vExportVar = pkg.exportvar; // defined in src/libs/exportmod.js
 var vSrcPath = "./src/"; // Path to Source Libraries
-var vDistPath = "./src/"; // Path to distribution
+var vDistPath = "./dist/"; // Path to distribution
 var vLibPath = vSrcPath + 'libs/';
+var vHtmlPath = vSrcPath + 'html/';
+var vReadmePath = vSrcPath + 'readme/';
 var vLibDist = './dist/'+pkg.name+'.js';
 var vLibOut = './docs/js/'+pkg.name+'.js';
 var getLibs4Build = require('./src/libs4build');
-var vLibs4Build = [];
-if (getLibs4Build) {
-  console.log("Libs4Build for Code Generation loaded: 'src/libs4build.js' loaded");
-  vLibs4Build = getLibs4Build(vLibPath);
-} else {
-  console.error("src/libs4build.js is missing - contains all files for build");
-};
+var vLibs4Build = getLibs4Build(vLibPath);
+var vHTML4Build = getHTML4Build(vHtmlPath);
+var vREADME4Build = getREADME4Build(vReadmePath);
 /* vLibs4Build will look like this
 var vLibs4Build = [
   './src/npm_header.js',
@@ -40,4 +38,6 @@ codegen.create_header(pkg);
 codegen.create_tail(pkg);
 codegen.concat_main(pkg.main,vLibs4Build,pkg);
 codegen.concat_libs(vLibOut,vLibs4Build,pkg);
-codegen.concat_libs(vLibDist,vLibs4Build,pkg);
+codegen.concat_libs(vSrcPath,vLibs4Build,pkg);
+codegen.concat_html("./html/index_test.html",vHtml4Build,pkg);
+codegen.concat_readme("./README_test.md",vReadme4Build,pkg);

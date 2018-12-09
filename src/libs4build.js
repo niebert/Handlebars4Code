@@ -15,4 +15,21 @@ const getLibs4Build = function (pLibPath) {
   return vLibs4Build;
 }
 
-module.exports = getLibs4Build
+const getHTML4Build = function (pPath) {
+  var vHTML4Build = [
+    pPath+'header.html',
+    pPath+'headerlibs.html',
+    pPath+'headerscript.html',
+    pPath+'bodyheader.html',
+    pPath+'body.html',
+    pPath+'bodytail.html',
+    pPath+'tail.html'
+  ];
+  return vLibs4Build;
+}
+
+
+module.exports = {
+  getLibs4Build,
+  getHTML4Build
+}

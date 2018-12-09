@@ -1,6 +1,60 @@
 var fs = require('fs');
 var concat = require('concat-files');
 
+function replaceString(pString,pSearch,pReplace)
+// replaces in the string "pString" multiple substrings "pSearch" by "pReplace"
+{
+	//alert("cstring.js - replaceString() "+pString);
+	if (!pString) {
+		alert("replaceString()-Call - pString not defined!");
+	} else if (pString != '') {
+		var vHelpString = '';
+        var vN = pString.indexOf(pSearch);
+		var vReturnString = '';
+		while (this.greater(vN+1,0)) {
+			if (this.greater(vN , 0)) {
+				vReturnString += pString.substring(0, vN);
+			};
+			vReturnString += pReplace;
+            if (this.lower(vN + pSearch.length , pString.length)) {
+				pString = pString.substring(vN+pSearch.length, pString.length);
+			} else {
+				pString = ''
+			}
+			vN = pString.indexOf(pSearch);
+		};
+	};
+	return vReturnString + pString;
+};
+
+function getDevLibs4readme(pkg) {
+	var vOut = "\n\n## Libraries for Developement";
+	vOut += "\nThe following libraries are necessary for building the `"+pkg.name+"`":
+	for (var lib in pkg.devDependencies) {
+		if (pkg.devDependencies.hasOwnProperty(lib)) {
+			"\n* Lib: `"+lib+"` Version: `"+pkg.devDependencies[lib]+"`"
+		};
+	};
+	vOut +="\n"
+	return vOut
+}
+
+function replaceJSON(pContent,pJSON) {
+  for (var id in pJSON) {
+    if (pJSON.hasOwnProperty(id)) {
+			if (typeof(pJSON[id]) === 'string') {
+      	pContent = replaceString(pContent,"{{"+id+"}}",pJSON[id]);
+			}
+    }
+  };
+  return pContent
+}
+
+function replaceFileOutput(pContent,pkg) {
+	pContent = replaceJSON(pContent,pkg);
+	return pContent
+}
+
 function save_file(pFilename,pContent, pMessage) {
   var vMessage = pMessage || "File '"+pFilename+"' was saved!";
   fs.writeFile(pFilename, pContent, function(err) {
@@ -35,7 +89,17 @@ function concat_libs(pFilename,pLibArray) {
         throw err
       };
       console.log("File: '"+pFilename+"' generated for libraries successfully!\n  Libs:\n     "+pLibArray.join("\n     "));
-  });
+});
+
+function concat_html(pFilename,pFileArray,pkg) {
+    console.log("Create HTML '"+pFilename+"'");
+    concat(pFileArray, pFilename, function(err) {
+        if (err) {
+          console.log("ERROR: generating HTML '"+pFilename+"'\n"+err);
+          throw err
+        };
+        console.log("File: '"+pFilename+"' generated for HTML parts successfully!\n  HTML files:\n     "+pLibArray.join("\n     "));
+    });
 
 };
 
@@ -70,6 +134,7 @@ function create_header(pkg) {
   vHeader += "\n Homepage: "+pkg.homepage;
   vHeader += "\n Author:   "+pkg.author;
   vHeader += "\n License:  "+pkg.license;
+	vHeader += "\n Date:     "+getDateTime();
   if (pkg.hasOwnProperty("inherit")) {
     vHeader += "\n Inheritance: '"+pkg.exportvar+"' inherits from '"+pkg.inherit+"'";
   };
@@ -141,6 +206,7 @@ module.exports = {
   "save_file":save_file,
   "concat_libs":concat_libs,
   "concat_main":concat_main,
+  "concat_html":concat_main,
   "concat_libraries":concat_libraries,
   "create_header": create_header,
   "create_inherit": create_inherit,

@@ -1,0 +1,8 @@
+<script language="javascript">
+    el("jsonstring").value = JSON.stringify(vDataJSON["umljs"],null,2);
+
+    Handlebars4Code.create_compiler(vDataJSON.tpl);
+    vDataJSON.out = Handlebars4Code.get_compiler();
+
+
+</script>
