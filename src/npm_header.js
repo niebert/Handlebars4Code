@@ -1,7 +1,7 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.0.1  Date: 2018/05/17 23:12:19
+ Version:  1.0.1  Date: 2018/12/09 9:47:00
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   niebert GitHub
  License:  MIT

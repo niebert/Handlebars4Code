@@ -1,5 +1,6 @@
 {
   "name": "handlebars4code",
+  "exportvar": "Handlebars4Code",
   "version": "1.0.1",
   "description": "Handlebars4Code is a library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript)",
   "main": "src/main.js",
