@@ -9,12 +9,12 @@ var vCssPath = vSrcPath + 'css/';
 var vReadmePath = vSrcPath + 'readme/';
 var vLibDist = './dist/'+pkg.name+'.js';
 var vLibOut = './docs/js/'+pkg.name+'.js';
-const l4b = require('./libs4build');
+const f4b = require('./files4build');
 // the following get-function return arrays of filenames
-var vLibs4Build = l4b.getLibs4Build(vLibPath);
-var vHtml4Build = l4b.getHtml4Build(vHtmlPath);
-var vReadme4Build = l4b.getReadme4Build(vReadmePath);
-var vCss4Build = l4b.getCss4Build(vCssPath);
+var vLibs4Build = f4b.getLibs4Build(vLibPath);
+var vHtml4Build = f4b.getHtml4Build(vHtmlPath);
+var vReadme4Build = f4b.getReadme4Build(vReadmePath);
+var vCss4Build = f4b.getCss4Build(vCssPath);
 /* vLibs4Build will look like this
 var vLibs4Build = [
   './src/npm_header.js',

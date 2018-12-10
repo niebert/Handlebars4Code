@@ -235,9 +235,12 @@ function create_inherit_static(pkg) {
 
 function create_html_title(pkg) {
 	var vFileName = "html_title.html";
-  var vOut = `	<!-- src/`+vFileName+` -->
-	<title>`+pkg.exportvar+`</title>
-  <meta http-equiv="author" content="`+pkg.author+`">`;
+  var vOut = `
+      <!-- BEGIN src/`+vFileName+` -->
+	    <title>`+pkg.exportvar+`</title>
+      <meta http-equiv="author" content="`+pkg.author+`">
+      <!-- END:  src/`+vFileName+` -->`;
+
 	save_file("./src/"+vFileName, vOut,"create HTML Title code - file 'src/"+vFileName+"' was saved!");
 }
 
@@ -253,12 +256,14 @@ function create_html_description(pkg) {
 function create_html_tail(pkg) {
 	var vFileName = "html_tail.html";
   var vOut = `
-	<!-- src/`+vFileName+` -->
-	<center style="font-size: 10px;">
-			<a href="https://www.github.com/`+pkg.githubuser+`/`+pkg.exportvar+`" target="_blank"> GitHub Sources `+pkg.exportvar+`</a> - <a href="https://github.com/`+pkg.githubuser+`/`+pkg.exportvar+`/archive/master.zip"  target="_blank">Download `+pkg.exportvar+` ZIP</a>
-			<br>
-			Version: `+pkg.version+` Date: `+getDateTime()+` Author: `+pkg.author+`
-	</center>
+	   <!-- BEGIN: src/`+vFileName+` -->
+	   <center style="font-size: 10px;">
+			  <a href="https://www.github.com/`+pkg.githubuser+`/`+pkg.exportvar+`" target="_blank"> GitHub Sources `+pkg.exportvar+`</a> - <a href="https://github.com/`+pkg.githubuser+`/`+pkg.exportvar+`/archive/master.zip"  target="_blank">Download `+pkg.exportvar+` ZIP</a>
+			  <br>
+			  Version: `+pkg.version+` Date: `+getDateTime()+` Author: `+pkg.author+`
+	   </center>
+     <!-- END:  src/`+vFileName+` -->
+
 	`;
 	save_file("./src/"+vFileName, vOut,"HTML Title code file 'src/"+vFileName+"' was saved!");
 }
