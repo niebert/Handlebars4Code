@@ -345,9 +345,8 @@ function create_readme_tail(pkg) {
   var vOut = "## NPM Library Information";
   vOut += "\n* Exported Module Variable: `"+pkg.exportvar+"`";
   vOut += "\n* Package:  `"+pkg.name+"`";
-  vOut += "\n* Version:  `"+pkg.version + "`   ("+getDateTime()+")";
+  vOut += "\n* Version:  `"+pkg.version + "`   (last build "+getDateTime()+")";
   vOut += "\n* Homepage: `"+pkg.homepage+"`";
-  vOut += "\n* Author:   "+pkg.author;
   vOut += "\n* License:  "+pkg.license;
 	vOut += "\n* Date:     "+getDateTime();
   if (pkg.hasOwnProperty("inherit")) {

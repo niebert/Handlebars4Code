@@ -1,11 +1,13 @@
 <!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
 <html><head>
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <meta http-equiv="content-language" content="en">
-  
-	<!-- src/html_title.html -->
-	<title>Handlebars4Code</title>
-  <meta http-equiv="author" content="Engelbert Niehaus">  <script language="javascript">
+   <title>Handlebars2Code</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   <meta http-equiv="author" content="Engelbert Niehaus (admin)">
+   <meta http-equiv="last-modification" content="23.4.2004 (9:35)">
+   <meta http-equiv="content-language" content="de">
+   <meta http-equiv="desktop-type" content="tasks">
+   <script language="javascript">
    // vDataJSON is the main JSON storage for the privacy friendly WebApp
    // File Loaded into vDataJSON by script tag
    var vDataJSON = {};
@@ -30,19 +32,20 @@
        var mySource = vJSONEditor.compileCode.docu4github(pJSON)
    */
   </script>
-  <!-- ### Handelbars4Code Init JSON  ############### -->
-  <script src="db/umljs.js"></script>
-  <!-- ### HANDLEBARS TEMPLATE  #####################
-  Template ID: "javascript"
-  Template: vDataJSON["tpl"]["javascript"]
-  -->
-  <script src="tpl/javascript_tpl.js"></script>
-  <!-- ### COMPILE HANDLEBARS TEMPLATES  ############
-  Template ID: "docu4github"
-  Template: vDataJSON["tpl"]["docu4github"]
-  -->
-  <script src="tpl/docu4github_tpl.js"></script>
-  <script src="js/handlebars4code.js"></script>
+ <!-- ### UML Loaded File  ##################### -->
+   <script src="db/umljs.js"></script>
+   <!-- ### HANDLEBARS TEMPLATE  #####################
+   Template ID: "javascript"
+   Template: vDataJSON["tpl"]["javascript"]
+   -->
+   <script src="tpl/javascript_tpl.js"></script>
+   <!-- ### COMPILE HANDLEBARS TEMPLATES  ############
+   Template ID: "docu4github"
+   Template: vDataJSON["tpl"]["docu4github"]
+   -->
+   <script src="tpl/docu4github_tpl.js"></script>
+   <script src="js/handlebars4code.js"></script>
+
 <script language="javascript">
 
   function el(pID) {
@@ -76,10 +79,11 @@
   }
 
 </script>
-<body style="font-family:Arial,Verdana; font-size:12pt; color:black" bgcolor="#CACACA">
 
-The library <tt>Handlebars4Code</tt> is a library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript). 
-The source code of  Handlebars4Code can be downloaded as <a href="https://github.com/niebert/Handlebars4Code/archive/master.zip"  target="_blank">ZIP-file handlebars4code.zip</a>
+
+</head>
+
+<body style="font-family:Arial,Verdana; font-size:12pt; color:black" bgcolor="#CACACA">
 <h1>Handelbars4Code Demo</h1>
 <h3>JSON Source was generated with <a href="https://niebert/github.io/ClassEditorUML" target="_blank">ClassEditorUML</a></h3>
 <form name="fconvert">
@@ -100,13 +104,15 @@ The source code of  Handlebars4Code can be downloaded as <a href="https://github
 <b>Used Template of Handlebars4Code (readonly)</b><br>
 <textarea id="tTemplate" name="tTemplate" cols="125" rows="10" readonly></textarea><br>
 </form>
+<center style="font-size: 10px;">
+  <a href="https://www.github.com/niebert/Handlebars4Code" target="_blank"> GitHub Sources</a> - <a href="https://github.com/niebert/Handlebars4ssCode/archive/master.zip"  target="_blank">Download ZIP</a>
+</center>
+<script language="javascript">
+    el("jsonstring").value = JSON.stringify(vDataJSON["umljs"],null,2);
 
-  </body>
+    Handlebars4Code.create_compiler(vDataJSON.tpl);
+    vDataJSON.out = Handlebars4Code.get_compiler();
 
-	<!-- src/html_tail.html -->
-	<center style="font-size: 10px;">
-			<a href="https://www.github.com/niebert/Handlebars4Code" target="_blank"> GitHub Sources Handlebars4Code</a> - <a href="https://github.com/niebert/Handlebars4Code/archive/master.zip"  target="_blank">Download Handlebars4Code ZIP</a>
-			<br>
-			Version: 1.1.0 Date: 2018/12/10 0:59:17 Author: Engelbert Niehaus
-	</center>
-	</html>
+
+</script>
+</body></html>
