@@ -10,6 +10,7 @@ The following table of contents is generated with `node doctoc README.md`.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
+- [Installation `Handlebars4Code`](#installation-handlebars4code)
 - [Templates for Handlebars4Code](#templates-for-handlebars4code)
 - [vDataJSON as Template Storage](#vdatajson-as-template-storage)
 - [Templates and JSON into vDataJSON](#templates-and-json-into-vdatajson)
@@ -60,6 +61,24 @@ The following table of contents is generated with `node doctoc README.md`.
 - [NPM Library Information](#npm-library-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+## Installation `Handlebars4Code`
+If you want to install `Handlebars4Code` in Node NPM use the following require-call:
+```javascript
+const  Handlebars4Code = require('handlebars4code');
+let  vhandlebars4code = new Handlebars4Code();
+```
+If you want to use the library `handlebars4code.js` in a browser, please copy the file `dist/handlebars4code.js` into your library folder (e.g. `docs/js`) and
+import the library with `script`-tag with:
+```html
+<script src="js/handlebars4code.js"></script>
+```
+Now it is possible to use the constructor of `Handlebars4Code`
+```javascript
+var  vhandlebars4code = new Handlebars4Code();
+```
+
 
 ## Templates for Handlebars4Code
 In the `Handlebars4Code` demo the JSON data is stored in `vDataJSON`, which is the main JSON data storage defined in `index.html`. Data (`docs/db/`) and templates (`docs/tpl/`) are loaded into the JSON. All templates reside in `vDataJSON.tpl`, which is provided as parameter to `Handlebars4Code.create_compiler(vDataJSON.tpl)`. The method `create_compiler(vDataJSON.tpl)` creates Handlebars compilers for all templates in `vDataJSON.tpl`.  
@@ -641,11 +660,11 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.1.0`   (2018/12/10 0:22:44)
+* Version:  `1.1.0`   (2018/12/10 0:59:17)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * Author:   Engelbert Niehaus
 * License:  MIT
-* Date:     2018/12/10 0:22:44
+* Date:     2018/12/10 0:59:17
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript

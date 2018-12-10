@@ -249,6 +249,7 @@ function create_html_description(pkg) {
   vOut += "\n";
   save_file("./src/"+vFileName, vOut,"create HTML code - 'src/"+vFileName+"' was saved!");
 }
+
 function create_html_tail(pkg) {
 	var vFileName = "html_tail.html";
   var vOut = `
@@ -269,6 +270,28 @@ function create_readme_header(pkg) {
   vOut += "\n`"+pkg.exportvar+"` is a "+pkg.description;
   vOut += "\n* **[Demo "+pkg.exportvar+"](https://"+pkg.githubuser+".github.io/"+pkg.exportvar+")**";
   vOut += "\n";
+  save_file("./src/"+vFileName, vOut,"README.md code file 'src/"+vFileName+"' was saved!");
+}
+
+function create_readme_install(pkg) {
+  var vFileName = "readme_install.md";
+  var vOut = "\n";
+  vOut += "\n## Installation `"+pkg.exportvar+"`";
+  vOut += "\nIf you want to install `"+pkg.exportvar+"` in Node NPM use the following require-call:";
+	vOut += "\n```javascript";
+	vOut += "\nconst  "+pkg.exportvar+" = require('"+pkg.name+"');";
+  vOut += "\nlet  v"+pkg.name+" = new "+pkg.exportvar+"();";
+	vOut += "\n```";
+	vOut += "\nIf you want to use the library `"+pkg.name+".js` in a browser, please copy the file `dist/"+pkg.name+".js` into your library folder (e.g. `docs/js`) and"
+  vOut += "\nimport the library with `script`-tag with:";
+  vOut += "\n```html";
+	vOut += "\n<script src=\"js/"+pkg.name+".js\"></script>";
+  vOut += "\n```";
+  vOut += "\nNow it is possible to use the constructor of `"+pkg.exportvar+"`";
+  vOut += "\n```javascript";
+	vOut += "\nvar  v"+pkg.name+" = new "+pkg.exportvar+"();";
+	vOut += "\n```";
+	vOut += "\n";
   save_file("./src/"+vFileName, vOut,"README.md code file 'src/"+vFileName+"' was saved!");
 }
 
@@ -365,6 +388,7 @@ module.exports = {
   "create_html_description":create_html_description,
   "create_html_tail":create_html_tail,
   "create_readme_header": create_readme_header,
+	"create_readme_install":create_readme_install,
   "create_readme_inherit": create_readme_inherit,
   "create_readme_inherit_static": create_readme_inherit_static,
   "create_readme_devlibs": create_readme_devlibs,

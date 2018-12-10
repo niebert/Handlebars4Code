@@ -54,6 +54,7 @@ codegen.create_html_title(pkg);
 codegen.create_html_description(pkg);
 codegen.create_html_tail(pkg);
 codegen.create_readme_header(pkg);
+codegen.create_readme_install(pkg);
 codegen.create_readme_devlibs(pkg);
 codegen.create_readme_tail(pkg);
 codegen.create_header(pkg);

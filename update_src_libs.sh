@@ -53,7 +53,7 @@ do
 done
 
 ### README Code Generation
-for filename in "header.md" "doctoc" "install.md" "usage.md" "handlebars4code.md" "body.md" "docs.md" "folders.md" "acknowledgement.md" "tail.md"
+for filename in "headerintro.md" "doctoc.md" "install.md" "usage.md" "handlebars4code.md" "body.md" "docsfolders.md" "folders.md" "acknowledgement.md" "tail.md"
 do
   echo "Looping ... download $filename"
   file="./src/readme/$filename"

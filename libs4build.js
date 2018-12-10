@@ -45,6 +45,8 @@ const getReadme4Build = function (pPath) {
     './src/readme_header.md',
     pPath+'headerintro.md',
     pPath+'doctoc.md',
+    './src/readme_install.md',
+    pPath+'usage.md',
     pPath+'handlebars4code.md',
     /*
     pPath+'headerlibs.md',
