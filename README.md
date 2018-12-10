@@ -9,57 +9,6 @@ The following table of contents is generated with `node doctoc README.md`.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
-- [Installation `Handlebars4Code`](#installation-handlebars4code)
-- [Templates for Handlebars4Code](#templates-for-handlebars4code)
-- [vDataJSON as Template Storage](#vdatajson-as-template-storage)
-- [Templates and JSON into vDataJSON](#templates-and-json-into-vdatajson)
-  - [Load JSON Data with Script Tag](#load-json-data-with-script-tag)
-  - [Load Templates with Script Tag](#load-templates-with-script-tag)
-- [Script Tag for handlebars4code.js](#script-tag-for-handlebars4codejs)
-- [Additional Handlebars Helpers for Code generation](#additional-handlebars-helpers-for-code-generation)
-  - [List of Helpers in Handlebars4Code](#list-of-helpers-in-handlebars4code)
-  - [Helper: `filename`](#helper-filename)
-    - [Template 1: `filename`](#template-1-filename)
-    - [JSON Data 1: `filename`](#json-data-1-filename)
-    - [Compiler Output 1: `filename`](#compiler-output-1-filename)
-    - [JSON Data 2: `filename`](#json-data-2-filename)
-    - [Template 2: `filename`](#template-2-filename)
-    - [Compiler Output 2: `filename`](#compiler-output-2-filename)
-  - [Helper: `ifcond`](#helper-ifcond)
-    - [Template: `ifcond`](#template-ifcond)
-    - [JSON Data: `ifcond`](#json-data-ifcond)
-    - [Compiler Output: `ifcond`](#compiler-output-ifcond)
-  - [Helper: `require_class_list`](#helper-require_class_list)
-    - [Template: `require_class_list`](#template-require_class_list)
-    - [JSON Data: `require_class_list`](#json-data-require_class_list)
-    - [Compiler Output: `require_class_list`](#compiler-output-require_class_list)
-  - [Helper: `requirelibs`](#helper-requirelibs)
-    - [Template: `requirelibs`](#template-requirelibs)
-    - [JSON Data: `requirelibs`](#json-data-requirelibs)
-    - [Compiler Output: `requirelibs`](#compiler-output-requirelibs)
-  - [Helper: `foreach`](#helper-foreach)
-    - [Template: `foreach`](#template-foreach)
-    - [Parameter of Helper:  `foreach`](#parameter-of-helper--foreach)
-    - [JSON Data: `foreach`](#json-data-foreach)
-    - [Compiler Output: `foreach`](#compiler-output-foreach)
-  - [Helper: `paramcall`](#helper-paramcall)
-    - [Template: `paramcall`](#template-paramcall)
-    - [JSON Data: `paramcall`](#json-data-paramcall)
-    - [Compiler Output: `paramcall`](#compiler-output-paramcall)
-  - [Helper: `parameterlist`](#helper-parameterlist)
-    - [Template: `parameterlist`](#template-parameterlist)
-    - [JSON Data: `parameterlist`](#json-data-parameterlist)
-    - [Compiler Output: `parameterlist`](#compiler-output-parameterlist)
-  - [Helper: `indent`](#helper-indent)
-    - [Template: `indent`](#template-indent)
-    - [JSON Data: `indent`](#json-data-indent)
-    - [Compiler Output: `indent`](#compiler-output-indent)
-- [Acknowledgement](#acknowledgement)
-- [Libraries required for  `Handlebars4Code`](#libraries-required-for--handlebars4code)
-- [Libraries for Building and Developement](#libraries-for-building-and-developement)
-- [NPM Library Information](#npm-library-information)
-
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
@@ -651,7 +600,6 @@ The following libraries are necessary for building the `handlebars4code`.
 These libraries are not included in `handlebars4code.js`, but e.g. are required in `build.js`.
 * Lib: `browserify` Version: `^14.5.0`
 * Lib: `concat-files` Version: `^0.1.1`
-* Lib: `delay` Version: `^4.1.0`
 * Lib: `doctoc` Version: `^1.3.0`
 * Lib: `lint` Version: `^1.1.2`
 * Lib: `uglify-js` Version: `^2.6.2`
@@ -660,11 +608,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.1.0`   (2018/12/10 0:59:17)
+* Version:  `1.1.0`   (last build 2018/12/10 9:00:21)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
-* Author:   Engelbert Niehaus
 * License:  MIT
-* Date:     2018/12/10 0:59:17
+* Date:     2018/12/10 9:00:21
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript

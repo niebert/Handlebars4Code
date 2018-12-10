@@ -67,7 +67,7 @@ codegen.concat_libs(vLibDist,vLibs4Build,pkg);
 codegen.concat_libs(vLibOut,vLibs4Build,pkg);
 
 
-codegen.concat_html("./docs/index_build.html",vHtml4Build,pkg);
+codegen.concat_html("./docs/index.html",vHtml4Build,pkg);
 codegen.concat_css("./docs/css/build.css",vCss4Build,pkg);
 codegen.concat_readme("./README.md",vReadme4Build,pkg);
 
