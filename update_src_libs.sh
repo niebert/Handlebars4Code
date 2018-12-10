@@ -81,7 +81,7 @@ do
 done
 
 ### README Code Generation
-for filename in "acknowledgement.md" "body.md" "doctoc.md" "folderdocs.md" "folderrepo.md" "handlebars4code.md" "headerintro.md" "tail.md" "usage.md"
+for filename in "acknowledgement.md" "body.md" "browserify" "doctoc.md" "folderdocs.md" "folderrepo.md" "handlebars4code.md" "headerintro.md" "tail.md" "usage.md"
 do
   echo "README: checking file exists or download '$filename'"
   file="./src/readme/$filename"
