@@ -233,13 +233,28 @@ function create_inherit_static(pkg) {
   save_file("./src/"+vFileName, vInherit,"create Inheritage code file 'src/"+vFileName+"' was saved!");
 }
 
+function create_inherit_require(pkg) {
+  var vInherit = "\n";
+	var vFileName = "npm_inherit.js";
+  if (pkg.hasOwnProperty("inherit")) {
+    vInherit += "\n";
+    vInherit += "\n//--------------------------------------";
+    vInherit += "\n//---Require Module----------------------";
+    vInherit += "\n// The module '"+pkg.exportvar+"' extends '"+pkg.inherit+"' and";
+    vInherit += "\n// inherits all attributes and methods form '"+pkg.inherit+"'";
+    vInherit += "\nlet "+pkg.inherit+" = require('"+(pkg.inherit).toLowerCase()+"');";
+    vInherit += "\n//--------------------------------------";
+    vInherit += "\n";
+  };
+  save_file("./src/"+vFileName, vInherit,"create Inheritage code file 'src/"+vFileName+"' was saved!");
+}
+
 function create_html_title(pkg) {
 	var vFileName = "html_title.html";
   var vOut = `
-      <!-- BEGIN src/`+vFileName+` -->
-	    <title>`+pkg.exportvar+`</title>
+      <title>`+pkg.exportvar+`</title>
       <meta http-equiv="author" content="`+pkg.author+`">
-      <!-- END:  src/`+vFileName+` -->`;
+`;
 
 	save_file("./src/"+vFileName, vOut,"create HTML Title code - file 'src/"+vFileName+"' was saved!");
 }
@@ -310,7 +325,7 @@ function create_readme_devlibs(pkg) {
 
 function create_readme_inherit(pkg) {
   var vInherit = "\n";
-  var vFileName = "npm_readme_inherit.md";
+  var vFileName = "readme_inherit.md";
   if (pkg.hasOwnProperty("inherit")) {
     vInherit += "\n## Extension with a Super Class";
     vInherit += "\nThe library `"+pkg.exportvar+"` extends the library `"+pkg.inherit+"` and `"+pkg.exportvar+"` inherits all attributes and methods from `"+pkg.inherit+"` ";
@@ -327,7 +342,7 @@ function create_readme_inherit(pkg) {
 
 function create_readme_inherit_static(pkg) {
   var vInherit = "\n";
-  var vFileName = "npm_readme_inherit.md";
+  var vFileName = "readme_inherit.md";
   if (pkg.hasOwnProperty("inherit")) {
     vInherit += "\n## Extension of Library `"+pkg.inherit+"`";
     vInherit += "\nThe library `"+pkg.exportvar+"` extends the library `"+pkg.inherit+"` with additional feature and an extended API, so  `"+pkg.exportvar+"` inherits all attributes and methods from `"+pkg.inherit+"` ";

@@ -1,4 +1,4 @@
-/* The Array vLibs4Build contains all libraries
+/* The Arrays contains all libraries
    that are included in the 'build.js' call
    with 'npm run build'
 */
@@ -27,6 +27,7 @@ const getHtml4Build = function (pPath) {
     pPath+'body.html',
     pPath+'bodytail.html',
     './src/html_tail.html',
+    pPath+'tailscript.html',
     pPath+'tail.html'
   ];
   return vArray;

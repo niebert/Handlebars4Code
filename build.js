@@ -61,9 +61,11 @@ codegen.create_header(pkg);
 
 //-----------------------------------------
 //----CONCAT main,libs,css,html,readem-----
-
+// MAIN.js create library and append "modules.export"
 codegen.concat_main(pkg.main,vLibs4Build,pkg);
+// LIB:  create the library in /dist folder
 codegen.concat_libs(vLibDist,vLibs4Build,pkg);
+// DOCS: create the library in /docs folder
 codegen.concat_libs(vLibOut,vLibs4Build,pkg);
 
 

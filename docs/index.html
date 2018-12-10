@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
 <html><head>
   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <meta http-equiv="content-language" content="en">
-  
-	<!-- src/html_title.html -->
-	<title>Handlebars4Code</title>
-  <meta http-equiv="author" content="Engelbert Niehaus">  <script language="javascript">
+  <meta http-equiv="content-language" content="de">
+  <meta http-equiv="desktop-type" content="tasks">
+
+      <title>Handlebars4Code</title>
+      <meta http-equiv="author" content="Engelbert Niehaus">
+  <script language="javascript">
    // vDataJSON is the main JSON storage for the privacy friendly WebApp
    // File Loaded into vDataJSON by script tag
    var vDataJSON = {};
@@ -76,12 +77,14 @@
   }
 
 </script>
+</head>
 <body style="font-family:Arial,Verdana; font-size:12pt; color:black" bgcolor="#CACACA">
+
+  <h1>Handelbars4Code Demo</h1>
+  <h3>JSON Source was generated with <a href="https://niebert/github.io/ClassEditorUML" target="_blank">ClassEditorUML</a></h3>
 
 The library <tt>Handlebars4Code</tt> is a library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript). 
 The source code of  Handlebars4Code can be downloaded as <a href="https://github.com/niebert/Handlebars4Code/archive/master.zip"  target="_blank">ZIP-file handlebars4code.zip</a>
-<h1>Handelbars4Code Demo</h1>
-<h3>JSON Source was generated with <a href="https://niebert/github.io/ClassEditorUML" target="_blank">ClassEditorUML</a></h3>
 <form name="fconvert">
   <b>JSON Input:</b><br>
 <textarea id="jsonstring" name="jsonstring" cols="125" rows="10">This is a
@@ -103,10 +106,22 @@ The source code of  Handlebars4Code can be downloaded as <a href="https://github
 
   </body>
 
-	<!-- src/html_tail.html -->
-	<center style="font-size: 10px;">
-			<a href="https://www.github.com/niebert/Handlebars4Code" target="_blank"> GitHub Sources Handlebars4Code</a> - <a href="https://github.com/niebert/Handlebars4Code/archive/master.zip"  target="_blank">Download Handlebars4Code ZIP</a>
-			<br>
-			Version: 1.1.0 Date: 2018/12/10 9:00:21 Author: Engelbert Niehaus
-	</center>
-	</html>
+	   <!-- BEGIN: src/html_tail.html -->
+	   <center style="font-size: 10px;">
+			  <a href="https://www.github.com/niebert/Handlebars4Code" target="_blank"> GitHub Sources Handlebars4Code</a> - <a href="https://github.com/niebert/Handlebars4Code/archive/master.zip"  target="_blank">Download Handlebars4Code ZIP</a>
+			  <br>
+			  Version: 1.1.0 Date: 2018/12/10 10:35:42 Author: Engelbert Niehaus
+	   </center>
+     <!-- END:  src/html_tail.html -->
+
+	<script language="javascript">
+    el("jsonstring").value = JSON.stringify(vDataJSON["umljs"],null,2);
+
+    Handlebars4Code.create_compiler(vDataJSON.tpl);
+    vDataJSON.out = Handlebars4Code.get_compiler();
+
+
+</script>
+
+  </body>
+</html>
