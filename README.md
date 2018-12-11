@@ -2,12 +2,72 @@
 `Handlebars4Code` is a library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript)
 * **[Demo Handlebars4Code](https://niebert.github.io/Handlebars4Code)**
 
+<!-- BEGIN: src/readme/headerinto.md -->
 The following table of contents is generated with `node doctoc README.md`.
+<!-- END:   src/readme/headerinto.md -->
 <hr>
 <h2>Table of Contents</h2>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Installation `Handlebars4Code`](#installation-handlebars4code)
+- [Quick Start for Library-Users](#quick-start-for-library-users)
+- [Templates for Handlebars4Code](#templates-for-handlebars4code)
+- [vDataJSON as Template Storage](#vdatajson-as-template-storage)
+- [Templates and JSON into vDataJSON](#templates-and-json-into-vdatajson)
+  - [Load JSON Data with Script Tag](#load-json-data-with-script-tag)
+  - [Load Templates with Script Tag](#load-templates-with-script-tag)
+- [Script Tag for handlebars4code.js](#script-tag-for-handlebars4codejs)
+- [Additional Handlebars Helpers for Code generation](#additional-handlebars-helpers-for-code-generation)
+  - [List of Helpers in Handlebars4Code](#list-of-helpers-in-handlebars4code)
+  - [Helper: `filename`](#helper-filename)
+    - [Template 1: `filename`](#template-1-filename)
+    - [JSON Data 1: `filename`](#json-data-1-filename)
+    - [Compiler Output 1: `filename`](#compiler-output-1-filename)
+    - [JSON Data 2: `filename`](#json-data-2-filename)
+    - [Template 2: `filename`](#template-2-filename)
+    - [Compiler Output 2: `filename`](#compiler-output-2-filename)
+  - [Helper: `ifcond`](#helper-ifcond)
+    - [Template: `ifcond`](#template-ifcond)
+    - [JSON Data: `ifcond`](#json-data-ifcond)
+    - [Compiler Output: `ifcond`](#compiler-output-ifcond)
+  - [Helper: `require_class_list`](#helper-require_class_list)
+    - [Template: `require_class_list`](#template-require_class_list)
+    - [JSON Data: `require_class_list`](#json-data-require_class_list)
+    - [Compiler Output: `require_class_list`](#compiler-output-require_class_list)
+  - [Helper: `requirelibs`](#helper-requirelibs)
+    - [Template: `requirelibs`](#template-requirelibs)
+    - [JSON Data: `requirelibs`](#json-data-requirelibs)
+    - [Compiler Output: `requirelibs`](#compiler-output-requirelibs)
+  - [Helper: `foreach`](#helper-foreach)
+    - [Template: `foreach`](#template-foreach)
+    - [Parameter of Helper:  `foreach`](#parameter-of-helper--foreach)
+    - [JSON Data: `foreach`](#json-data-foreach)
+    - [Compiler Output: `foreach`](#compiler-output-foreach)
+  - [Helper: `paramcall`](#helper-paramcall)
+    - [Template: `paramcall`](#template-paramcall)
+    - [JSON Data: `paramcall`](#json-data-paramcall)
+    - [Compiler Output: `paramcall`](#compiler-output-paramcall)
+  - [Helper: `parameterlist`](#helper-parameterlist)
+    - [Template: `parameterlist`](#template-parameterlist)
+    - [JSON Data: `parameterlist`](#json-data-parameterlist)
+    - [Compiler Output: `parameterlist`](#compiler-output-parameterlist)
+  - [Helper: `indent`](#helper-indent)
+    - [Template: `indent`](#template-indent)
+    - [JSON Data: `indent`](#json-data-indent)
+    - [Compiler Output: `indent`](#compiler-output-indent)
+- [Build Process of `npm run build`](#build-process-of-npm-run-build)
+- [Browserify and Watchify](#browserify-and-watchify)
+  - [Global Installation of Browserify, Watchify, UglifyJS and DocToc](#global-installation-of-browserify-watchify-uglifyjs-and-doctoc)
+  - [Package Installation of Browserify and Watchify - Alternative](#package-installation-of-browserify-and-watchify---alternative)
+  - [Start Watching the Files with Watchify](#start-watching-the-files-with-watchify)
+- [Source JS file and development bundle output](#source-js-file-and-development-bundle-output)
+- [Acknowledgement](#acknowledgement)
+- [Libraries required for  `Handlebars4Code`](#libraries-required-for--handlebars4code)
+- [Libraries for Building and Developement](#libraries-for-building-and-developement)
+- [NPM Library Information](#npm-library-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -27,7 +87,13 @@ Now it is possible to use the constructor of `Handlebars4Code`
 ```javascript
 var  vhandlebars4code = new Handlebars4Code();
 ```
+<!-- BEGIN: src/readme/usage.md -->
 
+## Quick Start for Library-Users
+Just copy the `docs/`-folder and adapt the JSON-schema `docs/schema` and the JSON data in the folder `docs/db/` to the schema for your requirements. If you want to create your own JSON schema use the [JSON2Schema tool](https://niebert/github.io/JSON2Schema).
+
+<!-- END:   src/readme/usage.md -->
+<!-- BEGIN: src/readme/handlebars4code.md -->
 
 ## Templates for Handlebars4Code
 In the `Handlebars4Code` demo the JSON data is stored in `vDataJSON`, which is the main JSON data storage defined in `index.html`. Data (`docs/db/`) and templates (`docs/tpl/`) are loaded into the JSON. All templates reside in `vDataJSON.tpl`, which is provided as parameter to `Handlebars4Code.create_compiler(vDataJSON.tpl)`. The method `create_compiler(vDataJSON.tpl)` creates Handlebars compilers for all templates in `vDataJSON.tpl`.  
@@ -575,6 +641,65 @@ The compiler call `Handlebars4Code.compile.mytpl(my_json)` for the JSON data `my
     //#################################################################
 
 ```
+<!-- END:   src/readme/handlebars4code.md -->
+<!-- BEGIN: src/readme/build_process.md -->
+
+## Build Process of `npm run build`
+The build process is called by `npm run build` which in turn call `build.js`. If you want to call the build process of `build.js` separately just call `build.js` with `node build.js` from the shell/console.
+
+The templates for building the output are stored in the folder `src/`.
+
+After the build process the `README.md` is generated and if you want to have the table of contents in the file for the concatenation of  files in `src/readme/` listed in `files4build.js` then you must run the DocToc generator for `README.md` by `doctoc README.md` from the shell to update the table of contents in `README.md`.
+
+<!-- END:   src/readme/build_process.md -->
+
+## Browserify and Watchify
+Browserify and Watchify are used in this repository to control the WebApp-javascript development with the required Javascript libraries installed with [NPM Node.js](https://docs.npmjs.com/getting-started/installing-node) and similar framework world that greatly improve your javascript workflow: Using them, you no longer need to micro-manage your script tags but instead you just declare the libraries each of your client-side modules is using - or you can even create your own reusable modules! Also, installing (or updating) javascript libraries is as easy as running a single command!
+* [Additional Information about Browserify and Watchify on GitHub](https://spapas.github.io/2015/05/27/using-browserify-watchify/)
+* [Youtube Video about Browserify and Watchify by Kyle Robinson Young 2015/04/16](https://www.youtube.com/watch?v=CTAa8IcQh1U)
+In this repository Browserify and Watchify are used for javascript code development with [NPM Node.js](https://docs.npmjs.com/getting-started/installing-node).
+
+### Global Installation of Browserify, Watchify, UglifyJS and DocToc
+Requirement: [NPM](https://docs.npmjs.com/getting-started/installing-node) is intalled. Now call for global installation of Browserfy, Watchify, UglifyJS and DocToc by:
+
+`npm install -g browserify watchify uglify-js doctoc`
+
+This is recommended because your will not install Browserfy, Watchify and UglifyJS for all your repositories separately.
+* ***Browserfy*** converts `node_modules` in a single library, that can be imported in WebApp. Browserify resolves dependencies and included the required libraries into the bundled javascript code.
+* ***Watchify*** watches changes in the source code and runs the build process whenever it detects changes in the your source code.
+* ***UglifyJS*** compresses the source code of `dist/class_editor_uml.js` into ```class_editor_uml.min.js``` to reduce download time and WebApp performance during load.
+* ***DocToc*** is used to create a helpful table of contents in the README (see [DocToc-Installation]https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents.
+* ***jsLint*** is used to check the Javascript code, quality of code can be improved by application of jsLint
+
+### Package Installation of Browserify and Watchify - Alternative
+If your prefer that  browserify and watchify is installed with your `npm install` command, save these to modules to your dev-dependecies in your `package.json` by calling
+
+* (Install Browsersify) `npm install browserify --save-dev`
+* (Install Watchify) `npm install watchify --save-dev`
+* (Install UglifyJS) `npm install uglify-js --save-dev`
+* (Install DocToc) `npm install doctoc -g`
+* (Install jshint) `npm install jslint -g`
+
+The difference between `--save` and `--save-dev` is, that development dependencies are installed with `npm install` because they are required for the development process of the code but they are not added to the generated Javascript-bundle that are used in the WebApp ClassEditorUML. The `--save-dev` commands for `browserify` and `watchify` will install the two modules with all the the dependencies in `node_modules` and add the dev-dependencies to your `package.json`.
+```json
+"devDependencies": {
+  "browserify": "^14.5.0",
+  "watchify": "^3.9.0",
+  "uglify-js": "^2.6.2",
+  "doctoc":"^1.3.0",
+  "lint": "^1.1.2"  
+}
+```
+In the current repository `Browserfy` and `Watchify` are expected to be installed globally, because the `package.json` does not contain the dev-dependencies mentioned above.
+
+### Start Watching the Files with Watchify
+Watchify will trigger the `npm run build` process if files were change due to alteration of code. To start watching the files, run the npm-watch script by `npm run watch`, which is defined in `package.json`
+
+## Source JS file and development bundle output
+The main JS source file for the build process is `src/main.js`. The ouput library (resp. output file of build process) is stored in distrubtion library for browser based web-development in `dist/bundle.js`. Compressed code is generated with `UglifyJS`. It takes the `dist/bundle.js` as input file and creates the compressed file `dist/bundle.min.js`.
+The compression of `dist/bundle.js` into `dist/bundle.min.js` can be started by
+
+  `npm run compress`
 
 ## Acknowledgement
 Special thanks to the following individual developers and teams of OpenSource JavaScript projects:
@@ -608,14 +733,15 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.1.0`   (last build 2018/12/10 12:00:13)
+* Version:  `1.1.0`   (last build 2018/12/11 17:06:02)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/10 12:00:13
+* Date:     2018/12/11 17:06:02
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript
     const vHandlebars4Code = require('handlebars4code');
 ```
 * JSHint: installation can be performed with `npm install jshint -g`
-<!-- src/tail.md -->
+<!-- BEGIN: src/readme/tail.md -->
+<!-- END:   src/readme/tail.md -->

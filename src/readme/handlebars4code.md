@@ -1,3 +1,4 @@
+<!-- BEGIN: src/readme/handlebars4code.md -->
 
 ## Templates for Handlebars4Code
 In the `Handlebars4Code` demo the JSON data is stored in `vDataJSON`, which is the main JSON data storage defined in `index.html`. Data (`docs/db/`) and templates (`docs/tpl/`) are loaded into the JSON. All templates reside in `vDataJSON.tpl`, which is provided as parameter to `Handlebars4Code.create_compiler(vDataJSON.tpl)`. The method `create_compiler(vDataJSON.tpl)` creates Handlebars compilers for all templates in `vDataJSON.tpl`.  
@@ -545,3 +546,4 @@ The compiler call `Handlebars4Code.compile.mytpl(my_json)` for the JSON data `my
     //#################################################################
 
 ```
+<!-- END:   src/readme/handlebars4code.md -->

@@ -1,11 +1,7 @@
 <!-- src/readme/folderdocs.md -->
-## Folder and Files in Repository
+## Folder and Files in `docs/`
+The folder `docs/` contains all files for the web demo of this repository, that can be accessed to the `https://___PKG_GITHUBUSER___.github.io/___PKG_EXPORTVAR___`.
 
-### Folder `docs`
-The folder `docs` contains all files for the web demo of this repository, that can be accessed to the `https://niebert.github.io/`.
-
-## Quick Start for Library-Users
-Just copy the `docs`-folder and adapt the JSON-schema `docs/schema` and the JSON data in the folder `docs/db/` to the schema and your requirements.  
 
 ## Files, Folders and Structure of Repository
 The following enumeration explains the structure of the repository and folders.
@@ -21,4 +17,4 @@ The following enumeration explains the structure of the repository and folders.
   * `docs/index.html` files starts the webbased demo.
 * `jscc/` folder contains the [JavascriptClassCreator](https://niebert.github.io/JavascriptClassCreator) files that are used to create object-oriented Javascript class files.  
 * `src/` folder contains the file `main.js` for NPM defined in `package.json` and other source files in the future, to create a the library for webbased use in a browser can be found in the folder `dist/`. The files in `dist/` are created with `browsersify` and/or  `watchify`.
-* `update_src_libs.sh` is a shell script that works on Linux and MAcOSX to perform some library updates from the web and the `update_src_libs.sh` can be used to initialize a new repository with the basic WebApp structure as an privacy friendly [AppLSAC](https://en.wikiversity.org/wiki/AppLSAC).
+* `update_src_libs.sh` is a shell script that works on Linux and MacOSX to perform some library updates from the web and the `update_src_libs.sh` can be used to initialize a new repository with the basic WebApp structure as an privacy friendly [AppLSAC](https://en.wikiversity.org/wiki/AppLSAC).

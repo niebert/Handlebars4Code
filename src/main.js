@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.1.0  Date: 2018/12/10 12:00:13
+ Version:  1.1.0  Date: 2018/12/11 17:06:02
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2018/12/10 12:00:13
+ Date:     2018/12/11 17:06:02
  Inheritance: 'Handlebars4Code' inherits from 'Handlebars'
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
@@ -15,6 +15,8 @@
 
 /*jshint  laxcomma: true, asi: true, maxerr: 150 */
 /*global alert, confirm, console, prompt */
+// require the Handlebars module from NPM
+// const Handlebars = require('handlebars');
 /**!
 
  @license
@@ -5024,9 +5026,23 @@ Handlebars.registerHelper('listhtmlattr', function(context, options) {
 });
 
 Handlebars.registerHelper('indent', function(pText, pIndent) {
-  var vIndent = pIndent || "        ";
-  var vText = pText ||  "";
+  var vText = pText ||"ERROR: undefined pText in helper-indent ";
+  var vIndent = "        ";
+  if(typeof(pIndent) == "string") {
+    console.log("CALL: helper-indent: pIndent is of type 'String'");
+  } else {
+    if (pIndent.hasOwnProperty("hash")) {
+      if (pIndent.hash.hasOwnProperty("indent")) {
+        vIndent = pIndent.hash.indent;
+      } else {
+        console.log("ERROR: helper-indent: pIndent.hash 'indent' property undefined - use default indent");
+      }
+    } else {
+      console.log("ERROR: helper-indent: pIndent undefined - use default indent");
+    }
+  }
   var vCR = "";
+  console.log("indent-helper: vIndent='"+vIndent+"'");
   //vIndent = "\n" + vIndent;
   if (vText && (vText != "")) {
     vText = vText.replace(/\n/g,"\n"+vIndent);

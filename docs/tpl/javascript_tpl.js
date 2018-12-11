@@ -133,7 +133,7 @@ function {{data.classname}} () {
       //    var v{{data.classname}} = new {{data.classname}}();
       //    v{{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}});
       //-------------------------------------------------------
-      {{indent code "      "}}
+{{indent code "      "}}
     }
     // ---- Method: {{name}}() Class: {{data.classname}} ------
 {{/foreach}}

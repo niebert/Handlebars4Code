@@ -7,9 +7,12 @@ reponame="handlebars4code"
 exportvar="Handlebars4Code"
 
 
-read -p "Enter your GitHub username for this repository?  " githubuser
-read -p "Enter your GitHub Repository name?  " reponame
-read -p "Enter your Export Variable/Classname for this repository?  " exportvar
+defvalue=$githubuser
+read -p "Enter your GitHub username for this repository?  " $defvalue githubuser
+defvalue=$reponame
+read -p "Enter your GitHub Repository name?  " $defvalue reponame
+defvalue=$exportvar
+read -p "Enter your Export Variable/Classname for this repository?  " $defvalue exportvar
 
 echo "Repository Name:            $reponame"
 echo "Export Variable/Class Name: $exportvar"
@@ -54,6 +57,18 @@ wget https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214
 wget $source/dist/handlebars4code.js -O ./src/libs/handlebars4code.js
 wget $source/dist/handlebars4code.min.js -O ./src/libs/handlebars4code.min.js
 
+#### NPM Files
+file="./package.json"
+if [ -f "$file" ]
+then
+	echo "NPM: Check file '$file' - found."
+else
+	echo "NPM: Check file '$file' - not found - try to download."
+  wget "$source/src/$file  -O ./src/$file"
+	sed -i "s/handelbars4code/$reponame/g" "./src/$file"
+	sleep $sleeptime
+fi
+
 #### CODE GENERATION src/libs src/html
 file="./files4build.js"
 if [ -f "$file" ]
@@ -61,7 +76,7 @@ then
 	echo "CODEGEN: Check file '$file' - found."
 else
 	echo "CODEGEN: Check file '$file' - not found - try to download."
-  wget "$source/src/libs4build.js  -O ./src/libs4build.js"
+  wget "$source/src/$file  -O ./src/$file"
 	sleep $sleeptime
 fi
 
@@ -81,7 +96,7 @@ do
 done
 
 ### README Code Generation
-for filename in "acknowledgement.md" "body.md" "browserify" "doctoc.md" "folderdocs.md" "folderrepo.md" "handlebars4code.md" "headerintro.md" "tail.md" "usage.md"
+for filename in "acknowledgement.md" "body.md" "browserify" "build_process.md" "doctoc.md" "folderdocs.md" "folderrepo.md" "handlebars4code.md" "headerintro.md" "jsonschema.md" "tail.md" "usage.md"
 do
   echo "README: checking file exists or download '$filename'"
   file="./src/readme/$filename"

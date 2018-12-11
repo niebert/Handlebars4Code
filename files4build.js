@@ -56,6 +56,8 @@ const getReadme4Build = function (pPath) {
     pPath+'body.md',
     pPath+'bodytail.md',
     */
+    //pPath+'jsonschema.md',
+    pPath+'build_process.md',
     pPath+'browserify.md',
     pPath+'acknowledgement.md',
     './src/readme_devlibs.md',

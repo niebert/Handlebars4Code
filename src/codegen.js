@@ -5,18 +5,19 @@ function replaceString(pString,pSearch,pReplace)
 // replaces in the string "pString" multiple substrings "pSearch" by "pReplace"
 {
 	//alert("cstring.js - replaceString() "+pString);
+	pString = pString || "undefined string parameter in replaceString() call ";
 	if (!pString) {
-		alert("replaceString()-Call - pString not defined!");
+		console.log("replaceString()-Call - pString not defined!");
 	} else if (pString != '') {
 		var vHelpString = '';
         var vN = pString.indexOf(pSearch);
 		var vReturnString = '';
-		while (this.greater(vN+1,0)) {
-			if (this.greater(vN , 0)) {
+		while ( vN+1 > 0 ) {
+			if (vN > 0) {
 				vReturnString += pString.substring(0, vN);
 			};
 			vReturnString += pReplace;
-            if (this.lower(vN + pSearch.length , pString.length)) {
+            if (vN + pSearch.length < pString.length) {
 				pString = pString.substring(vN+pSearch.length, pString.length);
 			} else {
 				pString = ''
@@ -68,6 +69,7 @@ function replaceFileOutput(pContent,pkg) {
 	return pContent
 }
 
+// requires: var fs = require('fs');
 function save_file(pFilename,pContent, pMessage) {
   var vMessage = pMessage || "File '"+pFilename+"' was saved!";
   fs.writeFile(pFilename, pContent, function(err) {
@@ -78,6 +80,45 @@ function save_file(pFilename,pContent, pMessage) {
   });
 
 };
+
+
+
+
+function getConvertedFile4JSON(srcPath,pJSON) {
+	fs.readFile(srcPath, 'utf8', function(err, contents) {
+    console.log(processJSON(contents,pJSON));
+	});
+
+}
+
+function processJSON(pContent,pJSON) {
+	for (var key in pJSON) {
+		if (pJSON.hasOwnProperty(key)) {
+			var vSearch = "___PKG_"+key.toUpperCase()+"___";
+			console.log("CONVERT: key='"+key+"' vSearch='"+vSearch+"'");
+			pContent = replaceString(pContent,vSearch,pJSON[key])
+		}
+	};
+	console.log("REPLACE: "+pContent);
+	return pContent
+}
+
+function writeConvertJSON(srcPath, savPath, pJSON) {
+        fs.writeFile (savPath, (getConvertedFile4JSON(srcPath,pJSON)), function(err) {
+        if (err) throw err;
+            console.log('writeConvertJSON("'+savPath+'","'+srcPath+'",pJSON)-Call complete');
+        }
+    );
+}
+
+var pkg_test = {
+	"name":"handlebars4code5",
+	"exportvar":"Handlebars4Code5",
+	"githubuser":"myusername"
+}
+//writeConvertJSON('./src/readme/folderrepo.md','./src/readme/folderrepo.test.md',pkg_test);
+console.log(getConvertedFile4JSON('./src/readme/folderrepo.md',pkg_test));
+
 
 function concat_main(pFilename,pLibArray,pkg) {
   var vLibTailArray = clone_json(pLibArray);
@@ -239,7 +280,7 @@ function create_inherit_require(pkg) {
   if (pkg.hasOwnProperty("inherit")) {
     vInherit += "\n";
     vInherit += "\n//--------------------------------------";
-    vInherit += "\n//---Require Module----------------------";
+    vInherit += "\n//---Require Module---------------------";
     vInherit += "\n// The module '"+pkg.exportvar+"' extends '"+pkg.inherit+"' and";
     vInherit += "\n// inherits all attributes and methods form '"+pkg.inherit+"'";
     vInherit += "\nlet "+pkg.inherit+" = require('"+(pkg.inherit).toLowerCase()+"');";
