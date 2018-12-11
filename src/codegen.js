@@ -104,13 +104,21 @@ function processJSON(pContent,pJSON) {
 }
 
 function writeConvertJSON(srcPath, savPath, pJSON) {
-        fs.writeFile (savPath, (getConvertedFile4JSON(srcPath,pJSON)), function(err) {
-        if (err) throw err;
-            console.log('writeConvertJSON("'+savPath+'","'+srcPath+'",pJSON)-Call complete');
-        }
-    );
+  fs.readFile(srcPath, 'utf8', function(err, contents) {
+    var vContent = processJSON(contents,pJSON);
+    if (vContent) {
+      fs.writeFile (savPath, vContent, function(err) {
+          if (err) throw err;
+              console.log('writeConvertJSON("'+savPath+'","'+srcPath+'",pJSON)-Call complete');
+          }
+      );
+    } else {
+      console.log("ERROR writeConvertJSON(): generating '"+savPath+"' failed - no content generated\n");
+      throw err
+    }
+	});
 }
-
+/*
 var pkg_test = {
 	"name":"handlebars4code5",
 	"exportvar":"Handlebars4Code5",
@@ -118,7 +126,7 @@ var pkg_test = {
 }
 //writeConvertJSON('./src/readme/folderrepo.md','./src/readme/folderrepo.test.md',pkg_test);
 console.log(getConvertedFile4JSON('./src/readme/folderrepo.md',pkg_test));
-
+*/
 
 function concat_main(pFilename,pLibArray,pkg) {
   var vLibTailArray = clone_json(pLibArray);
@@ -452,5 +460,6 @@ module.exports = {
   "create_readme_inherit": create_readme_inherit,
   "create_readme_inherit_static": create_readme_inherit_static,
   "create_readme_devlibs": create_readme_devlibs,
-  "create_readme_tail": create_readme_tail
+  "create_readme_tail": create_readme_tail,
+  "write_convert_json": writeConvertJSON
 };
