@@ -1,22 +1,48 @@
 #!/bin/sh
+echo "-----------------------------------"
+echo "--- CALL: $0"
+echo "-----------------------------------"
+# Source URL to download from the files:
 urlpath="https://raw.githubusercontent.com/niebert"
+# Append Path of Repository to source path
+
+# --------------------------------
+# Linux OS Settings
+# SED: Stream EDit Call differ on GNU Linux and on MacOSX (BSD) Linux
+
+#---GNU Linux Settings------------
+#OpSys="GNU Linux"
+#sed_call = "sed -i "
+# --------------------------------
+
+#---MacOSX BSD Linux Settings-----
+OpSys="MacOSX - BSD Linux"
+sed_call = "sed -i '' "
+# --------------------------------
+
+
 source="$urlpath/Handlebars4Code/master"
 
 githubuser="niebert"
-reponame="handlebars4code"
-exportvar="Handlebars4Code"
+reponame="audioslides4web"
+exportvar="AudioSlides4Web"
 
 
 #defvalue=$githubuser
-#read -p "Enter your GitHub username for this repository?  " "$defvalue" githubuser
+#read -p "Enter your GitHub username for this repository?  " -i "$defvalue" githubuser
 #defvalue=$reponame
-#read -p "Enter your GitHub Repository name?  " "$defvalue" reponame
+#read -p "Enter your GitHub Repository name?  " -i "$defvalue" reponame
 #defvalue=$exportvar
-#read -p "Enter your Export Variable/Classname for this repository?  " "$defvalue" exportvar
+#read -p "Enter your Export Variable/Classname for this repository?  " -i "$defvalue" exportvar
 
+# echo the current Operating System
+echo "------------------------------------------------------"
+echo "INFOMATION: Local Repository and Operating System"
+echo "Operating System: $OpSys"
 echo "Repository Name:            $reponame"
 echo "Export Variable/Class Name: $exportvar"
 echo "GitHub Username:            $githubuser"
+echo "------------------------------------------------------"
 
 
 # wait 2 seconds to
@@ -66,11 +92,27 @@ then
 	echo "NPM: Check file '$file' - found."
 else
 	echo "NPM: Check file '$file' - not found - try to download."
-  wget "$source/$file  -O ./$file"
-  sed -i "s/handelbars4code/$reponame/g" "./$file"
-  sed -i "s/Handelbars4Code/$exportvar/g" "./$file"
-  sed -i "s/niebert/$githubuser/g" "./$file"
-	sleep $sleeptime
+  wget "$source/$file"  -O "$file"
+  echo "------------------------------------------------------"
+  echo "STREAM EDITOR SED: Search/Replace in 'package.json'"
+  echo "Operating System: $OpSys"
+  echo "Repository Name:            $reponame"
+  echo "Export Variable/Class Name: $exportvar"
+  echo "GitHub Username:            $githubuser"
+  echo "------------------------------------------------------"
+  regexdef="'s/handelbars4code/$reponame/g'"
+  echo "(1) $sed_call $regexdef ./$file "
+  $sed_call $regexdef ./$file
+  regexdef="'s/Handelbars4Code/$exportvar/g'"
+  echo "(2) $sed_call $regexdef ./$file "
+  $sed_call $regexdef ./$file
+  regexdef="'s/niebert/$githubuser/g'"
+  echo "(3) $sed_call $regexdef ./$file "
+  $sed_call $regexdef ./$file
+  echo "SED-Call: Search/Replace in 'package.json' DONE"
+  echo "------------------------------------------------------"
+  sleep $sleeptime
+
 fi
 
 #### CODE GENERATION src/libs src/html
@@ -144,7 +186,13 @@ do
 		sleep $sleeptime
   fi
 done
-
+echo "---------------------------------------------------"
+echo "              DOWNLOAD FINISHED"
+echo "---------------------------------------------------"
+echo "Operating System:           $OpSys "
+echo "    in case you run the script on other Linux OS"
+echo "    please edit $0 and alter SED-call."
 echo "Repository Name:            $reponame"
 echo "Export Variable/Class Name: $exportvar"
 echo "GitHub Username:            $githubuser"
+echo "---------------------------------------------------"

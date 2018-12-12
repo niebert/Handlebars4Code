@@ -77,6 +77,6 @@ codegen.concat_readme("./README.md",vReadme4Build,pkg);
 // replaces ___PKG_NAME___ by pkg.name
 // replaces ___PKG_EXPORTVAR___ by pkg.exportvar
 // replaces ___PKG_GITHUBUSER___ by pkg.githubuser
-// codegen.write_convert_json("./README.md", "./README_replace.md", pkg)
+codegen.write_convert_json("./README.md", "./README_replace.md", pkg)
 /*
 */

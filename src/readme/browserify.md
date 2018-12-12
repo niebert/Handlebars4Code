@@ -1,5 +1,11 @@
+## Build and Compress with Browserify, Watchify, UglifyJS
+The NodeJS modules can use `require()`-command. Browsers cannot execute the `require()`-command and other node specific programming features.
+* `Browserify` loads the file `___PKG_MAIN___` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/___PKG_NAME___.brows.js`
+* `Watchify` observes any changes in the source files in `src/` and starts on the event of changes the build process of the file `___PKG_MAIN___` as input file and creates an output file in `dist/___PKG_NAME___.brows.js`.
+* `UglifyJS` compresses the code in `dist` and takes the file `dist/___PKG_NAME___.js` and generates the compressed library in `dist/___PKG_NAME___.min.js`. The same is applied for `docs/js/___PKG_NAME___.js` and the output is `docs/js/___PKG_NAME___.min.js`. The compression of the source code can be perform without a total build by `npm run compress`.
 
-## Browserify and Watchify
+
+### Browserify and Watchify
 Browserify and Watchify are used in this repository to control the WebApp-javascript development with the required Javascript libraries installed with [NPM Node.js](https://docs.npmjs.com/getting-started/installing-node) and similar framework world that greatly improve your javascript workflow: Using them, you no longer need to micro-manage your script tags but instead you just declare the libraries each of your client-side modules is using - or you can even create your own reusable modules! Also, installing (or updating) javascript libraries is as easy as running a single command!
 * [Additional Information about Browserify and Watchify on GitHub](https://spapas.github.io/2015/05/27/using-browserify-watchify/)
 * [Youtube Video about Browserify and Watchify by Kyle Robinson Young 2015/04/16](https://www.youtube.com/watch?v=CTAa8IcQh1U)
@@ -41,8 +47,8 @@ In the current repository `Browserfy` and `Watchify` are expected to be installe
 ### Start Watching the Files with Watchify
 Watchify will trigger the `npm run build` process if files were change due to alteration of code. To start watching the files, run the npm-watch script by `npm run watch`, which is defined in `package.json`
 
-## Source JS file and development bundle output
-The main JS source file for the build process is `src/main.js`. The ouput library (resp. output file of build process) is stored in distrubtion library for browser based web-development in `dist/bundle.js`. Compressed code is generated with `UglifyJS`. It takes the `dist/bundle.js` as input file and creates the compressed file `dist/bundle.min.js`.
-The compression of `dist/bundle.js` into `dist/bundle.min.js` can be started by
+### Source JS file and development bundle output
+The main JS source file for the build process is `src/main.js`. The output library (resp. output file of build process) is stored in distrubtion library for browser based web-development in `dist/___PKG_NAME___.js`. Compressed code is generated with `UglifyJS`. It takes the `dist/___PKG_NAME___.js` as input file and creates the compressed file `dist/___PKG_NAME___.min.js`.
+The compression of `dist/___PKG_NAME___.js` into `dist/___PKG_NAME___.min.js` uses `uglify-js` module and can be started by
 
   `npm run compress`
