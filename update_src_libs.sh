@@ -7,12 +7,12 @@ reponame="handlebars4code"
 exportvar="Handlebars4Code"
 
 
-defvalue=$githubuser
-read -p "Enter your GitHub username for this repository?  " "$defvalue" githubuser
-defvalue=$reponame
-read -p "Enter your GitHub Repository name?  " "$defvalue" reponame
-defvalue=$exportvar
-read -p "Enter your Export Variable/Classname for this repository?  " "$defvalue" exportvar
+#defvalue=$githubuser
+#read -p "Enter your GitHub username for this repository?  " "$defvalue" githubuser
+#defvalue=$reponame
+#read -p "Enter your GitHub Repository name?  " "$defvalue" reponame
+#defvalue=$exportvar
+#read -p "Enter your Export Variable/Classname for this repository?  " "$defvalue" exportvar
 
 echo "Repository Name:            $reponame"
 echo "Export Variable/Class Name: $exportvar"
