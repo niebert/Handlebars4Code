@@ -8,11 +8,11 @@ exportvar="Handlebars4Code"
 
 
 defvalue=$githubuser
-read -p "Enter your GitHub username for this repository?  " $defvalue githubuser
+read -p "Enter your GitHub username for this repository?  " "$defvalue" githubuser
 defvalue=$reponame
-read -p "Enter your GitHub Repository name?  " $defvalue reponame
+read -p "Enter your GitHub Repository name?  " "$defvalue" reponame
 defvalue=$exportvar
-read -p "Enter your Export Variable/Classname for this repository?  " $defvalue exportvar
+read -p "Enter your Export Variable/Classname for this repository?  " "$defvalue" exportvar
 
 echo "Repository Name:            $reponame"
 echo "Export Variable/Class Name: $exportvar"
@@ -60,20 +60,22 @@ wget $source/dist/handlebars4code.js -O ./src/libs/handlebars4code.js
 wget $source/dist/handlebars4code.min.js -O ./src/libs/handlebars4code.min.js
 
 #### NPM Files
-file="./package.json"
-if [ -f "$file" ]
+file="package.json"
+if [ -f "./$file" ]
 then
 	echo "NPM: Check file '$file' - found."
 else
 	echo "NPM: Check file '$file' - not found - try to download."
-  wget "$source/src/$file  -O ./src/$file"
-	sed -i "s/handelbars4code/$reponame/g" "./src/$file"
+  wget "$source/$file  -O ./$file"
+  sed -i "s/handelbars4code/$reponame/g" "./$file"
+  sed -i "s/Handelbars4Code/$exportvar/g" "./$file"
+  sed -i "s/niebert/$githubuser/g" "./$file"
 	sleep $sleeptime
 fi
 
 #### CODE GENERATION src/libs src/html
-file="./files4build.js"
-if [ -f "$file" ]
+file="files4build.js"
+if [ -f "./$file" ]
 then
 	echo "CODEGEN: Check file '$file' - found."
 else
@@ -127,7 +129,6 @@ do
 		sleep $sleeptime
   fi
 done
-
 
 ### FONT-AWESOME for docs/fonts
 for filename in "fontawesome-webfont." "fontawesome-webfont.eot" "fontawesome-webfont.svg" "fontawesome-webfont.ttf" "fontawesome-webfont.woff" "fontawesome-webfont.woff2" "FontAwesome.otf"
