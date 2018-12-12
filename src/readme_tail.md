@@ -1,10 +1,10 @@
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.1.1`   (last build 2018/12/11 17:49:46)
+* Version:  `1.1.1`   (last build 2018/12/12 8:18:43)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/11 17:49:46
+* Date:     2018/12/12 8:18:43
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript

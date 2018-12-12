@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.1.1  Date: 2018/12/11 17:49:46
+ Version:  1.1.1  Date: 2018/12/12 8:18:43
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2018/12/11 17:49:46
+ Date:     2018/12/12 8:18:43
  Inheritance: 'Handlebars4Code' inherits from 'Handlebars'
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
@@ -5030,6 +5030,7 @@ Handlebars.registerHelper('indent', function(pText, pIndent) {
   var vIndent = "        ";
   if(typeof(pIndent) == "string") {
     console.log("CALL: helper-indent: pIndent is of type 'String'");
+    vIndent = pIndent;
   } else {
     if (pIndent.hasOwnProperty("hash")) {
       if (pIndent.hash.hasOwnProperty("indent")) {

@@ -171,6 +171,7 @@ Handlebars.registerHelper('indent', function(pText, pIndent) {
   var vIndent = "        ";
   if(typeof(pIndent) == "string") {
     console.log("CALL: helper-indent: pIndent is of type 'String'");
+    vIndent = pIndent;
   } else {
     if (pIndent.hasOwnProperty("hash")) {
       if (pIndent.hash.hasOwnProperty("indent")) {

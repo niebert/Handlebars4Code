@@ -23,12 +23,14 @@ echo "GitHub Username:            $githubuser"
 sleeptime=2
 
 mkdir -p dist
+mkdir -p docs
 mkdir -p docs/css
 mkdir -p docs/js
 mkdir -p docs/db
 mkdir -p docs/tpl
 mkdir -p docs/fonts
 mkdir -p docs/schema
+mkdir -p src
 mkdir -p src/libs
 mkdir -p src/html
 mkdir -p src/readme
@@ -125,6 +127,23 @@ do
 		sleep $sleeptime
   fi
 done
+
+
+### FONT-AWESOME for docs/fonts
+for filename in "fontawesome-webfont." "fontawesome-webfont.eot" "fontawesome-webfont.svg" "fontawesome-webfont.ttf" "fontawesome-webfont.woff" "fontawesome-webfont.woff2" "FontAwesome.otf"
+do
+  echo "FONT: checking file exists or download '$filename'"
+  file="./docs/fonts/$filename"
+  if [ -f "$file" ]
+  then
+  	echo "   Check file '$file' - found."
+  else
+  	echo "   Check file '$file' - not found - try to download."
+    wget $source/src/css/$filename  -O $file
+		sleep $sleeptime
+  fi
+done
+
 echo "Repository Name:            $reponame"
 echo "Export Variable/Class Name: $exportvar"
 echo "GitHub Username:            $githubuser"
