@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.1.1  Date: 2018/12/12 8:18:43
+ Version:  1.1.2  Date: 2018/12/18 13:13:45
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2018/12/12 8:18:43
+ Date:     2018/12/18 13:13:45
  Inheritance: 'Handlebars4Code' inherits from 'Handlebars'
  Require Module with:
     const Handlebars4Code = require('handlebars4code');

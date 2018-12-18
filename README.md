@@ -59,11 +59,11 @@ The following table of contents is generated with `node doctoc README.md`.
     - [JSON Data: `indent`](#json-data-indent)
     - [Compiler Output: `indent`](#compiler-output-indent)
 - [Build Process of `npm run build`](#build-process-of-npm-run-build)
-- [Browserify and Watchify](#browserify-and-watchify)
+  - [Browserify and Watchify](#browserify-and-watchify)
   - [Global Installation of Browserify, Watchify, UglifyJS and DocToc](#global-installation-of-browserify-watchify-uglifyjs-and-doctoc)
   - [Package Installation of Browserify and Watchify - Alternative](#package-installation-of-browserify-and-watchify---alternative)
   - [Start Watching the Files with Watchify](#start-watching-the-files-with-watchify)
-- [Source JS file and development bundle output](#source-js-file-and-development-bundle-output)
+  - [Source JS file and development bundle output](#source-js-file-and-development-bundle-output)
 - [Acknowledgement](#acknowledgement)
 - [Libraries required for  `Handlebars4Code`](#libraries-required-for--handlebars4code)
 - [Libraries for Building and Developement](#libraries-for-building-and-developement)
@@ -652,8 +652,14 @@ The templates for building the output are stored in the folder `src/`.
 After the build process the `README.md` is generated and if you want to have the table of contents in the file for the concatenation of  files in `src/readme/` listed in `files4build.js` then you must run the DocToc generator for `README.md` by `doctoc README.md` from the shell to update the table of contents in `README.md`.
 
 <!-- END:   src/readme/build_process.md -->
+## Build and Compress with Browserify, Watchify, UglifyJS
+The NodeJS modules can use `require()`-command. Browsers cannot execute the `require()`-command and other node specific programming features.
+* `Browserify` loads the file `src/main.js` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/handlebars4code.brows.js`
+* `Watchify` observes any changes in the source files in `src/` and starts on the event of changes the build process of the file `src/main.js` as input file and creates an output file in `dist/handlebars4code.brows.js`.
+* `UglifyJS` compresses the code in `dist` and takes the file `dist/handlebars4code.js` and generates the compressed library in `dist/handlebars4code.min.js`. The same is applied for `docs/js/handlebars4code.js` and the output is `docs/js/handlebars4code.min.js`. The compression of the source code can be perform without a total build by `npm run compress`.
 
-## Browserify and Watchify
+
+### Browserify and Watchify
 Browserify and Watchify are used in this repository to control the WebApp-javascript development with the required Javascript libraries installed with [NPM Node.js](https://docs.npmjs.com/getting-started/installing-node) and similar framework world that greatly improve your javascript workflow: Using them, you no longer need to micro-manage your script tags but instead you just declare the libraries each of your client-side modules is using - or you can even create your own reusable modules! Also, installing (or updating) javascript libraries is as easy as running a single command!
 * [Additional Information about Browserify and Watchify on GitHub](https://spapas.github.io/2015/05/27/using-browserify-watchify/)
 * [Youtube Video about Browserify and Watchify by Kyle Robinson Young 2015/04/16](https://www.youtube.com/watch?v=CTAa8IcQh1U)
@@ -695,9 +701,9 @@ In the current repository `Browserfy` and `Watchify` are expected to be installe
 ### Start Watching the Files with Watchify
 Watchify will trigger the `npm run build` process if files were change due to alteration of code. To start watching the files, run the npm-watch script by `npm run watch`, which is defined in `package.json`
 
-## Source JS file and development bundle output
-The main JS source file for the build process is `src/main.js`. The ouput library (resp. output file of build process) is stored in distrubtion library for browser based web-development in `dist/bundle.js`. Compressed code is generated with `UglifyJS`. It takes the `dist/bundle.js` as input file and creates the compressed file `dist/bundle.min.js`.
-The compression of `dist/bundle.js` into `dist/bundle.min.js` can be started by
+### Source JS file and development bundle output
+The main JS source file for the build process is `src/main.js`. The output library (resp. output file of build process) is stored in distrubtion library for browser based web-development in `dist/handlebars4code.js`. Compressed code is generated with `UglifyJS`. It takes the `dist/handlebars4code.js` as input file and creates the compressed file `dist/handlebars4code.min.js`.
+The compression of `dist/handlebars4code.js` into `dist/handlebars4code.min.js` uses `uglify-js` module and can be started by
 
   `npm run compress`
 
@@ -733,10 +739,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.1.1`   (last build 2018/12/12 8:18:43)
+* Version:  `1.1.2`   (last build 2018/12/18 13:13:45)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/12 8:18:43
+* Date:     2018/12/18 13:13:45
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript

@@ -1,14 +1,25 @@
+//---------------------------------------------------
+// --- Build JS/HTML/CSS Version: 1.0.0 -------------
+//---------------------------------------------------
 const pkg = require('./package');
+const codegen = require('./src/codegen.js');
 // ------ Build Settings -----------------
+pkg.githubuser = pkg.githubuser || "githubuser";
+pkg.build = pkg.build || {};
+pkg.build.readme = pkg.readme || "README_build.md";
+pkg.build.html = pkg.build.html || "docs/index_build.html";
+pkg.build.css = pkg.build.css || "docs/css/main_build.css";
+pkg.build.htmlsrc = pkg.build.htmlsrc || "docs/index_src_libs_build.html";
+pkg.exportvar = pkg.exportvar || codegen.capitalizeFirstLetter(pkg.name);
 var vExportVar = pkg.exportvar; // defined in src/libs/exportmod.js
-var vSrcPath = "./src/"; // Path to Source Libraries
-var vDistPath = "./dist/"; // Path to distribution
+var vSrcPath = "src/"; // Path to Source Libraries
+var vDistPath = "dist/"; // Path to distribution
 var vLibPath = vSrcPath + 'libs/';
 var vHtmlPath = vSrcPath + 'html/';
 var vCssPath = vSrcPath + 'css/';
 var vReadmePath = vSrcPath + 'readme/';
-var vLibDist = './dist/'+pkg.name+'.js';
-var vLibOut = './docs/js/'+pkg.name+'.js';
+var vLibDist = 'dist/'+pkg.name+'.js';
+var vLibOut = 'docs/js/'+pkg.name+'.js';
 const f4b = require('./files4build');
 // the following get-function return arrays of filenames
 var vLibs4Build = f4b.getLibs4Build(vLibPath);
@@ -34,7 +45,6 @@ var vLibs4Build = [
 // (4) create docs/index.html for browser test of WebApp
 // (5) create README.md for documentation of WebApp
 
-var codegen = require('./src/codegen.js');
 
 pkg.exportvar = vExportVar;
 
@@ -63,20 +73,38 @@ codegen.create_header(pkg);
 //----CONCAT main,libs,css,html,readem-----
 // MAIN.js create library and append "modules.export"
 codegen.concat_main(pkg.main,vLibs4Build,pkg);
+console.log("NPM Build DONE: ",pkg.main);
 // LIB:  create the library in /dist folder
 codegen.concat_libs(vLibDist,vLibs4Build,pkg);
+console.log("Build DONE: ",vLibDist);
 // DOCS: create the library in /docs folder
 codegen.concat_libs(vLibOut,vLibs4Build,pkg);
+console.log("Build DONE: ",vLibOut);
+codegen.create_script_tags4libs("./src/html_src_libs_embed.html",vLibs4Build,pkg);
 
 
-codegen.concat_html("./docs/index.html",vHtml4Build,pkg);
-codegen.concat_css("./docs/css/build.css",vCss4Build,pkg);
-codegen.concat_readme("./README.md",vReadme4Build,pkg);
+codegen.concat_html(pkg.build.html,vHtml4Build,pkg);
+codegen.concat_css(pkg.build.css,vCss4Build,pkg);
+codegen.concat_readme(pkg.build.readme,vReadme4Build,pkg);
 //-----------------------------------------
 // CALL: write_convert_json() applied on README.md
 // replaces ___PKG_NAME___ by pkg.name
 // replaces ___PKG_EXPORTVAR___ by pkg.exportvar
 // replaces ___PKG_GITHUBUSER___ by pkg.githubuser
-codegen.write_convert_json("./README.md", "./README_replace.md", pkg)
+function writeConvertCall() {
+  console.log("HTML: Replace ___PKG___ variables in generated file: "+pkg.build.html);
+  codegen.write_convert_json(pkg.build.html, pkg.build.html, pkg)
+  console.log("CSS: Replace ___PKG___ variables in generated file: "+pkg.build.css);
+  codegen.write_convert_json(pkg.build.css, pkg.build.css, pkg)
+  console.log("README: Replace ___PKG___ variables in generated file: "+pkg.build.readme);
+  codegen.write_convert_json(pkg.build.readme, pkg.build.readme, pkg)
+  console.log("LIB: Replace ___PKG___ variables in generated file: "+pkg.build.readme);
+  codegen.write_convert_json(vLibOut, vLibOut, pkg);
+  codegen.write_convert_json(vLibDist, vLibDist, pkg);
+  console.log("Replacing ___PKG___ variables in generated files DONE: "+vLibOut);
+}
+
+setTimeout(writeConvertCall,1000);
+
 /*
 */

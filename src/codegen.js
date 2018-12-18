@@ -1,3 +1,4 @@
+// --- CodeGen Version: 1.0.0 -------------
 var fs = require('fs');
 var concat = require('concat-files');
 
@@ -10,7 +11,7 @@ function replaceString(pString,pSearch,pReplace)
 		console.log("replaceString()-Call - pString not defined!");
 	} else if (pString != '') {
 		var vHelpString = '';
-        var vN = pString.indexOf(pSearch);
+    var vN = pString.indexOf(pSearch);
 		var vReturnString = '';
 		while ( vN+1 > 0 ) {
 			if (vN > 0) {
@@ -27,6 +28,10 @@ function replaceString(pString,pSearch,pReplace)
 	};
 	return vReturnString + pString;
 };
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 function getDevLibs4readme(pkg) {
 	var vOut = "\n## Libraries for Building and Developement";
@@ -95,11 +100,12 @@ function processJSON(pContent,pJSON) {
 	for (var key in pJSON) {
 		if (pJSON.hasOwnProperty(key)) {
 			var vSearch = "___PKG_"+key.toUpperCase()+"___";
+			if (pJSON[key]) {}
 			console.log("CONVERT: key='"+key+"' vSearch='"+vSearch+"'");
 			pContent = replaceString(pContent,vSearch,pJSON[key])
 		}
 	};
-	console.log("REPLACE: "+pContent);
+	//console.log("REPLACE: "+pContent);
 	return pContent
 }
 
@@ -142,6 +148,19 @@ function concat_libraries(pFilename,pLibArray,pkg) {
   var vMainJS = "./"+pkg.main;
   concat_libs(vMainJS,vLibTailArray);
 }
+
+function create_script_tags4libs(pFilename,pLibArray,pkg) {
+	var vLibURL = [];
+	for (var i = 0; i < pLibArray.length; i++) {
+		vLibURL.push("../"+pLibArray[i]);
+	};
+	var vPrefix = "\n<script src='";
+	var vPostfix = "'></script>";
+	var vOut = "<!-- HTML code for embedding the source libraries into docs/index_src_libs.html -->";
+	vOut += vPrefix + vLibURL.join(vPostfix+vPrefix) + vPostfix;
+  save_file(pFilename,vOut, "Save '"+pFilename+"' as HTML code for embedding the source libraries")
+}
+
 
 function concat_libs(pFilename,pLibArray) {
   console.log("Create Library '"+pFilename+"'");
@@ -441,6 +460,7 @@ function clone_json(pJSON) {
 };
 
 module.exports = {
+	"capitalizeFirstLetter":capitalizeFirstLetter,
   "save_file":save_file,
   "concat_libs":concat_libs,
   "concat_main":concat_main,
@@ -461,5 +481,6 @@ module.exports = {
   "create_readme_inherit_static": create_readme_inherit_static,
   "create_readme_devlibs": create_readme_devlibs,
   "create_readme_tail": create_readme_tail,
+	"create_script_tags4libs": create_script_tags4libs,
   "write_convert_json": writeConvertJSON
 };

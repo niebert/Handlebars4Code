@@ -69,8 +69,8 @@ wget $source/src/codegen.js  -O ./src/codegen.js
 sleep $sleeptime
 
 # Libs for ./src
-wget $urlpath/json-editor/master/dist/jsoneditor.min.js -O ./src/libs/jsoneditor.min.js
-wget $urlpath/json-editor/master/dist/jsoneditor.js -O ./src/libs/jsoneditor.js
+wget $urlpath/json-editor-dorn/master/dist/jsoneditor.min.js -O ./src/libs/jsoneditor.min.js
+wget $urlpath/json-editor-dorn/master/dist/jsoneditor.js -O ./src/libs/jsoneditor.js
 wget $urlpath/LinkParam/master/dist/linkparam.js -O ./src/libs/linkparam.js
 wget $urlpath/LinkParam/master/dist/linkparam.min.js -O ./src/libs/linkparam.min.js
 # wget https://raw.githubusercontent.com/eligrey/FileSaver.js/master/src/FileSaver.js -O ./src/libs/filesaver.js
@@ -84,6 +84,7 @@ wget https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118ead
 wget https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js -O ./src/libs/filesaver.js
 wget $source/dist/handlebars4code.js -O ./src/libs/handlebars4code.js
 wget $source/dist/handlebars4code.min.js -O ./src/libs/handlebars4code.min.js
+wget $source/src/libs/json.js -O ./src/libs/handlebars4code.js
 
 #### NPM Files
 file="package.json"
@@ -142,7 +143,7 @@ do
 done
 
 ### README Code Generation
-for filename in "acknowledgement.md" "body.md" "browserify" "build_process.md" "doctoc.md" "folderdocs.md" "folderrepo.md" "handlebars4code.md" "headerintro.md" "jsonschema.md" "tail.md" "usage.md"
+for filename in "acknowledgement.md" "body.md" "browserify.md" "build_process.md" "doctoc.md" "folderdocs.md" "folderrepo.md" "handlebars4code.md" "headerintro.md" "jsonschema.md" "tail.md" "usage.md"
 do
   echo "README: checking file exists or download '$filename'"
   file="./src/readme/$filename"

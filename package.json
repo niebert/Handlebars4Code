@@ -23,7 +23,12 @@
     "build": "node ./build.js;uglifyjs dist/handlebars4code.js -mc warnings=false > dist/handlebars4code.min.js;uglifyjs docs/js/handlebars4code.js -mc warnings=false > docs/js/handlebars4code.min.js;doctoc README.md",
     "build2dist": "node ./build.js",
     "compress": "node ./build.js; uglifyjs dist/handlebars4code.js -mc warnings=false > dist/handlebars4code.min.js",
-    "test": "jshint dist/handlebars4code.js"
+    "test": "jshint src/exportmod.js"
+  },
+  "build":{
+    "html":"docs/index.html",
+    "css":"docs/css/build.css",
+    "readme":"README.md"
   },
   "repository": {
     "type": "git",
@@ -39,6 +44,9 @@
   ],
   "githubuser": "niebert",
   "author": "Engelbert Niehaus",
+  "readme": "README.md",
+  "html": "docs/index.html",
+  "htmlsrc": "docs/index_src_libs.html",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/niebert/Handlebars4Code/issues"
