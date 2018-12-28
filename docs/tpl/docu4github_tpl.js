@@ -2,26 +2,33 @@ vDataJSON["tpl"]["docu4github"] = `
 {{#ifcond data.reposinfo.static "!=" "yes"}}
 ## Javascript Class: \`{{data.classname}}\`
 
-{{data.comment}}
+{{{data.comment}}}
 * created with [ClassEditorUML](https://niebert.github.io/ClassEditorUML) - Date: {{data.reposinfo.created}}
 * last modifications at {{data.reposinfo.modified}}
 * URL Class Editor for UML: https://niebert.github.io/ClassEditorUML
 * File: \`js/{{filename data.classname}}.js\`
-{{#ifcond data.superclassname "!=" ""}}
+* UML-File: \`jscc/{{filename data.classname}}_uml.json\`
+{{#ifcond data.superclassname "!=" " "}}
 * Superclass: \`{{data.superclassname}}\` - code generation in \`ClassEditorUML\` can insert the require-commands automatically. For the settings expand the \`Repository Info\` in ClassEditorUML. You can set \`Require Classes NPM:\` to \`Yes\` and \`ClassEditorUML\` will include require command for super class. ClassEditorUML assumes, that the super class is a locally available.
 \`\`\`javascript
 const {{data.superclassname}} = require('./{{filename data.superclassname}}');
 \`\`\`
 The require command assumes the file \`{{filename data.classname}}.js\` in the same directory as \`{{filename data.superclassname}}.js\`.
 {{/ifcond}}
+{{#ifcond data.reposinfo.static "==" "yes"}}
+## Javascript Module: \`{{data.classname}}\`
 
-{{data.comment}}
+{{{data.comment}}}
 * created with [ClassEditorUML](https://niebert.github.io/ClassEditorUML) - Date: {{data.reposinfo.created}}
 * last modifications at {{data.reposinfo.modified}}
 * URL Class Editor for UML: https://niebert.github.io/ClassEditorUML
 * File: \`js/{{filename data.classname}}.js\`
-{{#ifcond data.superclassname "!=" ""}}
-* Extends class: \`{{data.superclassname}}\` - code generation in \`ClassEditorUML\` can insert the require-commands automatically. For the settings expand the \`Repository Info\` in ClassEditorUML. You can set \`Require Classes NPM:\` to \`Yes\` and \`ClassEditorUML\` will include require command for super class. ClassEditorUML assumes, that the super class is a locally available.
+{{#ifcond data.superclassname "!=" " "}}
+* Superclass: \`{{data.superclassname}}\` - code generation in \`ClassEditorUML\` can insert the require-commands automatically. For the settings expand the \`Repository Info\` in ClassEditorUML. You can set \`Require Classes NPM:\` to \`Yes\` and \`ClassEditorUML\` will include require command for super class. ClassEditorUML assumes, that the super class is a locally available.
+\`\`\`javascript
+const {{data.superclassname}} = require('./{{filename data.superclassname}}');
+\`\`\`
+The require command assumes the file \`{{filename data.classname}}.js\` in the same directory as \`{{filename data.superclassname}}.js\`.
 {{/ifcond}}
 
 ### Create Instance of Class
@@ -102,16 +109,16 @@ For class \`{{data.classname}}\` the following attributes are defined:
 {{#each data.attributes}}
 
 #### Attribute \`{{name}} : {{class}}\`
-{{comment}}
+{{{comment}}}
 * Visibility: \`{{visibility}}\`
 * Class: \`{{class}}\`
 {{#ifcond visibility "==" "public"}}
-* Default Init: \`{{init}}\` set by \`my_instance.{{name}} = {{init}};\`
-* Access of attribute in the code of methods by \`this.{{name}} = {{init}};\`
+* Default Init: \`{{{init}}}\` set by \`my_instance.{{name}} = {{{init}}};\`
+* Access of attribute in the code of methods by \`this.{{name}} = {{{init}}};\`
 {{/ifcond}}
 {{#ifcond visibility "==" "private"}}
-* Default Init: \`{{init}}\` set inside class by \`{{name}} = {{init}};\`
-* Access of attribute in the code of methods by \`{{name}} = {{init}};\`
+* Default Init: \`{{{init}}}\` set inside class by \`{{name}} = {{{init}}};\`
+* Access of attribute in the code of methods by \`{{name}} = {{{init}}};\`
 {{/ifcond}}
 {{/each}}
 
@@ -120,7 +127,7 @@ For class \`{{data.classname}}\` the following methods are defined:
 {{#each data.methods}}
 
 #### Method \`{{name}}({{#paramcall parameter}}{{/paramcall}})\`
-{{comment}}
+{{{comment}}}
 * Visibility: \`{{visibility}}\`
 {{#ifcond return "!=" ""}}
 * Returns: \`{{return}}\`
@@ -141,7 +148,7 @@ For class \`{{data.classname}}\` the following methods are defined:
 {{/ifcond}}
 * Parameter List:
 {{#each parameter}}
-   * \`{{name}}:{{class}}\` {{removereturn comment}}
+   * \`{{name}}:{{class}}\` {{{removereturn comment}}}
 {{/each}}
 {{/each}}
 `;

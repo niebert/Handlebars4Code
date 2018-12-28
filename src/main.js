@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.1.2  Date: 2018/12/28 9:25:34
+ Version:  1.1.5  Date: 2018/12/28 11:27:57
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2018/12/28 9:25:34
+ Date:     2018/12/28 11:27:57
  Inheritance: 'Handlebars4Code' inherits from 'Handlebars'
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
@@ -5326,20 +5326,20 @@ function create_compiler(pTplJSON) {
     if (pTplJSON.hasOwnProperty(tplID)) {
       vTemplate = pTplJSON[tplID];
       vCodeCompiler[tplID] = Handlebars.compile(vTemplate);
-    };
-  };
-};
+    }
+  }
+}
 
 function get_compiler () {
   return vCodeCompiler;
-};
+}
 
 
 function compile_code(pTplID,pJSON) {
   // pJSON is JSON data of the UML Class
   var vCode = vCodeCompiler[pTplID](pJSON);
   return vCode;
-};
+}
 
 
 var Handlebars4Code = {

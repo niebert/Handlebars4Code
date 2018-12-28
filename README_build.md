@@ -665,7 +665,7 @@ The JSON-Editor of Jeremy Dorn has full support for JSON Schema version 3 and 4 
 
 ## Libraries required for  `Handlebars4Code`
 The following libraries are necessary for `handlebars4code.js`:
-* Lib: `handlebars` Version: `^4.0.11`
+* Lib: `handlebars` Version: `^4.0.12`
 
 
 ## Libraries for Building and Developement
@@ -681,10 +681,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.1.2`   (last build 2018/12/28 9:25:34)
+* Version:  `1.1.5`   (last build 2018/12/28 11:27:57)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/28 9:25:34
+* Date:     2018/12/28 11:27:57
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript

@@ -8,20 +8,20 @@ function create_compiler(pTplJSON) {
     if (pTplJSON.hasOwnProperty(tplID)) {
       vTemplate = pTplJSON[tplID];
       vCodeCompiler[tplID] = Handlebars.compile(vTemplate);
-    };
-  };
-};
+    }
+  }
+}
 
 function get_compiler () {
   return vCodeCompiler;
-};
+}
 
 
 function compile_code(pTplID,pJSON) {
   // pJSON is JSON data of the UML Class
   var vCode = vCodeCompiler[pTplID](pJSON);
   return vCode;
-};
+}
 
 
 var Handlebars4Code = {
