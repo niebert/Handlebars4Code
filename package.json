@@ -1,7 +1,7 @@
 {
   "name": "handlebars4code",
   "exportvar": "Handlebars4Code",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript)",
   "main": "src/main.js",
   "inherit": "Handlebars",
@@ -25,11 +25,6 @@
     "compress": "node ./build.js; uglifyjs dist/handlebars4code.js -mc warnings=false > dist/handlebars4code.min.js",
     "test": "jshint src/exportmod.js"
   },
-  "build":{
-    "html":"docs/index.html",
-    "css":"docs/css/build.css",
-    "readme":"README.md"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/niebert/Handlebars4Code.git"
@@ -42,11 +37,14 @@
     "Javascript",
     "JSON"
   ],
-  "githubuser": "niebert",
   "author": "Engelbert Niehaus",
-  "readme": "README.md",
-  "html": "docs/index.html",
-  "htmlsrc": "docs/index_src_libs.html",
+  "githubuser": "niebert",
+  "build":{
+    "readme": "README.md",
+    "html": "docs/index.html",
+    "css": "docs/css/main.css",
+    "htmlsrc": "docs/index_src_libs.html"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/niebert/Handlebars4Code/issues"

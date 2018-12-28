@@ -1,3 +1,5 @@
+<!-- BEGIN: src/readme/jsonschema.md -->
+
 ## JSON2Schema for JSON Editor
 The user interface of the JSON Editor (https://www.github.com/niebert/json-editor) is defined by a JSON schema. JSON Editor takes a JSON Schema and uses it to generate an HTML form.  
 It has full support for JSON Schema version 3 and 4 and can integrate with several popular CSS frameworks (bootstrap, foundation, and jQueryUI).
@@ -29,3 +31,4 @@ If you learn best by example, check these out to understand the basic prinples o
 *  CSS Integration Example - http://rawgithub.com/jdorn/json-editor/master/examples/css_integration.html
 
 If you want to alter the provided example of https://___PKG_GITHUBUSER___.github.io/___PKG_EXPORTVAR___ just make a copy of the `docs/`-folder in this repository `___PKG_EXPORTVAR___` and adapt the JSON-schema `docs/schema` and the JSON data in the folder `docs/db/` to the schema for your requirements. If you want to create your own JSON schema use the [JSON2Schema tool](https://niebert/github.io/JSON2Schema).
+<!-- END:   src/readme/jsonschema.md -->
