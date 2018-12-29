@@ -7835,11 +7835,11 @@ exports.SourceNode = require('./lib/source-node').SourceNode;
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.2.2  Date: 2018/12/29 7:53:52
+ Version:  1.2.3  Date: 2018/12/29 8:20:39
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2018/12/29 7:53:52
+ Date:     2018/12/29 8:20:39
  Inheritance: 'Handlebars4Code' inherits from 'Handlebars'
  Require Module with:
     const Handlebars4Code = require('handlebars4code');

@@ -59,6 +59,8 @@ The following table of contents is generated with `node doctoc README.md`.
     - [JSON Data: `indent`](#json-data-indent)
     - [Compiler Output: `indent`](#compiler-output-indent)
 - [Build Process of `npm run build`](#build-process-of-npm-run-build)
+  - [Define Filename for build in `package.json`](#define-filename-for-build-in-packagejson)
+  - [Browserify after Build](#browserify-after-build)
   - [Browserify and Watchify](#browserify-and-watchify)
   - [Global Installation of Browserify, Watchify, UglifyJS and DocToc](#global-installation-of-browserify-watchify-uglifyjs-and-doctoc)
   - [Package Installation of Browserify and Watchify - Alternative](#package-installation-of-browserify-and-watchify---alternative)
@@ -651,6 +653,29 @@ The templates for building the output are stored in the folder `src/`.
 
 After the build process the `README.md` is generated and if you want to have the table of contents in the file for the concatenation of  files in `src/readme/` listed in `files4build.js` then you must run the DocToc generator for `README.md` by `doctoc README.md` from the shell to update the table of contents in `README.md`.
 
+### Define Filename for build in `package.json`
+In `package.json` defines the filename for the automated build for
+* `README.md` for readme for the repository (parts in `src/readme`),
+* `index.html` for the web demo (parts in `src/html`),
+* `main.css` for the style sheet (part in `src/css`) and
+* `src/main.js` is generated from the parts in `src/libs`
+the sources in `src/`.
+To specify these filenames add the following `build` section to the `package.json`:
+```javascript
+"build": {
+  "readme": "README.md",
+  "html": "docs/index.html",
+  "css": "docs/css/main.css"
+}
+```
+If you want to edit the generated file check the files that are selected for including into the generated files (see `files4build.js`) and set the files to a preliminary build name (e.g. like `index_build.html` instead of `index.html` to compare generated file `index_build.html` with the older version `index.html` for debugging
+
+### Browserify after Build
+After building (concat the file parts) and replacement of package variables (e.g. like  `_``__PKG_NAME__``_` for package name) in the generated documents the module is browserified by the command
+```javascript
+ browserify src/main.js  > dist/handlebars4code.js
+```
+This command is called and defined in the script section of the `package.json`.
 <!-- END:   src/readme/build_process.md -->
 ## Build and Compress with Browserify, Watchify, UglifyJS
 The NodeJS modules can use `require()`-command. Browsers cannot execute the `require()`-command and other node specific programming features.
@@ -739,10 +764,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.2`   (last build 2018/12/29 7:53:52)
+* Version:  `1.2.3`   (last build 2018/12/29 8:20:39)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/29 7:53:52
+* Date:     2018/12/29 8:20:39
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript
