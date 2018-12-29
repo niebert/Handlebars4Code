@@ -6,7 +6,7 @@ const codegen = require('./src/codegen.js');
 // ------ Build Settings -----------------
 pkg.githubuser = pkg.githubuser || "githubuser";
 pkg.build = pkg.build || {};
-pkg.build.readme = pkg.readme || "README_build.md";
+pkg.build.readme = pkg.build.readme || "README_build.md";
 pkg.build.html = pkg.build.html || "docs/index_build.html";
 pkg.build.css = pkg.build.css || "docs/css/main_build.css";
 pkg.build.htmlsrc = pkg.build.htmlsrc || "docs/index_src_libs_build.html";
@@ -74,12 +74,14 @@ codegen.create_header(pkg);
 // MAIN.js create library and append "modules.export"
 codegen.concat_main(pkg.main,vLibs4Build,pkg);
 console.log("NPM Build DONE: ",pkg.main);
+/*
 // LIB:  create the library in /dist folder
 codegen.concat_libs(vLibDist,vLibs4Build,pkg);
 console.log("Build DONE: ",vLibDist);
 // DOCS: create the library in /docs folder
 codegen.concat_libs(vLibOut,vLibs4Build,pkg);
 console.log("Build DONE: ",vLibOut);
+*/
 codegen.create_script_tags4libs("./src/html_src_libs_embed.html",vLibs4Build,pkg);
 
 

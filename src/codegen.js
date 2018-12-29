@@ -409,10 +409,12 @@ function create_html_tail(pkg) {
 
 function create_readme_header(pkg) {
   var vFileName = "readme_header.md";
-  var vOut = "";
+	var vOut = "";
   vOut += "# "+pkg.exportvar;
   vOut += "\n`"+pkg.exportvar+"` is a "+pkg.description;
-  vOut += "\n* **[Demo "+pkg.exportvar+"](https://"+pkg.githubuser+".github.io/"+pkg.name+")**";
+	if (pkg.hasOwnProperty("demolink")) {
+		vOut += "\n* **[Demo "+pkg.exportvar+"](" + pkg.demolink + ")**";	
+	}
   vOut += "\n";
   save_file("./src/"+vFileName, vOut,"README.md code file 'src/"+vFileName+"' was saved!");
 }
