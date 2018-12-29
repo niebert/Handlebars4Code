@@ -1,7 +1,7 @@
 {
   "name": "handlebars4code",
   "exportvar": "Handlebars4Code",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript)",
   "main": "src/main.js",
   "inherit": "Handlebars",
@@ -18,9 +18,9 @@
   },
   "scripts": {
     "watch": "watchify src/main.js -o dist/handlebars4code.js -v",
-    "browserify": "browserify src/main.js  > dist/handlebars4code.js",
-    "browserify2doc": "browserify src/main.js  > docs/js/handlebars4code.js",
-    "build": "node ./build.js;uglifyjs dist/handlebars4code.js -mc warnings=false > dist/handlebars4code.min.js;uglifyjs docs/js/handlebars4code.js -mc warnings=false > docs/js/handlebars4code.min.js;doctoc README.md",
+    "browserify": "node ./build.js;browserify src/main.js  > dist/handlebars4code.js",
+    "browserify2doc": "node ./build.js;browserify src/main.js  > docs/js/handlebars4code.js",
+    "build": "node ./build.js;browserify src/main.js  > dist/handlebars4code.js;uglifyjs dist/handlebars4code.js -mc warnings=false > dist/handlebars4code.min.js;browserify src/main.js  > docs/js/handlebars4code.js;doctoc README.md",
     "build2dist": "node ./build.js",
     "compress": "node ./build.js; uglifyjs dist/handlebars4code.js -mc warnings=false > dist/handlebars4code.min.js",
     "test": "jshint src/exportmod.js"

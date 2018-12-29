@@ -397,6 +397,7 @@ function attribs4UMLString(pArray) {
     }
     vSep = "`<br>";
   }
+  ret += "`";
   return new Handlebars.SafeString(ret);
 }
 
@@ -430,6 +431,7 @@ function methods4UMLString(pArray) {
     }
     vSep = "`<br>";
   }
+  ret += "`";
   return new Handlebars.SafeString(ret);
 }
 

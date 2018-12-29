@@ -1,7 +1,7 @@
 vDataJSON["umljs"]= {
   "data": {
     "classname": "JSONEditor4Code",
-    "superclassname": "",
+    "superclassname": " ",
     "comment": "The class provides an constructor for a JSON Editor for Code Generation. The work is based on Jeremy Dorns great JSON editor. This class adds the HandleBars template engine for generation of source based on a UML class definition. ",
     "reposinfo": {
       "repository": "https://www.github.com/author/NewClass",

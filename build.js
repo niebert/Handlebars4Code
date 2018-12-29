@@ -93,14 +93,14 @@ codegen.concat_readme(pkg.build.readme,vReadme4Build,pkg);
 // replaces ___PKG_GITHUBUSER___ by pkg.githubuser
 function writeConvertCall() {
   console.log("HTML: Replace ___PKG___ variables in generated file: "+pkg.build.html);
-  codegen.write_convert_json(pkg.build.html, pkg.build.html, pkg)
+  codegen.write_convert_json(pkg.build.html, pkg.build.html, pkg);
   console.log("CSS: Replace ___PKG___ variables in generated file: "+pkg.build.css);
-  codegen.write_convert_json(pkg.build.css, pkg.build.css, pkg)
+  codegen.write_convert_json(pkg.build.css, pkg.build.css, pkg);
   console.log("README: Replace ___PKG___ variables in generated file: "+pkg.build.readme);
-  codegen.write_convert_json(pkg.build.readme, pkg.build.readme, pkg)
-  console.log("LIB: Replace ___PKG___ variables in generated file: "+pkg.build.readme);
-  codegen.write_convert_json(vLibOut, vLibOut, pkg);
-  codegen.write_convert_json(vLibDist, vLibDist, pkg);
+  codegen.write_convert_json(pkg.build.readme, pkg.build.readme, pkg);
+  console.log("LIB: Replace ___PKG___ variables in generated file: "+pkg.main);
+  codegen.write_convert_json(pkg.main, pkg.main, pkg);
+  //codegen.write_convert_json(vLibDist, vLibDist, pkg);
   console.log("Replacing ___PKG___ variables in generated files DONE: "+vLibOut);
 }
 

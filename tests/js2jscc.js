@@ -3,9 +3,8 @@ var fs = require('fs');
 // Script DOES not work for static classes
 //require('handlebars');
 
-var Handlebars = require('../src/main.js').Handlebars;
-
-var vConstructor = require('../src/main.js').Handlebars4Code;
+var vConstructor = require('../src/main.js');
+const Handlebars = require('handlebars');
 var vUML = require('../jscc/default_uml');
 var vClass = "Handelbars4Code";
 var bool_Methods_as_Prototype = false;

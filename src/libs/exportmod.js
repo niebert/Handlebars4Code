@@ -24,7 +24,8 @@ function compile_code(pTplID,pJSON) {
 }
 
 
-var Handlebars4Code = {
+Handlebars4Code = {
+  "Handlebars": Handlebars,
   "create_compiler": create_compiler,
   "compile_code": compile_code,
   "get_compiler": get_compiler
