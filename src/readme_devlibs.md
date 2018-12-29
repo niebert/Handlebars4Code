@@ -1,6 +1,7 @@
 
 ## Libraries required for  `Handlebars4Code`
 The following libraries are necessary for `handlebars4code.js`:
+* Lib: `cached-path-relative` Version: `>=1.0.2`
 * Lib: `handlebars` Version: `^4.0.12`
 
 
@@ -12,5 +13,4 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 * Lib: `doctoc` Version: `^1.3.0`
 * Lib: `lint` Version: `^1.1.2`
 * Lib: `uglify-js` Version: `^2.6.2`
-* Lib: `watchify` Version: `^3.9.0`
 

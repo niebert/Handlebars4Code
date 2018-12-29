@@ -1,7 +1,7 @@
 ## Build and Compress with Browserify, Watchify, UglifyJS
 The NodeJS modules can use `require()`-command. Browsers cannot execute the `require()`-command and other node specific programming features.
-* `Browserify` loads the file `___PKG_MAIN___` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/___PKG_NAME___.brows.js`
-* `Watchify` observes any changes in the source files in `src/` and starts on the event of changes the build process of the file `___PKG_MAIN___` as input file and creates an output file in `dist/___PKG_NAME___.brows.js`.
+* `Browserify` loads the file `___PKG_MAIN___` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/___PKG_NAME___.js`
+* `Watchify` observes any changes in the source files in `src/` and starts on the event of changes the build process of the file `___PKG_MAIN___` as input file and creates an output file in `dist/___PKG_NAME___.js`.
 * `UglifyJS` compresses the code in `dist` and takes the file `dist/___PKG_NAME___.js` and generates the compressed library in `dist/___PKG_NAME___.min.js`. The same is applied for `docs/js/___PKG_NAME___.js` and the output is `docs/js/___PKG_NAME___.min.js`. The compression of the source code can be perform without a total build by `npm run compress`.
 
 

@@ -596,8 +596,8 @@ After the build process the `README.md` is generated and if you want to have the
 <!-- END:   src/readme/build_process.md -->
 ## Build and Compress with Browserify, Watchify, UglifyJS
 The NodeJS modules can use `require()`-command. Browsers cannot execute the `require()`-command and other node specific programming features.
-* `Browserify` loads the file `src/main.js` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/handlebars4code.brows.js`
-* `Watchify` observes any changes in the source files in `src/` and starts on the event of changes the build process of the file `src/main.js` as input file and creates an output file in `dist/handlebars4code.brows.js`.
+* `Browserify` loads the file `src/main.js` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/handlebars4code.js`
+* `Watchify` observes any changes in the source files in `src/` and starts on the event of changes the build process of the file `src/main.js` as input file and creates an output file in `dist/handlebars4code.js`.
 * `UglifyJS` compresses the code in `dist` and takes the file `dist/handlebars4code.js` and generates the compressed library in `dist/handlebars4code.min.js`. The same is applied for `docs/js/handlebars4code.js` and the output is `docs/js/handlebars4code.min.js`. The compression of the source code can be perform without a total build by `npm run compress`.
 
 
@@ -665,6 +665,7 @@ The JSON-Editor of Jeremy Dorn has full support for JSON Schema version 3 and 4 
 
 ## Libraries required for  `Handlebars4Code`
 The following libraries are necessary for `handlebars4code.js`:
+* Lib: `cached-path-relative` Version: `>=1.0.2`
 * Lib: `handlebars` Version: `^4.0.12`
 
 
@@ -676,15 +677,14 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 * Lib: `doctoc` Version: `^1.3.0`
 * Lib: `lint` Version: `^1.1.2`
 * Lib: `uglify-js` Version: `^2.6.2`
-* Lib: `watchify` Version: `^3.9.0`
 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.0`   (last build 2018/12/29 7:15:35)
+* Version:  `1.2.1`   (last build 2018/12/29 7:31:10)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/29 7:15:35
+* Date:     2018/12/29 7:31:10
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript
