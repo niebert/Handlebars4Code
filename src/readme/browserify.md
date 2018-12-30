@@ -3,7 +3,10 @@ The NodeJS modules can use `require()`-command. Browsers cannot execute the `req
 * `Browserify` loads the file `___PKG_MAIN___` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/___PKG_NAME___.js`
 * `Watchify` observes any changes in the source files in `src/` and starts on the event of changes the build process of the file `___PKG_MAIN___` as input file and creates an output file in `dist/___PKG_NAME___.js`.
 * `UglifyJS` compresses the code in `dist` and takes the file `dist/___PKG_NAME___.js` and generates the compressed library in `dist/___PKG_NAME___.min.js`. The same is applied for `docs/js/___PKG_NAME___.js` and the output is `docs/js/___PKG_NAME___.min.js`. The compression of the source code can be perform without a total build by `npm run compress`.
-
+* The main browserify command creates a standalone library that can be used in the browser and it assign `___PKG_EXPORTVAR___` to the `window` object by
+```shell
+  browserify src/main.js --standalone window > dist/___PKG_NAME___.js
+```
 
 ### Browserify and Watchify
 Browserify and Watchify are used in this repository to control the WebApp-javascript development with the required Javascript libraries installed with [NPM Node.js](https://docs.npmjs.com/getting-started/installing-node) and similar framework world that greatly improve your javascript workflow: Using them, you no longer need to micro-manage your script tags but instead you just declare the libraries each of your client-side modules is using - or you can even create your own reusable modules! Also, installing (or updating) javascript libraries is as easy as running a single command!

@@ -118,9 +118,11 @@ vDataJSON["umljs"]= {
     ]
   },
   "settings": {
-    "extension4code":".js",
+    "umleditor": "https://niebert.github.io/ClassEditorUML",
+    "extension4code": ".js",
+    "extension4json": "_uml.json",
     "classlist": [
-      "",
+      " ",
       "App",
       "AppAbstract",
       "Array",

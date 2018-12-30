@@ -682,7 +682,10 @@ The NodeJS modules can use `require()`-command. Browsers cannot execute the `req
 * `Browserify` loads the file `src/main.js` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/handlebars4code.js`
 * `Watchify` observes any changes in the source files in `src/` and starts on the event of changes the build process of the file `src/main.js` as input file and creates an output file in `dist/handlebars4code.js`.
 * `UglifyJS` compresses the code in `dist` and takes the file `dist/handlebars4code.js` and generates the compressed library in `dist/handlebars4code.min.js`. The same is applied for `docs/js/handlebars4code.js` and the output is `docs/js/handlebars4code.min.js`. The compression of the source code can be perform without a total build by `npm run compress`.
-
+* The main browserify command creates a standalone library that can be used in the browser and it assign `Handlebars4Code` to the `window` object by
+```shell
+  browserify src/main.js --standalone window > dist/handlebars4code.js
+```
 
 ### Browserify and Watchify
 Browserify and Watchify are used in this repository to control the WebApp-javascript development with the required Javascript libraries installed with [NPM Node.js](https://docs.npmjs.com/getting-started/installing-node) and similar framework world that greatly improve your javascript workflow: Using them, you no longer need to micro-manage your script tags but instead you just declare the libraries each of your client-side modules is using - or you can even create your own reusable modules! Also, installing (or updating) javascript libraries is as easy as running a single command!
@@ -764,10 +767,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.4`   (last build 2018/12/30 8:39:14)
+* Version:  `1.2.4`   (last build 2018/12/30 11:29:18)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/30 8:39:14
+* Date:     2018/12/30 11:29:18
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript
