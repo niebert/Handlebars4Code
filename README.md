@@ -764,10 +764,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.3`   (last build 2018/12/29 8:48:20)
+* Version:  `1.2.4`   (last build 2018/12/30 8:39:14)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/29 8:48:20
+* Date:     2018/12/30 8:39:14
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript
