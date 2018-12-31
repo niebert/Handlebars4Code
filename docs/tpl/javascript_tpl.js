@@ -1,16 +1,20 @@
-vDataJSON["tpl"]["javascript"] = `
+vDataJSON.tpl.javascript = `
 //#################################################################
 {{#ifcond data.reposinfo.static "!=" "yes"}}
 //# Javascript Class: {{data.classname}}()
+{{#ifcond data.superclassname "!=" " "}}
 {{#ifcond data.superclassname "!=" ""}}
 //#       SuperClass: {{data.superclassname}}
+{{/ifcond}}
 {{/ifcond}}
 //#   Class Filename: {{filename data.classname}}.js
 {{/ifcond}}
 {{#ifcond data.reposinfo.static "==" "yes"}}
 //# Javascript Module: {{data.classname}}
+{{#ifcond data.superclassname "!=" " "}}
 {{#ifcond data.superclassname "!=" ""}}
 //#           Extends: {{data.superclassname}}
+{{/ifcond}}
 {{/ifcond}}
 //#       Filename: {{filename data.classname}}.js
 {{/ifcond}}
@@ -31,15 +35,18 @@ vDataJSON["tpl"]["javascript"] = `
 // SCRIPT-Tag:  LANGUAGE="JavaScript" SRC="js/{{filename classname}}.js"
 {{/ifcond}}
 {{#ifcond data.reposinfo.require_classes "==" "yes"}}
+//---------------------------------------------------------------------
 {{#ifcond data.superclassname "!=" ""}}
+{{#ifcond data.superclassname "!=" " "}}
 //---------------------------------------------------------------------
 // NodeJS: require the super class
 const {{data.superclassname}} = require('{{filename data.superclassname}}');
 {{/ifcond}}
-
-// NodeJS: Require used classes
+{{/ifcond}}
+//---- USED CLASSES: ----
+// Used classes in parameters of methods, return values of methods and attributes
 {{#requireclass data settings}}
-const {{variable}} = require('{{module}}'); // Class: {{variable}}
+// - {{variable}}
 {{/requireclass}}
 
 // NodeJS: Require additional Modules
@@ -47,6 +54,27 @@ const {{variable}} = require('{{module}}'); // Class: {{variable}}
 const {{variable}} = require('{{module}}'); // Module: {{module}}
 {{/requirelibs}}
 
+{{/ifcond}}
+//---------------------------------------------------------------------
+// Configuration Code:
+{{{data.reposinfo.configcode}}}
+{{#ifcond data.reposinfo.static "==" "yes"}}
+//---------------------------------------------------------------------
+//---Object: {{data.classname}}
+// The static object {{data.classname}} has attributes and functions.
+//--- Attributes: -------------------------------
+{{#foreach data.attributes data}}
+    // ------------------------------------------
+    // {{visibility}}: {{name}}   Type: {{class}}
+    // {{data.classname}}.{{name}} = {{{init}}};   // Class: {{class}}
+{{/foreach}}
+//--- Functions: -------------------------------
+{{#foreach data.methods data}}
+    // -----------------------------------------
+    // {{visibility}}: {{name}}
+    // {{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}});
+{{/foreach}}
+//----------------------------------------------
 {{/ifcond}}
 {{#ifcond data.reposinfo.static "!=" "yes"}}
 //---------------------------------------------------------------------
@@ -74,6 +102,7 @@ const {{variable}} = require('{{module}}'); // Module: {{module}}
 // This approach consumes less memory for instances.
 //---------------------------------------------------------------------
 
+{{#ifcond data.superclassname "!=" " "}}
 {{#ifcond data.superclassname "!=" ""}}
 //--------------------------------------
 //---Super Class------------------------
@@ -84,6 +113,7 @@ const {{variable}} = require('{{module}}'); // Module: {{module}}
 {{data.classname}}.prototype.constructor={{data.classname}};
 // see http://phrogz.net/js/classes/OOPinJS2.html for explanation
 //--------------------------------------
+{{/ifcond}}
 {{/ifcond}}
 
 
@@ -99,16 +129,31 @@ function {{data.classname}} () {
 {{indent comment "    // "}}
 {{/ifcond}}
 {{#ifcond visibility "==" "public"}}
-    this.{{name}} = {{init}};   // Class: {{class}}
+    this.{{name}} = {{{init}}};   // Class: {{class}}
 {{/ifcond}}
 {{#ifcond visibility "==" "private"}}
-    var {{name}} = {{init}};   // Class: {{class}}
+    var {{name}} = {{{init}}};   // Class: {{class}}
 {{/ifcond}}
 {{/foreach}}
     //---------------------------------------------------------------------
     //---Methods of Class "{{data.classname}}()"
     //---------------------------------------------------------------------
+{{#foreach data.methods data}}
 
+    // #################################################################
+    // # {{visibility}} Method: {{name}}()  Class: {{data.classname}}
+    // # Parameter:
+    // #    {{parameterlist parameter "    // #    "}}
+    // # Comment:
+{{indent comment "    // #    "}}
+    // # {{{returncomment}}}
+    // #################################################################
+{{/foreach}}
+
+}
+//---------------------------------------------------------------------
+//---END Constructor for Call  "new {{data.classname}}()"
+//---------------------------------------------------------------------
 {{#foreach data.methods data}}
 
     //#################################################################
@@ -122,43 +167,51 @@ function {{data.classname}} () {
 
 {{#ifcond visibility "==" "public"}}
     {{data.classname}}.prototype.{{name}} = function ({{#paramcall parameter}}{{/paramcall}}) {
+{{#ifcond data.reposinfo.debugheader "==" "yes"}}
+            //----Debugging------------------------------------------
+            // console.log("{{filename data.classname}}.js - Call: {{name}}({{#paramcall parameter}}{{/paramcall}})");
+            // alert("{{filename data.classname}}.js - Call: {{name}}({{#paramcall parameter}}{{/paramcall}})");
+            //----Create Object/Instance of {{data.classname}} and call {{name}}()----
+            //    var v{{data.classname}} = new {{data.classname}}();
+            //    v{{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}});
+            //-------------------------------------------------------
+{{/ifcond}}
+
+
 {{/ifcond}}
 {{#ifcond visibility "==" "private"}}
     function {{name}}({{#paramcall parameter}}{{/paramcall}}) {
+{{#ifcond data.reposinfo.debugheader "==" "yes"}}
+            //----Debugging------------------------------------------
+            // console.log("{{filename data.classname}}.js - Call: {{name}}({{#paramcall parameter}}{{/paramcall}})");
+            // alert("{{filename data.classname}}.js - Call: {{name}}({{#paramcall parameter}}{{/paramcall}})");
+            //-------------------------------------------------------
 {{/ifcond}}
-      //----Debugging------------------------------------------
-      // console.log("{{filename data.classname}}.js - Call: {{name}}({{#paramcall parameter}}{{/paramcall}})");
-      // alert("{{filename data.classname}}.js - Call: {{name}}({{#paramcall parameter}}{{/paramcall}})");
-      //----Create Object/Instance of {{data.classname}} and call {{name}}()----
-      //    var v{{data.classname}} = new {{data.classname}}();
-      //    v{{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}});
-      //-------------------------------------------------------
+{{/ifcond}}
 {{indent code "      "}}
     }
     // ---- Method: {{name}}() Class: {{data.classname}} ------
 {{/foreach}}
-}
-//-------------------------------------------------------------------------
-//---END Constructor of Class "{{data.classname}}()"
-//-------------------------------------------------------------------------
 {{/ifcond}}
 {{#ifcond data.reposinfo.static "==" "yes"}}
-{{#ifcond data.superclassname "==" ""}}
-//--------------------------------------
+{{#ifcond data.superclassname "==" " "}}
+//--------------------------------------------
 //---Define Static Class - Export Variable ---
 // A static class '{{data.classname}}' does not need a constructor 'new {{data.classname}}()'
-//--------------------------------------
+//--------------------------------------------
 var {{data.classname}} = {};
 {{/ifcond}}
 {{#ifcond data.superclassname "!=" ""}}
-//--------------------------------------
-//---Extend Static Class----------------
+{{#ifcond data.superclassname "!=" " "}}
+//-------------------------------------------
+//---Extend Static Class---------------------
 // A static class '{{data.classname}}' does not need a constructor 'new {{data.classname}}()'
 // to create an instance of the class.
-// Extend static class: '{{data.classname}}' inherits from static class '{{data.superclassname}}' by:
+// Extend static class: '{{data.classname}}' inherits from static object '{{data.superclassname}}' by:
 var {{data.classname}} = {{data.superclassname}};
 // The following definitions extend/overwrite the existing attributes and methods of '{{data.superclassname}}'
 //--------------------------------------
+{{/ifcond}}
 {{/ifcond}}
 //---------------------------------------------------------------------
 //---Attributes: "{{data.classname}}"
@@ -171,10 +224,10 @@ var {{data.classname}} = {{data.superclassname}};
 {{indent comment "    // "}}
 {{/ifcond}}
 {{#ifcond visibility "==" "public"}}
-    {{data.classname}}.{{name}} = {{init}};   // Class: {{class}}
+    {{data.classname}}.{{name}} = {{{init}}};   // Class: {{class}}
 {{/ifcond}}
 {{#ifcond visibility "==" "private"}}
-    var {{name}} = {{init}};   // Class: {{class}}
+    var {{name}} = {{{init}}};   // Class: {{class}}
 {{/ifcond}}
 {{/foreach}}
 //---------------------------------------------------------------------
@@ -194,16 +247,26 @@ var {{data.classname}} = {{data.superclassname}};
 
 {{#ifcond visibility "==" "public"}}
     {{data.classname}}.{{name}} = function ({{#paramcall parameter}}{{/paramcall}}) {
+{{#ifcond data.reposinfo.debugheader "==" "yes"}}
+          //----Debugging------------------------------------------
+          // console.log("{{filename data.classname}}.js - Call: {{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}})");
+          //----Call Function {{name}}()----
+          //    {{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}});
+          //-------------------------------------------------------
+{{/ifcond}}
 {{/ifcond}}
 {{#ifcond visibility "==" "private"}}
     function {{name}}({{#paramcall parameter}}{{/paramcall}}) {
+{{#ifcond data.reposinfo.debugheader "==" "yes"}}
+          //----Debugging------------------------------------------
+          // console.log("{{filename data.classname}}.js - Call: {{name}}({{#paramcall parameter}}{{/paramcall}})");
+          //----Call Function {{name}}()----
+          //    {{name}}({{#paramcall parameter}}{{/paramcall}});
+          //-------------------------------------------------------
 {{/ifcond}}
-      //----Debugging------------------------------------------
-      // console.log("{{filename data.classname}}.js - Call: {{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}})");
-      //----Call Function {{name}}()----
-      //    {{data.classname}}.{{name}}({{#paramcall parameter}}{{/paramcall}});
-      //-------------------------------------------------------
-      {{indent code indent="      "}}
+{{/ifcond}}
+
+{{indent code indent="      "}}
     }
     // ---- Method: {{name}}() Class: {{data.classname}} ------
 {{/foreach}}
