@@ -13,6 +13,8 @@ The following table of contents is generated with `node doctoc README.md`.
 
 
 - [Installation `Handlebars4Code`](#installation-handlebars4code)
+  - [Installation `Handlebars4Code` with NPM for Scripts](#installation-handlebars4code-with-npm-for-scripts)
+  - [Installation `Handlebars4Code` for Browser for Scripts-Tags](#installation-handlebars4code-for-browser-for-scripts-tags)
 - [Quick Start for Library-Users](#quick-start-for-library-users)
 - [Templates for Handlebars4Code](#templates-for-handlebars4code)
 - [vDataJSON as Template Storage](#vdatajson-as-template-storage)
@@ -61,6 +63,7 @@ The following table of contents is generated with `node doctoc README.md`.
 - [Build Process of `npm run build`](#build-process-of-npm-run-build)
   - [Define Filename for build in `package.json`](#define-filename-for-build-in-packagejson)
   - [Browserify after Build](#browserify-after-build)
+- [Build and Compress with Browserify, Watchify, UglifyJS](#build-and-compress-with-browserify-watchify-uglifyjs)
   - [Browserify and Watchify](#browserify-and-watchify)
   - [Global Installation of Browserify, Watchify, UglifyJS and DocToc](#global-installation-of-browserify-watchify-uglifyjs-and-doctoc)
   - [Package Installation of Browserify and Watchify - Alternative](#package-installation-of-browserify-and-watchify---alternative)
@@ -75,20 +78,25 @@ The following table of contents is generated with `node doctoc README.md`.
 
 
 ## Installation `Handlebars4Code`
-If you want to install `Handlebars4Code` in Node NPM use the following require-call:
+There are two main types to use `Handlebars4Code` for you projects. With a `script`-tag in your HTML file or with a package manager like [NPM](https://www.npmjs.com/) with [NodeJS]()
+### Installation `Handlebars4Code` with NPM for Scripts
+Assume you have NPM installed and your have created e.g. a folder `mypackage/` for your package with `package.json` in the folder `. Go to the folder `mypackage/` and call
+```javascript
+npm install handlebars4code --save
+```
+Then you will find `handlebars4code` in the folder `mypackage/node_modules/handlebars4code`.
+If you want to use `Handlebars4Code` in your scripts use the following require-call:
 ```javascript
 const  Handlebars4Code = require('handlebars4code');
-let  vhandlebars4code = new Handlebars4Code();
 ```
-If you want to use the library `handlebars4code.js` in a browser, please copy the file `dist/handlebars4code.js` into your library folder (e.g. `docs/js`) and
+Now it is possible to use `Handlebars4Code` in your scripts.
+### Installation `Handlebars4Code` for Browser for Scripts-Tags
+If you want to use the library `handlebars4code.js` in a browser, please copy the file `dist/handlebars4code.js` into your library folder (e.g. `/js`) and
 import the library with `script`-tag with:
 ```html
 <script src="js/handlebars4code.js"></script>
 ```
-Now it is possible to use the constructor of `Handlebars4Code`
-```javascript
-var  vhandlebars4code = new Handlebars4Code();
-```
+Now it is possible to use `Handlebars4Code` in your other imported scripts.
 <!-- BEGIN: src/readme/usage.md -->
 
 ## Quick Start for Library-Users
@@ -677,6 +685,9 @@ After building (concat the file parts) and replacement of package variables (e.g
 ```
 This command is called and defined in the script section of the `package.json`.
 <!-- END:   src/readme/build_process.md -->
+## Quick Start for Developers
+The followning description might be helpful if you want to browserify the module in the build. The build process is defined with script `build.js`.
+
 ## Build and Compress with Browserify, Watchify, UglifyJS
 The NodeJS modules can use `require()`-command. Browsers cannot execute the `require()`-command and other node specific programming features.
 * `Browserify` loads the file `src/main.js` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/handlebars4code.js`
@@ -696,25 +707,31 @@ In this repository Browserify and Watchify are used for javascript code developm
 ### Global Installation of Browserify, Watchify, UglifyJS and DocToc
 Requirement: [NPM](https://docs.npmjs.com/getting-started/installing-node) is intalled. Now call for global installation of Browserfy, Watchify, UglifyJS and DocToc by:
 
-`npm install -g browserify watchify uglify-js doctoc`
+`npm install -g browserify watchify uglify-js doctoc jshint lint`
 
 This is recommended because your will not install Browserfy, Watchify and UglifyJS for all your repositories separately.
 * ***Browserfy*** converts `node_modules` in a single library, that can be imported in WebApp. Browserify resolves dependencies and included the required libraries into the bundled javascript code.
 * ***Watchify*** watches changes in the source code and runs the build process whenever it detects changes in the your source code.
-* ***UglifyJS*** compresses the source code of `dist/class_editor_uml.js` into ```class_editor_uml.min.js``` to reduce download time and WebApp performance during load.
+* ***UglifyJS*** compresses the source code of `dist/handlebars4code.js` into ```handlebars4code.min.js``` to reduce download time and WebApp performance during load.
 * ***DocToc*** is used to create a helpful table of contents in the README (see [DocToc-Installation]https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents.
 * ***jsLint*** is used to check the Javascript code, quality of code can be improved by application of jsLint
 
 ### Package Installation of Browserify and Watchify - Alternative
 If your prefer that  browserify and watchify is installed with your `npm install` command, save these to modules to your dev-dependecies in your `package.json` by calling
 
-* (Install Browsersify) `npm install browserify --save-dev`
-* (Install Watchify) `npm install watchify --save-dev`
-* (Install UglifyJS) `npm install uglify-js --save-dev`
+* (Install Browsersify) `npm install browserify -g`
+* (Install Watchify) `npm install watchify -g`
+* (Install UglifyJS) `npm install uglify-js -g`
 * (Install DocToc) `npm install doctoc -g`
-* (Install jshint) `npm install jslint -g`
+* (Install jshint) `npm install jshint -g`
+* (Install jshint) `npm install lint -g`
 
-The difference between `--save` and `--save-dev` is, that development dependencies are installed with `npm install` because they are required for the development process of the code but they are not added to the generated Javascript-bundle that are used in the WebApp ClassEditorUML. The `--save-dev` commands for `browserify` and `watchify` will install the two modules with all the the dependencies in `node_modules` and add the dev-dependencies to your `package.json`.
+The difference between  `--save` and `--save-dev`, `-g` is, that
+* `--save` indicates that the installed library/package is required in the library and the library will be added to `package.json`. If someone else installs you library all packages, that are installed with `--save` are installed recursively as well.
+* development dependencies (`--save-dev`) are required  for **building** the code/library only, but not for library itself for being executed. So someone else installs you library, the `--save-dev` developement packages are not installed. If some clones your repository e.g. from GitLab, GitHub,...  with the command  `npm install` also the development packages are installed as well.
+* `-g` install packages globally`watchify`, `browserify`, `uglify-js`, ... might be regarded as useful in many other packages, so for developements the installation with `npm install ... --save-dev` is replaced by `-g` option.
+
+because they are required for the development process of the code but they are not added to the generated Javascript-bundle that are used in the WebApp ClassEditorUML. The `--save-dev` commands for `browserify` and `watchify` will install the two modules with all the the dependencies in `node_modules` and add the dev-dependencies to your `package.json`.
 ```json
 "devDependencies": {
   "browserify": "^14.5.0",
@@ -737,9 +754,8 @@ The compression of `dist/handlebars4code.js` into `dist/handlebars4code.min.js` 
 
 ## Acknowledgement
 Special thanks to the following individual developers and teams of OpenSource JavaScript projects:
-* [HandleBars](http://handlebarsjs.com/) the code generation in Javascript was implemented
-* [JSON-Editor](https://github.com/jdorn/json-editor) by Jeremy Dorn. The JSON Editor takes a JSON Schema and uses it to generate an HTML form. The JSON-Editor is partially used to edit JSON file of the [JavascriptClassCreator Project](https://niebert.github.io/JavascriptClassCreator) `JSCC`.
-The JSON-Editor of Jeremy Dorn has full support for JSON Schema version 3 and 4 and can integrate with several popular CSS frameworks (bootstrap, foundation, and jQueryUI). This would lead to major code reduction of `JSCC` . Refactoring of `JSCC` would make more use of the JSON-Editor features. Check out an interactive demo (demo.html): http://jeremydorn.com/json-editor/
+* [HandleBars](http://handlebarsjs.com/) the code generation in Javascript was developed by Yehuda Katz.
+* [JSON-Editor](https://github.com/jdorn/json-editor) by Jeremy Dorn. The JSON Editor takes a JSON Schema and uses it to generate an HTML form. The JSON-Editor is partially used to edit JSON file of the [ClassEditorUML](https://niebert.github.io/ClassEditorUML) `UML` for Javascript.
 * Developer [Mihai Bazon](http://lisperator.net/) create UglifyJS, a great tool to handle and parse Javascript Code and minify the Javascript code (see [Source Code of UglifyJS](https://github.com/mishoo/UglifyJS2)).
 * The wrapper for UglifyJS is written [Dan Wolff](http://danwolff.se/). His UglifyJS-Online example is used to minify/compress the exported Javascript code of generated JS Classes (For Online Example of the [UglifyJS-Wrapper](https://skalman.github.io/UglifyJS-online/) see source code on https://github.com/Skalman/UglifyJS-online for the Online-Version of the Wrapper.
 * Developers of ACE Code Editor https://ace.c9.io (Javascript Editing uses the Editor in iFrames)
@@ -751,26 +767,20 @@ The JSON-Editor of Jeremy Dorn has full support for JSON Schema version 3 and 4 
 
 ## Libraries required for  `Handlebars4Code`
 The following libraries are necessary for `handlebars4code.js`:
-* Lib: `cached-path-relative` Version: `>=1.0.2`
-* Lib: `handlebars` Version: `^4.0.12`
 
 
 ## Libraries for Building and Developement
 The following libraries are necessary for building the `handlebars4code`. 
 These libraries are not included in `handlebars4code.js`, but e.g. are required in `build.js`.
-* Lib: `browserify` Version: `^14.5.0`
 * Lib: `concat-files` Version: `^0.1.1`
-* Lib: `doctoc` Version: `^1.3.0`
-* Lib: `lint` Version: `^1.1.2`
-* Lib: `uglify-js` Version: `^2.6.2`
 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.4`   (last build 2018/12/30 11:29:18)
+* Version:  `1.2.4`   (last build 2019/08/11 9:21:02)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2018/12/30 11:29:18
+* Date:     2019/08/11 9:21:02
 * Inheritance: `Handlebars4Code` inherits from `Handlebars`
 * Require Module with:
 ```javascript

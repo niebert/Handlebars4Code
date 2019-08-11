@@ -420,22 +420,27 @@ function create_readme_header(pkg) {
 function create_readme_install(pkg) {
   var vFileName = "readme_install.md";
   var vOut = "\n";
-  vOut += "\n## Installation `"+pkg.exportvar+"`";
-  vOut += "\nIf you want to install `"+pkg.exportvar+"` in Node NPM use the following require-call:";
+	vOut += "\n## Installation `"+pkg.exportvar+"`";
+	vOut += "\nThere are two main types to use `"+pkg.exportvar+"` for you projects. With a `script`-tag in your HTML file or with a package manager like [NPM](https://www.npmjs.com/) with [NodeJS]()";
+	vOut += "\n### Installation `"+pkg.exportvar+"` with NPM for Scripts";
+	vOut += "\nAssume you have NPM installed and your have created e.g. a folder `mypackage/` for your package with `package.json` in the folder `. Go to the folder `mypackage/` and call";
+	vOut += "\n```javascript";
+	vOut += "\nnpm install "+pkg.name+" --save";
+	vOut += "\n```";
+	vOut += "\nThen you will find `"+pkg.name+"` in the folder `mypackage/node_modules/"+pkg.name+"`.";
+ 	vOut += "\nIf you want to use `"+pkg.exportvar+"` in your scripts use the following require-call:";
 	vOut += "\n```javascript";
 	vOut += "\nconst  "+pkg.exportvar+" = require('"+pkg.name+"');";
-  vOut += "\nlet  v"+pkg.name+" = new "+pkg.exportvar+"();";
-	vOut += "\n```";
-	vOut += "\nIf you want to use the library `"+pkg.name+".js` in a browser, please copy the file `dist/"+pkg.name+".js` into your library folder (e.g. `docs/js`) and"
+  vOut += "\n```";
+	vOut += "\nNow it is possible to use `"+pkg.exportvar+"` in your scripts.";
+  vOut += "\n### Installation `"+pkg.exportvar+"` for Browser for Scripts-Tags";
+	vOut += "\nIf you want to use the library `"+pkg.name+".js` in a browser, please copy the file `dist/"+pkg.name+".js` into your library folder (e.g. `/js`) and"
   vOut += "\nimport the library with `script`-tag with:";
   vOut += "\n```html";
 	vOut += "\n<script src=\"js/"+pkg.name+".js\"></script>";
   vOut += "\n```";
-  vOut += "\nNow it is possible to use the constructor of `"+pkg.exportvar+"`";
-  vOut += "\n```javascript";
-	vOut += "\nvar  v"+pkg.name+" = new "+pkg.exportvar+"();";
-	vOut += "\n```";
-	vOut += "\n";
+  vOut += "\nNow it is possible to use `"+pkg.exportvar+"` in your other imported scripts.";
+  vOut += "\n";
   save_file("./src/"+vFileName, vOut,"README.md code file 'src/"+vFileName+"' was saved!");
 }
 

@@ -1,3 +1,6 @@
+## Quick Start for Developers
+The followning description might be helpful if you want to browserify the module in the build. The build process is defined with script `build.js`.
+
 ## Build and Compress with Browserify, Watchify, UglifyJS
 The NodeJS modules can use `require()`-command. Browsers cannot execute the `require()`-command and other node specific programming features.
 * `Browserify` loads the file `___PKG_MAIN___` as input file and resolves e.g. the `require()`-command and creates an output file in `dist/___PKG_NAME___.js`
@@ -17,25 +20,31 @@ In this repository Browserify and Watchify are used for javascript code developm
 ### Global Installation of Browserify, Watchify, UglifyJS and DocToc
 Requirement: [NPM](https://docs.npmjs.com/getting-started/installing-node) is intalled. Now call for global installation of Browserfy, Watchify, UglifyJS and DocToc by:
 
-`npm install -g browserify watchify uglify-js doctoc`
+`npm install -g browserify watchify uglify-js doctoc jshint lint`
 
 This is recommended because your will not install Browserfy, Watchify and UglifyJS for all your repositories separately.
 * ***Browserfy*** converts `node_modules` in a single library, that can be imported in WebApp. Browserify resolves dependencies and included the required libraries into the bundled javascript code.
 * ***Watchify*** watches changes in the source code and runs the build process whenever it detects changes in the your source code.
-* ***UglifyJS*** compresses the source code of `dist/class_editor_uml.js` into ```class_editor_uml.min.js``` to reduce download time and WebApp performance during load.
+* ***UglifyJS*** compresses the source code of `dist/___PKG_NAME___.js` into ```___PKG_NAME___.min.js``` to reduce download time and WebApp performance during load.
 * ***DocToc*** is used to create a helpful table of contents in the README (see [DocToc-Installation]https://github.com/thlorenz/doctoc#installation) for further details on [NPM DocToc](https://www.npmjs.com/package/doctoc) ). Run `doctoc README.md` for updating the table of contents.
 * ***jsLint*** is used to check the Javascript code, quality of code can be improved by application of jsLint
 
 ### Package Installation of Browserify and Watchify - Alternative
 If your prefer that  browserify and watchify is installed with your `npm install` command, save these to modules to your dev-dependecies in your `package.json` by calling
 
-* (Install Browsersify) `npm install browserify --save-dev`
-* (Install Watchify) `npm install watchify --save-dev`
-* (Install UglifyJS) `npm install uglify-js --save-dev`
+* (Install Browsersify) `npm install browserify -g`
+* (Install Watchify) `npm install watchify -g`
+* (Install UglifyJS) `npm install uglify-js -g`
 * (Install DocToc) `npm install doctoc -g`
-* (Install jshint) `npm install jslint -g`
+* (Install jshint) `npm install jshint -g`
+* (Install jshint) `npm install lint -g`
 
-The difference between `--save` and `--save-dev` is, that development dependencies are installed with `npm install` because they are required for the development process of the code but they are not added to the generated Javascript-bundle that are used in the WebApp ClassEditorUML. The `--save-dev` commands for `browserify` and `watchify` will install the two modules with all the the dependencies in `node_modules` and add the dev-dependencies to your `package.json`.
+The difference between  `--save` and `--save-dev`, `-g` is, that
+* `--save` indicates that the installed library/package is required in the library and the library will be added to `package.json`. If someone else installs you library all packages, that are installed with `--save` are installed recursively as well.
+* development dependencies (`--save-dev`) are required  for **building** the code/library only, but not for library itself for being executed. So someone else installs you library, the `--save-dev` developement packages are not installed. If some clones your repository e.g. from GitLab, GitHub,...  with the command  `npm install` also the development packages are installed as well.
+* `-g` install packages globally`watchify`, `browserify`, `uglify-js`, ... might be regarded as useful in many other packages, so for developements the installation with `npm install ... --save-dev` is replaced by `-g` option.
+
+because they are required for the development process of the code but they are not added to the generated Javascript-bundle that are used in the WebApp ClassEditorUML. The `--save-dev` commands for `browserify` and `watchify` will install the two modules with all the the dependencies in `node_modules` and add the dev-dependencies to your `package.json`.
 ```json
 "devDependencies": {
   "browserify": "^14.5.0",
