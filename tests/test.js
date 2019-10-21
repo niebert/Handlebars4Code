@@ -2,7 +2,7 @@
 var Handlebars4Code = require('../src/main.js');
 var vTemplate = `
 My first name is {{{first}}} and my last name is {{{last}}}.
-My age is {{{age}}}.X
+My age is {{{age}}}.
 `;
 
 var vJSON = {
