@@ -2,7 +2,7 @@
 // --- Build JS/HTML/CSS Version: 1.0.0 -------------
 //---------------------------------------------------
 const pkg = require('./package');
-const codegen = require('./src/codegen.js');
+const codegen = require('build4code').codegen;
 // ------ Build Settings -----------------
 pkg.githubuser = pkg.githubuser || "githubuser";
 pkg.build = pkg.build || {};

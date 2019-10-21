@@ -326,9 +326,12 @@ Handlebars.registerHelper('removereturn', function(pString) {
 
 
 function name2filename(pName) {
-  var vFilename = pName.toLowerCase();
-  vFilename = vFilename.replace(/[^a-z0-9]/g,"_");
-  vFilename = vFilename.replace(/_[_]+/g,"_");
+  var vFilename = "undefined_filename";
+  if (pName) {
+    vFilename = pName.toLowerCase();
+    vFilename = vFilename.replace(/[^a-z0-9]/g,"_");
+    vFilename = vFilename.replace(/_[_]+/g,"_");
+  };
   return vFilename;
 }
 
