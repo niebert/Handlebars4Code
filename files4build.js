@@ -5,7 +5,6 @@
 const getLibs4Build = function (pLibPath) {
   var vLibs4Build = [
     './src/npm_header.js',
-    pLibPath+'require_mods.js',
     //pLibPath+'arrayhash.js',
     pLibPath+'handlebars.js',
     pLibPath+'handlebars_helpers.js',

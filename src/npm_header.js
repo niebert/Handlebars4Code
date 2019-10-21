@@ -1,12 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.2.8  Date: 2019/10/21 7:58:16
+ Version:  1.2.9  Date: 2019/10/21 8:03:07
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2019/10/21 7:58:16
- Inheritance: 'Handlebars4Code' inherits from 'Handlebars'
+ Date:     2019/10/21 8:03:07
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
  JSHint: installation with 'npm install jshint -g'
