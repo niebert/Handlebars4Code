@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.2.12  Date: 2019/10/21 10:24:31
+ Version:  1.2.13  Date: 2019/10/21 13:18:48
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2019/10/21 10:24:31
+ Date:     2019/10/21 13:18:48
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
  JSHint: installation with 'npm install jshint -g'
@@ -14,8 +14,7 @@
 /*jshint  laxcomma: true, asi: true, maxerr: 150 */
 /*global alert, confirm, console, prompt */
 // require the Handlebars module from NPM
-console.log("Require: Handlebars");
-const Handlebars = require('handlebars');
+require('handlebars');
 /* vDataJSON is the main JSON data storage defined in index.html
   vDataJSON is provided as parameter to createHandleBarsCompiler(pDataJSON)
    * createHandleBarsCompiler() expects a hash key "tpl" containing the templates.
