@@ -1,6 +1,7 @@
 
 ## Libraries required for  `Handlebars4Code`
 The following libraries are necessary for `handlebars4code.js`:
+* Lib: `handlebars` Version: `^4.4.5`
 
 
 ## Libraries for Building and Developement
