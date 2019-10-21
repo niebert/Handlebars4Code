@@ -23,6 +23,7 @@ var vLibOut = 'docs/js/'+pkg.name+'.js';
 const f4b = require('./files4build');
 // the following get-function return arrays of filenames
 var vLibs4Build = f4b.getLibs4Build(vLibPath);
+var vNodeJS4Build = f4b.getNodeJS4Build(vLibPath);
 var vHtml4Build = f4b.getHtml4Build(vHtmlPath);
 var vReadme4Build = f4b.getReadme4Build(vReadmePath);
 var vCss4Build = f4b.getCss4Build(vCssPath);
@@ -71,9 +72,17 @@ codegen.create_header(pkg);
 
 //-----------------------------------------
 //----CONCAT main,libs,css,html,readem-----
-// MAIN.js create library and append "modules.export"
-codegen.concat_main(pkg.main,vLibs4Build,pkg);
-console.log("NPM Build DONE: ",pkg.main);
+// main.js create library and append "modules.export"
+
+//---(1) Output: src/main.js ----
+codegen.concat_main(pkg.main,vNodeJS4Build,pkg);
+console.log("NPM Module Build DONE: ",pkg.main);
+//---(2) Output: dist/handlebars4code.js ----
+codegen.concat_main(vLibDist,vLibs4Build,pkg);
+console.log("NPM Module Build DONE: ",vLibDist);
+//---(3) Output: docs/js/handlebars4code.js ----
+codegen.concat_main(vLibOut,vLibs4Build,pkg);
+console.log("NPM Module Build DONE: ",vLibOut);
 /*
 // LIB:  create the library in /dist folder
 codegen.concat_libs(vLibDist,vLibs4Build,pkg);

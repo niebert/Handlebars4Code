@@ -14,6 +14,19 @@ const getLibs4Build = function (pLibPath) {
   return vLibs4Build;
 }
 
+const getNodeJS4Build = function (pLibPath) {
+  var vLibs4Build = [
+    './src/npm_header.js',
+    //pLibPath+'arrayhash.js',
+    pLibPath+'require_mods.js',
+    pLibPath+'handlebars_helpers.js',
+    //'./src/npm_inherit.js',
+    pLibPath+'exportmod.js'
+  ];
+  return vLibs4Build;
+}
+
+
 const getHtml4Build = function (pPath) {
   var vArray = [
     pPath+'header.html',
@@ -68,6 +81,7 @@ const getReadme4Build = function (pPath) {
 
 module.exports = {
   "getLibs4Build"   : getLibs4Build,
+  "getNodeJS4Build" : getNodeJS4Build,
   "getHtml4Build"   : getHtml4Build,
   "getCss4Build"    : getCss4Build,
   "getReadme4Build" : getReadme4Build
