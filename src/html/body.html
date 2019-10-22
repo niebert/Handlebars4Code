@@ -4,8 +4,9 @@
 </textarea><br>
 <b>Output of ___PKG_EXPORTVAR___</b>
 <select id="sTemplate" onchange="setTemplate(this.value)">
-         <option value="javascript" selected="selected">Javascript Code</option>
-         <option value="docu4github">Documentation for GitHub</option>
+  <option value="javascript" selected="selected">Javascript Code</option>
+  <option value="javascriptcomments">Javascript Code with Comments</option>
+  <option value="docu4github">Documentation for GitHub</option>
 </select>
 <input name="bConvert" value=" Create Output " onclick="convert(el('sTemplate').value);return false" type="button">
 <br>

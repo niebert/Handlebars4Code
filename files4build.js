@@ -6,7 +6,15 @@ const getLibs4Build = function (pLibPath) {
   var vLibs4Build = [
     './src/npm_header.js',
     //pLibPath+'arrayhash.js',
-    pLibPath+'handlebars.js',
+    pLibPath+'handlebars_runtime.js',
+    /* browser_mods.js adds the Object
+       Handelbars4Code and hb4c to the accessible
+       variables in the DOM, so that this creates
+       no conflict for registration of helpers
+       with NodeJS module with require('handlebars4code')
+    */
+    //pLibPath+'browser_mods.js',
+    //pLibPath+'handlebars4code_helpers.js',
     pLibPath+'handlebars_helpers.js',
     //'./src/npm_inherit.js',
     pLibPath+'exportmod.js'
@@ -19,9 +27,11 @@ const getNodeJS4Build = function (pLibPath) {
     './src/npm_header.js',
     //pLibPath+'arrayhash.js',
     pLibPath+'require_mods.js',
-    pLibPath+'handlebars_helpers.js',
+    //pLibPath+'handlebars.js',
+    pLibPath+'handlebars4code_helpers.js',
     //'./src/npm_inherit.js',
-    pLibPath+'exportmod.js'
+    pLibPath+'npm_exportmod.js'
+    //pLibPath+'npm_export.js'
   ];
   return vLibs4Build;
 }

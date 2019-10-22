@@ -1,3 +1,4 @@
+var Handlebars = require('handlebars');
 /* vDataJSON is the main JSON data storage defined in index.html
   vDataJSON is provided as parameter to createHandleBarsCompiler(pDataJSON)
    * createHandleBarsCompiler() expects a hash key "tpl" containing the templates.
@@ -8,7 +9,6 @@
   Code generation. Following iteration will create a compliler
   in vDataJSON["out"]["javascript"]
 */
-
 
 var vCodeCompiler = {};
 
@@ -464,4 +464,5 @@ function parameterListString(pParamArray,pIndent) {
 
 Handlebars.registerHelper('parameterlist', parameterListString);
 
-// -----------
+// -------NPM Export Variable: Handlebars4Code---------------
+module.exports = Handlebars;

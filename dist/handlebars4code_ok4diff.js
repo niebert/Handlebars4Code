@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.2.14  Date: 2019/10/22 12:11:18
+ Version:  1.2.13  Date: 2019/10/21 13:18:48
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2019/10/22 12:11:18
+ Date:     2019/10/21 13:18:48
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
  JSHint: installation with 'npm install jshint -g'
@@ -13,7 +13,6 @@
 
 /*jshint  laxcomma: true, asi: true, maxerr: 150 */
 /*global alert, confirm, console, prompt */
-
 /**!
 
  @license
@@ -4864,8 +4863,6 @@ return /******/ (function(modules) { // webpackBootstrap
   Code generation. Following iteration will create a compliler
   in vDataJSON["out"]["javascript"]
 */
-
-
 var vCodeCompiler = {};
 
 function clone_json(pJSON) {
@@ -5356,12 +5353,14 @@ function compile_code(pTplID,pJSON) {
 }
 
 
-Handlebars4Code = Handlebars;
-Handlebars4Code.create_compiler = create_compiler;
-Handlebars4Code.create_compiler4template = create_compiler4template;
-//Handlebars4Code.compile = create_compiler4template;
-Handlebars4Code.compile_code = compile_code;
-Handlebars4Code.get_compiler = get_compiler;
+Handlebars4Code = {
+  "Handlebars": Handlebars,
+  "create_compiler": create_compiler,
+  "create_compiler4template": create_compiler4template,
+  "compile": create_compiler4template,
+  "compile_code": compile_code,
+  "get_compiler": get_compiler
+};
 
 
 // -------NPM Export Variable: Handlebars4Code---------------

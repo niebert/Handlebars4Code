@@ -1,8 +1,15 @@
 
-var Handlebars4Code = require('../src/main.js');
+//var Handlebars4Code = require('../src/main.js');
+var Handlebars4Code = require('handlebars');
+require('../src/main.js');
+//var Handlebar4Code = require('../src/libs/handlebars4code_helpers.js');
+//require('../src/libs/handlebars4test_helpers.js');
 var vTemplate = `
 My first name is {{{first}}} and my last name is {{{last}}}.
 My age is {{{age}}}.
+{{#ifcond last "!=" "Miller"}}
+Your are not Mr. Miller
+{{/ifcond}}
 `;
 
 var vJSON = {

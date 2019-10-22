@@ -1,2 +1,3 @@
+// File: src/libs/require_mods.js
 // require the Handlebars module from NPM
-require('handlebars');
+var Handlebars4Code = require('handlebars');

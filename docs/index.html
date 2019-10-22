@@ -36,13 +36,23 @@
   <!-- ### HANDLEBARS TEMPLATE  #####################
   Template ID: "javascript"
   Template: vDataJSON["tpl"]["javascript"]
+  File: tpl/javascript_tpl.js
   -->
   <script src="tpl/javascript_tpl.js"></script>
-  <!-- ### COMPILE HANDLEBARS TEMPLATES  ############
+  <!-- ### HANDLEBARS TEMPLATE  #####################
+  Template ID: "javascriptcomments"
+  Template: vDataJSON["tpl"]["javascriptcomments"]
+  File: tpl/javascriptcomments_tpl.js
+  -->
+  <script src="tpl/javascriptcomments_tpl.js"></script>
+  <!-- ### HANDLEBARS TEMPLATE  #####################
   Template ID: "docu4github"
   Template: vDataJSON["tpl"]["docu4github"]
+  File: tpl/docu4github_tpl.js
   -->
   <script src="tpl/docu4github_tpl.js"></script>
+
+
   <script src="js/handlebars4code.js"></script>
 <script language="javascript">
 
@@ -97,8 +107,9 @@ The source code of  Handlebars4Code can be downloaded as <a href="https://www.gi
 </textarea><br>
 <b>Output of Handlebars4Code</b>
 <select id="sTemplate" onchange="setTemplate(this.value)">
-         <option value="javascript" selected="selected">Javascript Code</option>
-         <option value="docu4github">Documentation for GitHub</option>
+  <option value="javascript" selected="selected">Javascript Code</option>
+  <option value="javascriptcomments">Javascript Code with Comments</option>
+  <option value="docu4github">Documentation for GitHub</option>
 </select>
 <input name="bConvert" value=" Create Output " onclick="convert(el('sTemplate').value);return false" type="button">
 <br>
@@ -116,7 +127,7 @@ The source code of  Handlebars4Code can be downloaded as <a href="https://www.gi
 	   <center style="font-size: 10px;">
 			  <a href="https://www.gitlab.com/niebert/handlebars4code" target="_blank"> Git Sources Handlebars4Code</a> - <a href="https://www.github.com/niebert/handlebars4code/archive/master.zip"  target="_blank">Download Handlebars4Code ZIP</a>
 			  <br>
-			  Version: 1.2.13 Date: 2019/10/21 13:18:48 Author: Engelbert Niehaus
+			  Version: 1.2.14 Date: 2019/10/22 12:11:18 Author: Engelbert Niehaus
 	   </center>
      <!-- END:  src/html_tail.html -->
 

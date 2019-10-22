@@ -801,7 +801,9 @@ Special thanks to the following individual developers and teams of OpenSource Ja
 
 ## Libraries required for  `Handlebars4Code`
 The following libraries are necessary for `handlebars4code.js`:
-* Lib: `handlebars` Version: `^4.4.5`
+* Lib: `define-property` Version: `^2.0.2`
+* Lib: `for-in` Version: `^1.0.2`
+* Lib: `handlebars` Version: `^4.4.1`
 
 
 ## Libraries for Building and Developement
@@ -813,10 +815,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.13`   (last build 2019/10/21 13:18:48)
+* Version:  `1.2.14`   (last build 2019/10/22 12:11:18)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2019/10/21 13:18:48
+* Date:     2019/10/22 12:11:18
 * Require Module with:
 ```javascript
     const vHandlebars4Code = require('handlebars4code');

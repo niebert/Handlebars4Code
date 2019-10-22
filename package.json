@@ -11,7 +11,9 @@
     "concat-files": "^0.1.1"
   },
   "dependencies": {
-    "handlebars": "^4.4.5"
+    "define-property": "^2.0.2",
+    "for-in": "^1.0.2",
+    "handlebars": "^4.4.1"
   },
   "scripts": {
     "watch": "watchify src/main.js -o docs/js/handlebars4code.js -v",

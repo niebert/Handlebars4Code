@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.2.13  Date: 2019/10/21 13:18:48
+ Version:  1.2.14  Date: 2019/10/22 12:11:18
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2019/10/21 13:18:48
+ Date:     2019/10/22 12:11:18
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
  JSHint: installation with 'npm install jshint -g'
@@ -13,8 +13,11 @@
 
 /*jshint  laxcomma: true, asi: true, maxerr: 150 */
 /*global alert, confirm, console, prompt */
+// File: src/libs/require_mods.js
 // require the Handlebars module from NPM
-require('handlebars');
+var Handlebars4Code = require('handlebars');
+//--- File: src/libs/handlebars4code_helpers.js ---
+
 /* vDataJSON is the main JSON data storage defined in index.html
   vDataJSON is provided as parameter to createHandleBarsCompiler(pDataJSON)
    * createHandleBarsCompiler() expects a hash key "tpl" containing the templates.
@@ -25,6 +28,7 @@ require('handlebars');
   Code generation. Following iteration will create a compliler
   in vDataJSON["out"]["javascript"]
 */
+
 var vCodeCompiler = {};
 
 function clone_json(pJSON) {
@@ -55,7 +59,7 @@ function value_in_array( pValue, pArray ) {
 function createHandleBarsCompiler(pDataJSON) {
   for (var tplID in pDataJSON.tpl) {
     if (pDataJSON.tpl.hasOwnProperty(tplID)) {
-      pDataJSON.out[tplID] = Handlebars.compile(pDataJSON.tpl[tplID]);
+      pDataJSON.out[tplID] = Handlebars4Code.compile(pDataJSON.tpl[tplID]);
     }
   }
 }
@@ -65,7 +69,7 @@ function createHandleBarsCompiler(pDataJSON) {
 //   ...
 // {{/ifcond}}
 
-Handlebars.registerHelper('ifcond', function (v1, operator, v2, options) {
+Handlebars4Code.registerHelper('ifcond', function (v1, operator, v2, options) {
 
     switch (operator) {
         case '==':
@@ -96,12 +100,12 @@ Handlebars.registerHelper('ifcond', function (v1, operator, v2, options) {
 // Block helpers can be called in template
 // {{#bold}}{{body}}{{/bold}}
 
-Handlebars.registerHelper('bold', function(options) {
+Handlebars4Code.registerHelper('bold', function(options) {
   var ret = "";
   ret += '<div class="mybold">';
   ret += options.fn(this);
   ret += '</div>';
-  return new Handlebars.SafeString(ret);
+  return new Handlebars4Code.SafeString(ret);
 });
 
 // Simple Iterators helper functions
@@ -114,7 +118,7 @@ Handlebars.registerHelper('bold', function(options) {
  {{/listhtml}}
 */
 
-Handlebars.registerHelper('listhtml', function(context, options) {
+Handlebars4Code.registerHelper('listhtml', function(context, options) {
   var ret = "<ul>";
 
   for(var i=0, j=context.length; i<j; i++) {
@@ -141,7 +145,7 @@ no hash arguments, Handlebars will automatically pass an empty object ({}),
 so you don't need to check for the existence of hash arguments.
 */
 
-Handlebars.registerHelper('eachparam', function(context, pClassname,options) {
+Handlebars4Code.registerHelper('eachparam', function(context, pClassname,options) {
 
   var vText =  context.map(function(item) {
     return "" + options.fn(item) + "";
@@ -156,7 +160,7 @@ Handlebars.registerHelper('eachparam', function(context, pClassname,options) {
   return vText;
 });
 
-Handlebars.registerHelper('foreach', function(pArray, pData, options) {
+Handlebars4Code.registerHelper('foreach', function(pArray, pData, options) {
   var ret = "";
   // vRequire is a Hash that collects all classes
   // that are needed to create attributes or
@@ -173,7 +177,7 @@ Handlebars.registerHelper('foreach', function(pArray, pData, options) {
 });
 
 
-Handlebars.registerHelper('listhtmlattr', function(context, options) {
+Handlebars4Code.registerHelper('listhtmlattr', function(context, options) {
   var attrs = Object.keys(options.hash).map(function(key) {
     return key + '="' + options.hash[key] + '"';
   }).join(" ");
@@ -183,7 +187,7 @@ Handlebars.registerHelper('listhtmlattr', function(context, options) {
   }).join("\n") + "</ul>";
 });
 
-Handlebars.registerHelper('indent', function(pText, pIndent) {
+Handlebars4Code.registerHelper('indent', function(pText, pIndent) {
   var vText = pText ||"ERROR: undefined pText in helper-indent ";
   var vIndent = "        ";
   if(typeof(pIndent) == "string") {
@@ -206,12 +210,12 @@ Handlebars.registerHelper('indent', function(pText, pIndent) {
   if (vText && (vText != "")) {
     vText = vText.replace(/\n/g,"\n"+vIndent);
   }
-  return new Handlebars.SafeString(vIndent+vText);
+  return new Handlebars4Code.SafeString(vIndent+vText);
 });
 
 
 
-Handlebars.registerHelper('codeindent', function(pContext, options) {
+Handlebars4Code.registerHelper('codeindent', function(pContext, options) {
   var vIndent = "";
   var vText = "";
   var vCR = "";
@@ -241,12 +245,12 @@ Handlebars.registerHelper('codeindent', function(pContext, options) {
 {{lowercase "My Filename"}}
 */
 
-Handlebars.registerHelper('lowercase', function(pString) {
+Handlebars4Code.registerHelper('lowercase', function(pString) {
   var vString = pString.toLowerCase();
-  return new Handlebars.SafeString(vString);
+  return new Handlebars4Code.SafeString(vString);
 });
 
-Handlebars.registerHelper('requirelibs', function(pArray, options) {
+Handlebars4Code.registerHelper('requirelibs', function(pArray, options) {
   var ret = ""; // return value
   var vSep = ""; // newline separator - empty for first line
   var vMod = "";
@@ -268,12 +272,12 @@ Handlebars.registerHelper('requirelibs', function(pArray, options) {
     //ret += options.fn({"variable":filename2var(vFile),"module":vFile})
     ret += options.fn(pArray[i]);
   }
-  //return new Handlebars.SafeString(ret);
+  //return new Handlebars4Code.SafeString(ret);
   console.log("Require List:\n"+ret);
   return ret;
 });
 
-Handlebars.registerHelper('requireclass', function(pData,pSettings, options) {
+Handlebars4Code.registerHelper('requireclass', function(pData,pSettings, options) {
   var vRequirePath = pData.reposinfo.require_path || "./libs/";
   var ret = "";
   // vRequire is a Hash that collects all classes
@@ -331,14 +335,14 @@ Handlebars.registerHelper('requireclass', function(pData,pSettings, options) {
       vSep = "\n";
     }
   }
-  //return new Handlebars.SafeString(ret);
+  //return new Handlebars4Code.SafeString(ret);
   console.log("Require List:\n"+ret);
   return ret;
 });
 
-Handlebars.registerHelper('removereturn', function(pString) {
+Handlebars4Code.registerHelper('removereturn', function(pString) {
   var vString = pString.replace(/\n/g," - ");
-  return new Handlebars.SafeString(vString);
+  return new Handlebars4Code.SafeString(vString);
 });
 
 
@@ -353,7 +357,7 @@ function name2filename(pName) {
 }
 
 
-Handlebars.registerHelper('filename', function(pString) {
+Handlebars4Code.registerHelper('filename', function(pString) {
    var vText = pString || "no_filename";
    return name2filename(vText);
 });
@@ -369,10 +373,10 @@ function paramCallString(pParamArray) {
     vComma = ",";
   }
 
-  return new Handlebars.SafeString(ret);
+  return new Handlebars4Code.SafeString(ret);
 }
 
-Handlebars.registerHelper('paramcall', paramCallString);
+Handlebars4Code.registerHelper('paramcall', paramCallString);
 
 // -----------
 
@@ -389,10 +393,10 @@ function paramTypeString(pParamArray) {
     console.log("No pParamArray in 'paramcall' helper.");
   }
 
-  return new Handlebars.SafeString(ret);
+  return new Handlebars4Code.SafeString(ret);
 }
 
-Handlebars.registerHelper('paramtype', paramTypeString);
+Handlebars4Code.registerHelper('paramtype', paramTypeString);
 // -----------
 
 function attribs4UMLString(pArray) {
@@ -418,12 +422,12 @@ function attribs4UMLString(pArray) {
     vSep = "`<br>";
   }
   ret += "`";
-  return new Handlebars.SafeString(ret);
+  return new Handlebars4Code.SafeString(ret);
 }
 
-Handlebars.registerHelper('requireattribs', attribs4UMLString);
+Handlebars4Code.registerHelper('requireattribs', attribs4UMLString);
 
-Handlebars.registerHelper('attribs_uml', attribs4UMLString);
+Handlebars4Code.registerHelper('attribs_uml', attribs4UMLString);
 
 // -----------
 
@@ -452,10 +456,10 @@ function methods4UMLString(pArray) {
     vSep = "`<br>";
   }
   ret += "`";
-  return new Handlebars.SafeString(ret);
+  return new Handlebars4Code.SafeString(ret);
 }
 
-Handlebars.registerHelper('methods_uml', methods4UMLString);
+Handlebars4Code.registerHelper('methods_uml', methods4UMLString);
 
 // -----------
 
@@ -474,12 +478,10 @@ function parameterListString(pParamArray,pIndent) {
       ret += vNewLine + vExtraIndent + vComment;
     }
   }
-  return new Handlebars.SafeString(ret);
+  return new Handlebars4Code.SafeString(ret);
 }
 
-Handlebars.registerHelper('parameterlist', parameterListString);
-
-// -----------
+Handlebars4Code.registerHelper('parameterlist', parameterListString);
 //---- Define the static class Handlebars4Code
 // The class was extended by src/libs/handlebars_helpers.js
 // build.js creates main.js
@@ -489,7 +491,7 @@ function create_compiler(pTplJSON) {
   for (var tplID in pTplJSON) {
     if (pTplJSON.hasOwnProperty(tplID)) {
       vTemplate = pTplJSON[tplID];
-      vCodeCompiler[tplID] = Handlebars.compile(vTemplate);
+      vCodeCompiler[tplID] = Handlebars4Code.compile(vTemplate);
     }
   }
 }
@@ -499,7 +501,7 @@ function create_compiler4template (pTemplate) {
     console.error("ERROR: Handelbars4Code.create_compiler(pTemplate) - Handlebars4Code compiler undefined")
   };
   if (pTemplate) {
-      vCodeCompiler = Handlebars.compile(pTemplate);
+      vCodeCompiler = Handlebars4Code.compile(pTemplate);
   };
   return vCodeCompiler;
 };
@@ -515,14 +517,12 @@ function compile_code(pTplID,pJSON) {
 }
 
 
-Handlebars4Code = {
-  "Handlebars": Handlebars,
-  "create_compiler": create_compiler,
-  "create_compiler4template": create_compiler4template,
-  "compile": create_compiler4template,
-  "compile_code": compile_code,
-  "get_compiler": get_compiler
-};
+// Handlebars4Code = Handlebars;
+Handlebars4Code.create_compiler = create_compiler;
+Handlebars4Code.create_compiler4template = create_compiler4template;
+//Handlebars4Code.compile = create_compiler4template;
+Handlebars4Code.compile_code = compile_code;
+Handlebars4Code.get_compiler = get_compiler;
 
 
 // -------NPM Export Variable: Handlebars4Code---------------
