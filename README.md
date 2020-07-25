@@ -815,10 +815,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.14`   (last build 2019/10/22 12:11:18)
+* Version:  `1.2.15`   (last build 2020/07/25 17:06:52)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2019/10/22 12:11:18
+* Date:     2020/07/25 17:06:52
 * Require Module with:
 ```javascript
     const vHandlebars4Code = require('handlebars4code');
