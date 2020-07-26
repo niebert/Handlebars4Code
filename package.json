@@ -7,7 +7,7 @@
   "main": "src/main.js",
   "gituser": "niebert",
   "devDependencies": {
-    "build4code": "^0.3.14",
+    "build4code": "^0.3.21",
     "concat-files": "^0.1.1"
   },
   "dependencies": {

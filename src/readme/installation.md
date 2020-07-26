@@ -11,7 +11,7 @@ npm install ___PKG_NAME___ --save
 Then you will find `___PKG_NAME___` in the folder `mypackage/node_modules/___PKG_NAME___`.
 If you want to use `Handlebars4Code` in your scripts use the following require-call:
 ```javascript
-const  Handlebars4Code = require('___PKG_NAME___');
+const  ___PKG_EXPORTVAR___ = require('___PKG_NAME___');
 ```
 Now it is possible to use `___PKG_EXPORTVAR___` in your scripts.
 
