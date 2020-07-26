@@ -3,6 +3,8 @@
 The manual will show how to use `Handlebars4Code` for code as Javascript template engine to create a standardized string output from a given JSON.
 
 ### Use Cases - Javascript Template Engines
+The following use-cases guide you from standard `Handlebars` usage toward `Handlebars4Code` usage.
+
 ### Basic Use Case
 Assume you have a JSON with data in it and you want to create a HTML table with data in the JSON.
 
