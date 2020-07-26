@@ -24,6 +24,7 @@ vDataJSON.tpl.javascript = `
    Created:     {{data.reposinfo.created}}
    Modified     {{data.reposinfo.modified}}
    created with https://niebert.github.io/ClassEditorUML
+*/
 
 {{#ifcond data.reposinfo.require_classes "!=" "yes"}}
    SCRIPT-Tag:  src="js/{{filename classname}}.js"
