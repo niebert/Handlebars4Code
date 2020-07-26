@@ -113,6 +113,8 @@ Now it is possible to use `Handlebars4Code` in your other imported scripts.
 The manual will show how to use `Handlebars4Code` for code as Javascript template engine to create a standardized string output from a given JSON.
 
 ### Use Cases - Javascript Template Engines
+The following use-cases guide you from standard `Handlebars` usage toward `Handlebars4Code` usage.
+
 ### Basic Use Case
 Assume you have a JSON with data in it and you want to create a HTML table with data in the JSON.
 
@@ -918,10 +920,10 @@ These libraries are not included in `handlebars4code.js`, but e.g. are required 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.16`   (last build 2020/07/26 10:46:18)
+* Version:  `1.2.18`   (last build 2020/07/26 10:50:31)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2020/07/26 10:46:18
+* Date:     2020/07/26 10:50:31
 * Require Module with:
 ```javascript
     const vHandlebars4Code = require('handlebars4code');
