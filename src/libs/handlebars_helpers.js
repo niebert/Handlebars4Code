@@ -383,26 +383,35 @@ Handlebars.registerHelper('paramtype', paramTypeString);
 function attribs4UMLString(pArray) {
   // pArray contains the array of Attributes
   var ret = "";
-  var vSep = "";
-  var vVis = "-";
-  for(var i=0, j=pArray.length; i<j; i++) {
-    switch (pArray[i].visibility) {
-      case "public":
-        vVis = "+";
-      break;
-      case "public":
-        vVis = "-";
-      break;
-      default:
-        vVis = "-";
+  if (pArray) {
+    if (pArray.constructor == Array) {
+      var vSep = "";
+      var vVis = "-";
+      for(var i=0, j=pArray.length; i<j; i++) {
+        switch (pArray[i].visibility) {
+          case "public":
+            vVis = "+";
+          break;
+          case "public":
+            vVis = "-";
+          break;
+          default:
+            vVis = "-";
+        }
+        ret += vSep + " " + vVis + " `" + pArray[i].name;
+        if (pArray[i].class != " ") {
+          ret += + ":"+pArray[i].class;
+        }
+        vSep = "`<br>";
+      }
+      ret += "`";
+    } else {
+      console.error("attribs4UMLString(pArray) parameter pArray is not an array!");
     }
-    ret += vSep + " " + vVis + " `" + pArray[i].name;
-    if (pArray[i].class != " ") {
-      ret += + ":"+pArray[i].class;
-    }
-    vSep = "`<br>";
+
+  } else {
+    console.error("attribs4UMLString(pArray) - no paramter pArray defined!");
   }
-  ret += "`";
   return new Handlebars.SafeString(ret);
 }
 

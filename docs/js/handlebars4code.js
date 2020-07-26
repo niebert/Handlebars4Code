@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.2.18  Date: 2020/07/26 10:50:31
+ Version:  1.2.20  Date: 2020/07/26 11:24:06
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2020/07/26 10:50:31
+ Date:     2020/07/26 11:24:06
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
  JSHint: installation with 'npm install jshint -g'
@@ -5239,26 +5239,35 @@ Handlebars.registerHelper('paramtype', paramTypeString);
 function attribs4UMLString(pArray) {
   // pArray contains the array of Attributes
   var ret = "";
-  var vSep = "";
-  var vVis = "-";
-  for(var i=0, j=pArray.length; i<j; i++) {
-    switch (pArray[i].visibility) {
-      case "public":
-        vVis = "+";
-      break;
-      case "public":
-        vVis = "-";
-      break;
-      default:
-        vVis = "-";
+  if (pArray) {
+    if (pArray.constructor == Array) {
+      var vSep = "";
+      var vVis = "-";
+      for(var i=0, j=pArray.length; i<j; i++) {
+        switch (pArray[i].visibility) {
+          case "public":
+            vVis = "+";
+          break;
+          case "public":
+            vVis = "-";
+          break;
+          default:
+            vVis = "-";
+        }
+        ret += vSep + " " + vVis + " `" + pArray[i].name;
+        if (pArray[i].class != " ") {
+          ret += + ":"+pArray[i].class;
+        }
+        vSep = "`<br>";
+      }
+      ret += "`";
+    } else {
+      console.error("attribs4UMLString(pArray) parameter pArray is not an array!");
     }
-    ret += vSep + " " + vVis + " `" + pArray[i].name;
-    if (pArray[i].class != " ") {
-      ret += + ":"+pArray[i].class;
-    }
-    vSep = "`<br>";
+
+  } else {
+    console.error("attribs4UMLString(pArray) - no paramter pArray defined!");
   }
-  ret += "`";
   return new Handlebars.SafeString(ret);
 }
 
