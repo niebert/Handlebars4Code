@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Handlebars4Code - Hello World</title>
+    <script src="js/handlebars4code.js"></script>
+    <script type="text/javascript">
+      // -1- define the template
+      var vTemplate = "My template {{name}} with {{count}} markers is used for the output file {{outfile}} - <a href=\"{{{turl}}}\">see demo URL</a> .";
+
+
+      // -2- create Handlebars4Code compiler
+      var vCompiler = Handlebars4Code.create_compiler4template(vTemplate);
+
+      // -3- define a JSON
+      var vJSON = {
+        "name": "Bert Bond",
+        "outfile": "my_output.txt",
+        "count": 12,
+        "url": "https://niehausbert.gitlab.io/handlebars4code/helloworld.html"
+      }
+    </script>
+  </head>
+  <body>
+    <div id="output">
+    <div>
+    <script type="text/javascript">
+
+      // -4- create compiler aout for JSON
+      var vOutput = vCompiler(vJSON);
+
+      //-5- write the output to DIV element "output"
+      document.getElementById("output").innerHTML = vOutput
+    </script>
+  </body>
+</html>
