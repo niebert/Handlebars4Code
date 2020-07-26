@@ -1,3 +1,4 @@
+<!-- BEGIN: src/readme/installation.md -->
 
 ## Installation `___PKG_EXPORTVAR___`
 There are two main types to use `Handlebars4Code` for you projects. With a `script`-tag in your HTML file or with a package manager like [NPM](https://www.npmjs.com/) to use [Handlebars4Code](https://www.npmjs.com/package/___PKG_NAME___) with [NodeJS](https://nodejs.org/en/)
@@ -22,3 +23,5 @@ import the library with `script`-tag with:
 <script src="js/___PKG_NAME___.js"></script>
 ```
 Now it is possible to use `___PKG_EXPORTVAR___` in your other imported scripts.
+
+<!-- END:   src/readme/installation.md -->
