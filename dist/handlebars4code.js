@@ -1,11 +1,11 @@
 /* ---------------------------------------
  Exported Module Variable: Handlebars4Code
  Package:  handlebars4code
- Version:  1.2.20  Date: 2020/07/26 11:24:06
+ Version:  1.2.20  Date: 2020/07/26 12:43:58
  Homepage: https://github.com/niebert/Handlebars4Code#readme
  Author:   Engelbert Niehaus
  License:  MIT
- Date:     2020/07/26 11:24:06
+ Date:     2020/07/26 12:43:58
  Require Module with:
     const Handlebars4Code = require('handlebars4code');
  JSHint: installation with 'npm install jshint -g'
@@ -5371,7 +5371,3 @@ Handlebars4Code.create_compiler4template = create_compiler4template;
 //Handlebars4Code.compile = create_compiler4template;
 Handlebars4Code.compile_code = compile_code;
 Handlebars4Code.get_compiler = get_compiler;
-
-
-// -------NPM Export Variable: Handlebars4Code---------------
-module.exports = Handlebars4Code;

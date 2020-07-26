@@ -30,8 +30,8 @@ const getNodeJS4Build = function (pLibPath) {
     //pLibPath+'handlebars.js',
     pLibPath+'handlebars4code_helpers.js',
     //'./src/npm_inherit.js',
-    pLibPath+'npm_exportmod.js'
-    //pLibPath+'npm_export.js'
+    pLibPath+'npm_exportmod.js',
+    pLibPath+'npm_export.js'
   ];
   return vLibs4Build;
 }

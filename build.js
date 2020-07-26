@@ -20,6 +20,7 @@ var vCssPath = vSrcPath + 'css/';
 var vReadmePath = vSrcPath + 'readme/';
 var vLibDist = 'dist/'+pkg.name+'.js';
 var vLibOut = 'docs/js/'+pkg.name+'.js';
+var vLib4Node = 'src/'+pkg.name+'_node.js';
 const f4b = require('./files4build');
 // the following get-function return arrays of filenames
 var vLibs4Build = f4b.getLibs4Build(vLibPath);
@@ -78,10 +79,12 @@ codegen.create_header(pkg);
 codegen.concat_main(pkg.main,vNodeJS4Build,pkg);
 console.log("NPM Module Build DONE: ",pkg.main);
 //---(2) Output: dist/handlebars4code.js ----
-codegen.concat_main(vLibDist,vLibs4Build,pkg);
+// call concat_libs() because no added expprt.modules tail
+codegen.concat_libs(vLibDist,vLibs4Build,pkg);
 console.log("NPM Module Build DONE: ",vLibDist);
 //---(3) Output: docs/js/handlebars4code.js ----
-codegen.concat_main(vLibOut,vLibs4Build,pkg);
+// call concat_libs() because no added expprt.modules tail
+codegen.concat_libs(vLibOut,vLibs4Build,pkg);
 console.log("NPM Module Build DONE: ",vLibOut);
 /*
 // LIB:  create the library in /dist folder

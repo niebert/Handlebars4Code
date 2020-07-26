@@ -15,7 +15,6 @@ The following table of contents is generated with `node doctoc README.md`.
 - [Installation `Handlebars4Code`](#installation-handlebars4code)
   - [Installation `Handlebars4Code` with NPM for Scripts](#installation-handlebars4code-with-npm-for-scripts)
   - [Installation `Handlebars4Code` for Browser for Scripts-Tags](#installation-handlebars4code-for-browser-for-scripts-tags)
-- [Manual](#manual)
   - [Use Cases - Javascript Template Engines](#use-cases---javascript-template-engines)
   - [Basic Use Case](#basic-use-case)
   - [Use Case - Generation of Programming Code](#use-case---generation-of-programming-code)
@@ -86,10 +85,11 @@ The following table of contents is generated with `node doctoc README.md`.
 - [NPM Library Information](#npm-library-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
+<!-- BEGIN: src/readme/installation.md -->
 
 ## Installation `Handlebars4Code`
-There are two main types to use `Handlebars4Code` for you projects. With a `script`-tag in your HTML file or with a package manager like [NPM](https://www.npmjs.com/) with [NodeJS]()
+There are two main types to use `Handlebars4Code` for you projects. With a `script`-tag in your HTML file or with a package manager like [NPM](https://www.npmjs.com/) to use [Handlebars4Code](https://www.npmjs.com/package/handlebars4code) with [NodeJS](https://nodejs.org/en/)
+
 ### Installation `Handlebars4Code` with NPM for Scripts
 Assume you have NPM installed and your have created e.g. a folder `mypackage/` for your package with `package.json` in the folder `. Go to the folder `mypackage/` and call
 ```javascript
@@ -101,6 +101,8 @@ If you want to use `Handlebars4Code` in your scripts use the following require-c
 const  Handlebars4Code = require('handlebars4code');
 ```
 Now it is possible to use `Handlebars4Code` in your scripts.
+
+
 ### Installation `Handlebars4Code` for Browser for Scripts-Tags
 If you want to use the library `handlebars4code.js` in a browser, please copy the file `dist/handlebars4code.js` into your library folder (e.g. `/js`) and
 import the library with `script`-tag with:
@@ -108,6 +110,8 @@ import the library with `script`-tag with:
 <script src="js/handlebars4code.js"></script>
 ```
 Now it is possible to use `Handlebars4Code` in your other imported scripts.
+
+<!-- END:   src/readme/installation.md -->
 %<!-- BEGIN: src/readme/usage.md -->
 ## Manual
 The manual will show how to use `Handlebars4Code` for code as Javascript template engine to create a standardized string output from a given JSON.
@@ -915,16 +919,16 @@ The following libraries are necessary for `handlebars4code.js`:
 ## Libraries for Building and Developement
 The following libraries are necessary for building the `handlebars4code`. 
 These libraries are not included in `handlebars4code.js`, but e.g. are required in `build.js`.
-* Lib: `build4code` Version: `^0.3.14`
+* Lib: `build4code` Version: `^0.3.21`
 * Lib: `concat-files` Version: `^0.1.1`
 
 ## NPM Library Information
 * Exported Module Variable: `Handlebars4Code`
 * Package:  `handlebars4code`
-* Version:  `1.2.20`   (last build 2020/07/26 11:24:06)
+* Version:  `1.2.20`   (last build 2020/07/26 12:43:58)
 * Homepage: `https://github.com/niebert/Handlebars4Code#readme`
 * License:  MIT
-* Date:     2020/07/26 11:24:06
+* Date:     2020/07/26 12:43:58
 * Require Module with:
 ```javascript
     const vHandlebars4Code = require('handlebars4code');
