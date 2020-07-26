@@ -1,7 +1,7 @@
 {
   "name": "handlebars4code",
   "exportvar": "Handlebars4Code",
-  "version": "1.2.19",
+  "version": "1.2.20",
   "demolink": "https://niebert.github.io/Handlebars4Code",
   "description": "library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript)",
   "main": "src/main.js",
