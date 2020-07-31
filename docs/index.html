@@ -1,144 +1,27 @@
-<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
-<html><head>
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <meta http-equiv="content-language" content="de">
-  <meta http-equiv="desktop-type" content="tasks">
+<HTML>
+	<HEAD>
+		<TITLE>Handlebars4Code Redirect</TITLE>
 
-      <title>Handlebars4Code</title>
-      <meta http-equiv="author" content="Engelbert Niehaus">
-  <script language="javascript">
-   // vDataJSON is the main JSON storage for the privacy friendly WebApp
-   // File Loaded into vDataJSON by script tag
-   var vDataJSON = {};
-   vDataJSON.tpl = {};
-   /* TEMPLATES
-   vDataJSON.tpl contains the following templates:
-     * vDataJSON.tpl["javascript"] File: tpl/javascript_tpl.js
-       for creating the the Source Code for the UML class in javascript
-     * vDataJSON.tpl["docu4github"] File: tpl/docu4github_tpl.js
-       for creating the GitHub documentation from the UML source of the class
-   */
+<link href="css/main.css" rel="stylesheet">
 
-   vDataJSON.out = {};
-   /* HANDLEBARS COMPILERS
-   vDataJSON.tpl contains the Handlebars compilers:
-     * vDataJSON.out["javascript"] Compiler for template: tpl/javascript_tpl.js
-       This compiler is used in the compileCode() method
-       var mySource = vJSONEditor.compileCode.javascript(pJSON)
-       creates the source code for the UML class in javascript
-     * vDataJSON.out["docu4github"] Compiler for template: tpl/docu4github_tpl.js
-       This compiler is used in the compileCode() method
-       var mySource = vJSONEditor.compileCode.docu4github(pJSON)
-   */
-  </script>
-  <!-- ### Handelbars4Code Init JSON  ############### -->
-  <script src="db/umljs.js"></script>
-  <!-- ### HANDLEBARS TEMPLATE  #####################
-  Template ID: "javascript"
-  Template: vDataJSON["tpl"]["javascript"]
-  File: tpl/javascript_tpl.js
-  -->
-  <script src="tpl/javascript_tpl.js"></script>
-  <!-- ### HANDLEBARS TEMPLATE  #####################
-  Template ID: "javascriptcomments"
-  Template: vDataJSON["tpl"]["javascriptcomments"]
-  File: tpl/javascriptcomments_tpl.js
-  -->
-  <script src="tpl/javascriptcomments_tpl.js"></script>
-  <!-- ### HANDLEBARS TEMPLATE  #####################
-  Template ID: "docu4github"
-  Template: vDataJSON["tpl"]["docu4github"]
-  File: tpl/docu4github_tpl.js
-  -->
-  <script src="tpl/docu4github_tpl.js"></script>
-
-
-  <script src="js/handlebars4code.js"></script>
-<script language="javascript">
-
-  function el(pID) {
-    return document.getElementById(pID)
-  }
-
-  function convert(pTplID)
-  {
-    var vTplID = pTplID || "javascript";
-    var vJSON;
-  	var vString = document.fconvert.jsonstring.value;
-    if(vString) {
-      try {
-          vJSON = JSON.parse(vString);
-      } catch(e) {
-          alert("JSON Parsing Error: "+e); // error in the above string (in this case, yes)!
-      };
-      if (vJSON)  {
-        setTemplate(pTplID);
-        document.fconvert.output.value = Handlebars4Code.compile_code(vTplID,vJSON);
-
-      } else {
-        alert("ERROR: Could not parse JSON")
-      }
-    }
-  }
-
-  function setTemplate(pTplID) {
-    //convert(pTpl);
-    el("tTemplate").value = vDataJSON.tpl[pTplID];
-  }
-
-</script>
-</head>
-<body style="font-family:Arial,Verdana; font-size:12pt; color:black" bgcolor="#CACACA">
-
-  <h1>Handelbars4Code Demo</h1>
-  <h4>
-    This WebApp is an <a href="https://en.wikiversity.org/wiki/WebApps_with_LocalStorage_and_AppCache" target="_blank">AppLSAC</a>. Demo JSON Source as input for <tt>Handelbars4Code</tt>
-    was generated with <a href="https://niebert.github.io/ClassEditorUML" target="_blank">ClassEditorUML</a>.
-    The JSON file is used together with a template to generate files.
-    With the select box you can apply different templates to the source JSON file.
-    If you want to create your own JSON editor, you can use <a href="https://niebert.github.io/JSON2Schema" target="_blank"> JSON2Schema</a>.
-  </h4>
-
-The library <tt>Handlebars4Code</tt> is a library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript). 
-The source code of  Handlebars4Code can be downloaded as <a href="https://www.github.com/niebert/handlebars4code/archive/master.zip"  target="_blank">ZIP-file handlebars4code.zip</a>
-<form name="fconvert">
-  <b>JSON Input:</b><br>
-<textarea id="jsonstring" name="jsonstring" cols="125" rows="10">This is a
-</textarea><br>
-<b>Output of Handlebars4Code</b>
-<select id="sTemplate" onchange="setTemplate(this.value)">
-  <option value="javascript" selected="selected">Javascript Code</option>
-  <option value="javascriptcomments">Javascript Code with Comments</option>
-  <option value="docu4github">Documentation for GitHub</option>
-</select>
-<input name="bConvert" value=" Create Output " onclick="convert(el('sTemplate').value);return false" type="button">
-<br>
-
-<textarea id="output" name="output" cols="125" rows="10"></textarea><br>
-
+	<BODY>
+<H2>Handlebars4Code</H2>
+<H3>Repository Migration to GitLab: 15.07.2020</H3>
+Internal discussions in the team about the OpenSource Concepts led to the decision to migrate this <a href="https://www.gitlab.com/niehausbert/handlebars4code" target="_blank">Handlebars4Code repository to GitLab</a>.
 <hr>
-<b>Handlebars4Code</b> uses the following Template for <a href="https://www.github.com/niebert/Handlebars4Code" target="_blank">Handlebars</a> (readonly)<br>
-<textarea id="tTemplate" name="tTemplate" cols="125" rows="10" readonly></textarea><br>
-</form>
-
-  <!-- end: main body -->
-
-	   <!-- BEGIN: src/html_tail.html -->
-	   <center style="font-size: 10px;">
-			  <a href="https://www.gitlab.com/niebert/handlebars4code" target="_blank"> Git Sources Handlebars4Code</a> - <a href="https://www.github.com/niebert/handlebars4code/archive/master.zip"  target="_blank">Download Handlebars4Code ZIP</a>
-			  <br>
-			  Version: 1.2.20 Date: 2020/07/26 12:43:58 Author: Engelbert Niehaus
-	   </center>
-     <!-- END:  src/html_tail.html -->
-
-	<script language="javascript">
-    el("jsonstring").value = JSON.stringify(vDataJSON["umljs"],null,2);
-
-    Handlebars4Code.create_compiler(vDataJSON.tpl);
-    vDataJSON.out = Handlebars4Code.get_compiler();
-
-
-</script>
-
-  </body>
-</html>
+<center>
+<h3>New <a href='https://niehausbert.gitlab.io/handlebars4code/' target='_blank'>HandleBars4Code  on GitLab</a></h3>
+The new tool has updated features is able to create a source from a given JSON. The JSON template engine extends the <a href="https://handlebarsjs.com/installation/#downloading-handlebars" target="_blank">Handlebars Library with Compiler</a> for the browser as runtime environment. You can use the library <kbd>handlebars4code.js</kbd> as an <a href="https://en.wikiversity.org/wiki/AppLSAC" target="_blank">AppLSAC - see Wikiversity Learning Resource</a>.)
+</center>
+<HR>
+<H3> Old Repository on GitHub</H3>
+<ul>
+	<li>
+	 	<a href="https://www.github.com/niebert/Handlebars4Code" target="_blank">OLD GitHub-repository 	HandleBars4Code</a>
+	</li>
+	<li>
+	 	<a href="handlebars4code.html" target="_blank">OLD	HandleBars4Code Demo on GitHub</a>
+	</li>
+</ul>
+</BODY>
+</HTML>
