@@ -1,4 +1,13 @@
 # Handlebars4Code
+
+## Repository Migration to GitLab: 15.07.2020
+Internal discussions in the team about the OpenSource Concepts led to the decision to migrate this Handlebars4Code repository to GitLab.
+* <h2>New [HandleBars4Code on GitLab](https://www.gitlab.com/niehausbert/handlebars4code)</h2>
+
+On GitLab the tool has updated features and is able to create a source code with a Handelbars template from a given JSON. The JSON template engine extends the Handlebars Library with Compiler for the browser as runtime environment.
+
+## Introduction
+
 `Handlebars4Code` is a library and NPM module that extends Handlebars with Helpers for Code Generation in a specific programming language (e.g. Javascript)
 * **[Demo Handlebars4Code](https://niebert.github.io/Handlebars4Code)**
 
@@ -917,7 +926,7 @@ The following libraries are necessary for `handlebars4code.js`:
 
 
 ## Libraries for Building and Developement
-The following libraries are necessary for building the `handlebars4code`. 
+The following libraries are necessary for building the `handlebars4code`.
 These libraries are not included in `handlebars4code.js`, but e.g. are required in `build.js`.
 * Lib: `build4code` Version: `^0.3.21`
 * Lib: `concat-files` Version: `^0.1.1`
