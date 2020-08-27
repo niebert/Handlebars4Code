@@ -2,7 +2,7 @@
 
 ## Repository Migration to GitLab: 15.07.2020
 Internal discussions in the team about the OpenSource Concepts led to the decision to migrate this Handlebars4Code repository to GitLab.
-* <h2>New [HandleBars4Code on GitLab](https://www.gitlab.com/niehausbert/handlebars4code)</h2>
+* <h2>New <a href="https://www.gitlab.com/niehausbert/handlebars4code">HandleBars4Code on GitLab</a></h2>
 
 On GitLab the tool has updated features and is able to create a source code with a Handelbars template from a given JSON. The JSON template engine extends the Handlebars Library with Compiler for the browser as runtime environment.
 
